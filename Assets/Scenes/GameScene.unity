@@ -1128,6 +1128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3039795065165662243}
   - component: {fileID: 3289102159336339408}
+  - component: {fileID: 3289102159336339409}
   m_Layer: 0
   m_Name: Goat_v1
   m_TagString: Untagged
@@ -1365,6 +1366,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &3289102159336339409
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406141752745333401}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2085724, y: 3.8074565, z: 4.724045}
+  m_Center: {x: -0.037269592, y: 2.0768952, z: 0.33664703}
 --- !u!4 &3293758089333592246
 Transform:
   m_ObjectHideFlags: 0
