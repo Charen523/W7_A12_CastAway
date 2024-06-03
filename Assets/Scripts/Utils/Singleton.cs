@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//½Ì±ÛÅæ »ó¼Ó¸¸ ½ÃÅ°¸é ¹Ù·Î »ç¿ë °¡´É!
+//ì‹±ê¸€í†¤ ìƒì†ë§Œ ì‹œí‚¤ë©´ ë°”ë¡œ ì‚¬ìš© ê°€ëŠ¥!!
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
@@ -11,12 +11,12 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (_instance == null)
             {
-                // ÀÌ¹Ì ¾À¿¡ Á¸ÀçÇÏ´Â T Å¸ÀÔÀÇ ¿ÀºêÁ§Æ®¸¦ Ã£±â
+                // ì´ë¯¸ ì”¬ì— ì¡´ì¬í•˜ëŠ” T íƒ€ì…ì˜ ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ê¸°
                 _instance = FindObjectOfType<T>();
 
                 if (_instance == null)
                 {
-                    //Managers ¿ÀºêÁ§Æ®¿¡ T ÄÄÆ÷³ÍÆ® Ãß°¡ÇÏ±â
+                    //Managers ì˜¤ë¸Œì íŠ¸ì— T ì»´í¬ë„ŒíŠ¸ ì¶”ê°€í•˜ê¸°
                     GameObject gameObject = new GameObject(typeof(T).Name);
                     _instance = gameObject.AddComponent<T>();
                 }
