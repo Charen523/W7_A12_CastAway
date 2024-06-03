@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  fullDayLength: 5
+  fullDayLength: 1000
   startTime: 0.4
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 3490282772541582742}
