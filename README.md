@@ -17,7 +17,7 @@
 + [프로젝트 소개](#프로젝트-소개)
 + [깃 컨벤션](#깃-컨벤션)
 + [기능 소개](#기능-소개)
-+ [TroubleShooting](#TroubleShooting)
++ [트러블슈팅](#트러블슈팅)
 + [시연 영상 링크](#시연-영상-링크)
 
 ---
@@ -40,6 +40,11 @@
  `Stack` C#, Unity-2022.3.17f, Visual Studio2022-17.9.6   
 
  `Made by` **정승연, 이정빈, 이유신, 김보근** 
+
+ `Key Guide`
+
+
+ ![Keyboard](https://github.com/Charen523/W7_A12_CastAway/assets/108499207/0550bc98-cf24-49d9-aa63-30fb30d92eda)
 
 ---
 
@@ -108,7 +113,7 @@
         - 자연 소리, 적의 소리 효과 등을 통해 게임 환경을 풍부하게 만듭니다.
 --- 
 
-### ✨TroubleShooting
+### ✨트러블슈팅
 
 
 ---
