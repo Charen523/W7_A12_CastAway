@@ -6,7 +6,7 @@ public class DayAndNight : MonoBehaviour
 {
     [Range(0f, 1f)] public float time;
     public float fullDayLength;
-    public float startTime = 0.4f; //0.4f = 9½Ã 36ºÐ.
+    public float startTime = 0.4f; //0.4f = 9ì‹œ 36ë¶„
     private float timeRate;
     public Vector3 noon;
 
