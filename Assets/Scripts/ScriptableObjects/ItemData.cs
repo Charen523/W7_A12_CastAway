@@ -1,18 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemData : MonoBehaviour
+[CreateAssetMenu(fileName = "Item", menuName = "SO/New Item", order = 0)]
+public class ItemData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Info")]
+    public eItemType type = eItemType.MATERIAL;
+    public string displayName;
+    public string description;
+    public Sprite icon;
+    public GameObject dropPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Stacking")]
+    public bool canStack;
+    public int maxStackAmount;
+}
+
+[System.Serializable]
+public class ItemDataConsumable
+{
+    public eConsumableType type;  // 철자 확인 (eConSumableType -> eConsumableType)
+    public float value;
+}
+
+[CreateAssetMenu(fileName = "ConsumableItem", menuName = "SO/New Consumable", order = 1)]
+public class ConsumableData : ItemData
+{
+    [Header("Consumable")]
+    public ItemDataConsumable[] consumables;
+}
+
+[CreateAssetMenu(fileName = "EquipItem", menuName = "SO/New Equip", order = 2)]
+public class EquipData : ItemData
+{
+    [Header("Equip")]
+    public GameObject equipPrefab;
 }
