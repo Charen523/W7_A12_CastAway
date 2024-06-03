@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 731b36f4bbea6cb4f865f96e515f58aa, type: 3}
+  m_Name: MushroomA
+  m_EditorClassIdentifier: 
+  type: 1
+  displayName: "\uBC84\uC12FA"
+  description: "\uB9DB\uC788\uB294 \uC0C9\uC758 \uBC84\uC12F\uC774\uB2E4! "
+  icon: {fileID: 0}
+  dropPrefab: {fileID: 1672817729052459913, guid: b12e2911ef6f3534eb57b446d7ea2830, type: 3}
+  canStack: 1
+  maxStackAmount: 99
+  consumables:
+  - type: 0
+    value: 10
