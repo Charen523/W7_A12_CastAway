@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
 guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
+========
+guid: 4d2920594faf8944b9ae812ce37604ed
+folderAsset: yes
+>>>>>>>> UI/Map:Assets/Low Poly Environment Starter Kit.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
