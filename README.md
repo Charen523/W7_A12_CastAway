@@ -51,6 +51,9 @@
 ### ✨깃 컨벤션
 
 - commit 규칙
+    - 형식: [commit타입] 간단 설명
+
+- commit 타입
     - init: 최초 커밋: Unity 프로젝트 생성
     - feat: 기능 추가
     - refactor: 기능 개선
