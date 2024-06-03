@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
-  m_Name: EquipItem 9
+  m_Script: {fileID: 11500000, guid: 30b966147855bb64683cc5a50f5b84b0, type: 3}
+  m_Name: Coal
   m_EditorClassIdentifier: 
   type: 0
-  displayName: 
+  displayName: "\uC11D\uD0C4"
   description: 
   icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 4516725672438230853, guid: 2eeca5e45aa40824fa18792ee5fb300b, type: 3}
   canStack: 1
   maxStackAmount: 99
-  equipPrefab: {fileID: 0}

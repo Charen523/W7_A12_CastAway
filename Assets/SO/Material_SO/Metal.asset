@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30b966147855bb64683cc5a50f5b84b0, type: 3}
-  m_Name: Item 4
+  m_Name: Metal
   m_EditorClassIdentifier: 
   type: 0
-  displayName: 
+  displayName: "\uCCA0"
   description: 
   icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 0
-  maxStackAmount: 0
+  dropPrefab: {fileID: 5513894085453562831, guid: 7260488f601c7da42a866e46edfa5572, type: 3}
+  canStack: 1
+  maxStackAmount: 99

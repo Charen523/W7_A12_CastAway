@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30b966147855bb64683cc5a50f5b84b0, type: 3}
-  m_Name: Item 5
+  m_Name: Grass
   m_EditorClassIdentifier: 
   type: 0
-  displayName: 
+  displayName: "\uC774\uD30C\uB9AC"
   description: 
   icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 0
-  maxStackAmount: 0
+  dropPrefab: {fileID: 873807584400720486, guid: 029877b611cf5ef4ca452895bef71355, type: 3}
+  canStack: 1
+  maxStackAmount: 99

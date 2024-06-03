@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
   m_Name: IronAxe
   m_EditorClassIdentifier: 
-  type: 0
-  displayName: 
+  type: 2
+  displayName: "\uCCA0 \uB3C4\uB07C"
   description: 
   icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 1
-  maxStackAmount: 99
+  dropPrefab: {fileID: 4907071409199488718, guid: fa5d51b3dae421948aadf79ffe6e3bba, type: 3}
+  canStack: 0
+  maxStackAmount: 0
   equipPrefab: {fileID: 0}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
   m_Name: Arrow
   m_EditorClassIdentifier: 
-  type: 0
-  displayName: 
+  type: 2
+  displayName: "\uD654\uC0B4"
   description: 
   icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 1
-  maxStackAmount: 99
+  dropPrefab: {fileID: 6838194671213501393, guid: b06fa269784bb7549a014b9443691e72, type: 3}
+  canStack: 0
+  maxStackAmount: 0
   equipPrefab: {fileID: 0}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
   m_Name: Flask
   m_EditorClassIdentifier: 
-  type: 0
-  displayName: 
+  type: 2
+  displayName: "\uBB3C\uD1B5"
   description: 
   icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 1
-  maxStackAmount: 99
+  dropPrefab: {fileID: 775719851354697419, guid: 94f1504a4a438b046960eded96f703c6, type: 3}
+  canStack: 0
+  maxStackAmount: 0
   equipPrefab: {fileID: 0}
