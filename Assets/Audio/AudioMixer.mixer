@@ -44,7 +44,7 @@ AudioMixerController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mixer
+  m_Name: AudioMixer
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
@@ -55,11 +55,11 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 51137aa44d7f1b64080bb78589f4a048
-    name: MyExposedParam 2
+    name: BGM
   - guid: e2ff38d0dcdd2b0429c2bac56655fcdc
-    name: MyExposedParam
+    name: Master
   - guid: a82fbf8ca4c780a40bf55cbb30cfc12d
-    name: MyExposedParam 1
+    name: SFX
   m_AudioMixerGroupViews:
   - guids:
     - da8b0d7c225fc6142b02ba05ae8b4c88
@@ -112,7 +112,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 46667adc20cff9b4fb9e8ee854ea018a
-  m_FloatValues: {}
+  m_FloatValues:
+    e2ff38d0dcdd2b0429c2bac56655fcdc: 0
   m_TransitionOverrides: {}
 --- !u!244 &1427234875442046344
 AudioMixerEffectController:
