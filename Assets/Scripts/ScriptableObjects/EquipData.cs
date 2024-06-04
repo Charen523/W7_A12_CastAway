@@ -4,11 +4,11 @@ using UnityEngine;
 public class EquipData : ItemData
 {
     [Header("Equip")]
-    public GameObject equipPrefab;
+    public string EquipId = "E";
 
     private void OnEnable()
     {
-        itemId = "E000";
+        itemId = "I2";
         type = eItemType.EQUIP;
         canStack = false;
         maxStackAmount = 0;
