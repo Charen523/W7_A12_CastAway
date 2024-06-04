@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
         Vector3 CamtoPlayer = new Vector3 (transform.position.x,transform.position.y+1,transform.position.z); //카메라가 캐릭터를 관찰하는 위치 지정
 
         // 회전 각도에 따라 카메라 위치 계산
-        Quaternion rotation = Quaternion.Euler(camCurXRot, camCurYRot+1, 0);
+        Quaternion rotation = Quaternion.Euler(camCurXRot, camCurYRot, 0);
         Vector3 desiredPosition = CamtoPlayer - (rotation * Vector3.forward * distance);
 
         // 카메라와 타겟 사이의 방향 벡터 계산
@@ -239,5 +239,4 @@ public class PlayerController : MonoBehaviour
         animator.gameObject.transform.localPosition = Vector3.zero;
         animator.gameObject.transform.localRotation = Quaternion.Euler(0f, angleDifference, 0f);
     }
-
 }

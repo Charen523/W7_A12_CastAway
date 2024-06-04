@@ -22,4 +22,5 @@ public enum eAIState
     IDLE, //기본
     WANDERING, //자동으로 이동
     ATTACKING, // 공격
+    FLEEING // 도망
 }
