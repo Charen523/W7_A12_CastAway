@@ -142,6 +142,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 155341498}
+  - component: {fileID: 155341500}
+  - component: {fileID: 155341499}
+  - component: {fileID: 155341501}
   m_Layer: 0
   m_Name: Resources
   m_TagString: Untagged
@@ -164,6 +167,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &155341499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2853945937288575525, guid: f1827a01ed8f8fd4383c07bd8f2179ae, type: 3}
+  poolSize: 20
+  positionMin: {x: 390, y: 20.66, z: 459}
+  positionMax: {x: 405, y: 20.66, z: 485}
+  scaleMin: {x: 0.5, y: 0.5, z: 0.5}
+  scaleMax: {x: 1.5, y: 1.5, z: 1.5}
+  parentFolder: {fileID: 155341498}
+--- !u!114 &155341500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1029049566220150731, guid: d75d9efd4735d9649a1e2a7e670fc885, type: 3}
+  poolSize: 20
+  positionMin: {x: 310, y: 6.19, z: 356}
+  positionMax: {x: 340, y: 6.19, z: 365}
+  scaleMin: {x: 3, y: 3, z: 3}
+  scaleMax: {x: 6, y: 7, z: 6}
+  parentFolder: {fileID: 155341498}
+--- !u!114 &155341501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5885901062907692849, guid: 2a1a886ee04b2cd4a8531600b7252fde, type: 3}
+  poolSize: 20
+  positionMin: {x: 342, y: 6.19, z: 313}
+  positionMax: {x: 356, y: 6.19, z: 315}
+  scaleMin: {x: 3, y: 3, z: 3}
+  scaleMax: {x: 6, y: 6, z: 6}
+  parentFolder: {fileID: 155341498}
 --- !u!4 &185862706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1756305624442767744, guid: 319ffeaf67e4c5b46b3a7b1bfcd4791f, type: 3}
