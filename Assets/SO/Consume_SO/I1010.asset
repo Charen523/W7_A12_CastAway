@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 731b36f4bbea6cb4f865f96e515f58aa, type: 3}
+  m_Name: I1010
+  m_EditorClassIdentifier: 
+  itemId: I1010
+  type: 1
+  displayName: "\uCE58\uB8CC\uC81C"
+  description: "\uC0C1\uCC98\uAC00 \uC788\uC73C\uC2DC\uB2E4\uAD6C\uC694? \uAC71\uC815\uB9C8\uC138\uC694!
+    \uC774 \uCE58\uB8CC\uC81C \uD55C\uBC29\uC774\uBA74 \uC2F9 \uB098\uC744\uAC81\uB2C8\uB2E4."
+  icon: {fileID: 0}
+  canStack: 1
+  maxStackAmount: 99
+  consumables:
+  - type: 2
+    value: 30
