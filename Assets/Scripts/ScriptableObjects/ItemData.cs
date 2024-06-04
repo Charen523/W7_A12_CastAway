@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     [Header("Info")]
+    public string itemId = "M000";
     public eItemType type = eItemType.MATERIAL;
     public string displayName;
     public string description;

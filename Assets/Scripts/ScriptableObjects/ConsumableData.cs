@@ -15,6 +15,7 @@ public class ConsumableData : ItemData
 
     private void OnEnable()
     {
+        itemId = "C000";
         type = eItemType.CONSUME;
     }
 }
