@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4117238854402405025}
-  - component: {fileID: 2632895994435071240}
   m_Layer: 0
   m_Name: WoodFence
   m_TagString: Untagged
@@ -27,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 264.94922, y: 7.6298523, z: 493.99896}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.83322775, y: 0.6667342, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7511672724708006829}
@@ -62,21 +61,6 @@ Transform:
   - {fileID: 6488323260277553017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2632895994435071240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5072760056891430021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2e4613553fd88e4681ee0c944c66873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newFenceMesh: {fileID: 4300000, guid: c699e5b3f6b327a409822e3e22e386dd, type: 3}
-  parentPrefab: {fileID: 5072760056891430021}
-  hasFenceMaterials: 0
 --- !u!1001 &771110980562926420
 PrefabInstance:
   m_ObjectHideFlags: 0
