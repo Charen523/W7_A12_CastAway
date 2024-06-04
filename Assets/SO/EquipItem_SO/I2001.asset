@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
   m_Name: I2001
   m_EditorClassIdentifier: 
-  itemId: I2001
+  itemId: I2
   type: 2
   displayName: "\uC870\uC7A1\uD55C \uB3C4\uB07C"
-  description: 
-  icon: {fileID: 0}
+  description: "\uB3CC\uBA69\uC774\uC640 \uB098\uBB47\uAC00\uC9C0\uB97C \uC5BC\uAE30\uC124\uAE30
+    \uC5EE\uC5B4 \uB9CC\uB4E0 \uB3C4\uB07C\uB2E4."
+  icon: {fileID: 21300000, guid: f26fa8880b3aeef4b8516c82dc12f2a5, type: 3}
   canStack: 0
   maxStackAmount: 0
   EquipId: E001
