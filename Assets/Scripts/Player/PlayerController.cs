@@ -1,6 +1,7 @@
 using System;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -43,7 +44,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; // 마우스 커서를 보이지 않게 하기
-        cameraContainer.localPosition = Vector3.zero;
     }
 
     //Update보다 자주 호출됨, 프레임 속도가 높다면 프레임마다 여러번 호출,
@@ -53,13 +53,12 @@ public class PlayerController : MonoBehaviour
         if(animator.GetBool("IsWalk") == true)
         {
             transform.eulerAngles = new Vector3(0, camCurYRot, 0);
+            AnimatorAim();
         }
         if (IsGrounded())
         {
             Move(); //물리적 이동
         }
-        animator.gameObject.transform.localPosition = Vector3.zero; // 플레이어 위치와 캐릭터 아바타의 위치를 고정시키기 위해
-        animator.gameObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
     //프레임마다 한번씩 호출, Update 계산이 끝나면 그 뒤에 실행
@@ -149,37 +148,36 @@ public class PlayerController : MonoBehaviour
         camCurXRot -= mouseDelta.y * lookSensitivity; //돌려줄 델타값을 민감도와 곱하여 저장 -Y값을 X에 더하는 이유 X축을 돌리려면 마우스의 Y값이 필요함
         camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook); // 최대값 최소값을 지정해주는 함수 Mathf.Clamp
         camCurYRot += mouseDelta.x * lookSensitivity;
-        //cameraContainer.localEulerAngles = new Vector3(camCurXRot, camCurYRot, 0); //카메라 컨테이너의 '로컬' 좌표를 조정 Y값에 - 입력해야 정상 작동
 
-        //transform.eulerAngles = new Vector3(0, camCurYRot, 0); // 캐릭터의 각도는 마우스의 델타값에 민감도를 곱함 - X축을 Y에 더하는 이유 Y축을 돌리려면 마우스의 X값이 필요
+        Vector3 CamtoPlayer = new Vector3 (transform.position.x,transform.position.y+1,transform.position.z); //카메라가 캐릭터를 관찰하는 위치 지정
 
         // 회전 각도에 따라 카메라 위치 계산
-        Quaternion rotation = Quaternion.Euler(camCurXRot, camCurYRot, 0);
-        Vector3 desiredPosition = transform.position - (rotation * Vector3.forward * distance);
+        Quaternion rotation = Quaternion.Euler(camCurXRot, camCurYRot+1, 0);
+        Vector3 desiredPosition = CamtoPlayer - (rotation * Vector3.forward * distance);
 
         // 카메라와 타겟 사이의 방향 벡터 계산
         Vector3 direction = (desiredPosition - transform.position).normalized;
-        Debug.Log(desiredPosition);
-        Debug.Log(direction);
-
+        //Debug.Log(desiredPosition);
+        //Debug.Log(direction);
         // 타겟에서 카메라 방향으로의 레이캐스트
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, direction, out hit, maxDistance, groundLayerMask))
+
+        if (Physics.Raycast(CamtoPlayer, direction, out hit, maxDistance+2, groundLayerMask))
         {
             // 레이캐스트가 지면과 충돌하면 거리 조정
             distance = Mathf.Clamp(hit.distance, minDistance, maxDistance);
-            desiredPosition = transform.position - (rotation * Vector3.forward * distance);
+            desiredPosition = CamtoPlayer - (rotation * Vector3.forward * distance);
         }
         else
         {
             // 충돌이 없으면 최대 거리 유지
             distance = maxDistance;
-            desiredPosition = transform.position - (rotation * Vector3.forward * distance);
+            desiredPosition = CamtoPlayer - (rotation * Vector3.forward * distance);
         }
 
         // 카메라 위치와 회전 적용
         cameraContainer.transform.position = desiredPosition;
-        cameraContainer.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z));
+        cameraContainer.transform.LookAt(CamtoPlayer);
     }
 
     bool IsGrounded() //땅에 있는지 알아내기 위해 Raycast 사용
@@ -226,6 +224,20 @@ public class PlayerController : MonoBehaviour
     void SetNext()
     {
         animator.SetBool("Next", false);
+    }
+
+    void AnimatorAim()
+    {
+        float cameraYRotation = cameraContainer.transform.localEulerAngles.y;
+
+        // 이동 방향 벡터의 Y축 회전값 계산
+        float moveDirectionYRotation = Mathf.Atan2(curMovementInput.x, curMovementInput.y) * Mathf.Rad2Deg; 
+
+        // 두 각도 사이의 차이 계산
+        float angleDifference = Mathf.DeltaAngle(cameraYRotation, moveDirectionYRotation);
+
+        animator.gameObject.transform.localPosition = Vector3.zero;
+        animator.gameObject.transform.localRotation = Quaternion.Euler(0f, angleDifference, 0f);
     }
 
 }
