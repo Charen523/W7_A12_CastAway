@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30b966147855bb64683cc5a50f5b84b0, type: 3}
-  m_Name: TortoiseShell
+  m_Name: I0011
   m_EditorClassIdentifier: 
+  itemId: I0011
   type: 0
-  displayName: "\uAC70\uBD81\uC774 \uAECD\uC9C8"
-  description: 
+  displayName: "\uCCA0\uBD99\uC774"
+  description: "\uC11D\uD0C4\uC73C\uB85C \uC6D0\uC11D\uC744 \uB179\uC5EC \uB9CC\uB4E0
+    \uC870\uAE08 \uB354 \uC21C\uC218\uD55C \uCCA0."
   icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
   canStack: 1
   maxStackAmount: 99

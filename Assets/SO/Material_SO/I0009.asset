@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30b966147855bb64683cc5a50f5b84b0, type: 3}
-  m_Name: Coal
+  m_Name: I0009
   m_EditorClassIdentifier: 
+  itemId: I0009
   type: 0
   displayName: "\uC11D\uD0C4"
-  description: 
+  description: "\uCCA0\uC744 \uAD6C\uC6B8 \uC815\uB3C4\uB85C \uB728\uAC70\uC6B4 \uBD88\uC744
+    \uB0BC \uC218 \uC788\uB294 \uC5F0\uB8CC."
   icon: {fileID: 0}
-  dropPrefab: {fileID: 4516725672438230853, guid: 2eeca5e45aa40824fa18792ee5fb300b, type: 3}
   canStack: 1
   maxStackAmount: 99

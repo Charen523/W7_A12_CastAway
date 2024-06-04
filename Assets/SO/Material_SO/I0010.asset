@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30b966147855bb64683cc5a50f5b84b0, type: 3}
-  m_Name: Rock
+  m_Name: I0010
   m_EditorClassIdentifier: 
+  itemId: I0010
   type: 0
-  displayName: "\uBC14\uC704"
-  description: 
+  displayName: "\uCCA0 \uC6D0\uC11D"
+  description: "\uAC00\uACF5\uB418\uC9C0 \uC54A\uC740 \uC0B0\uD654 \uCCA0. \uC544\uC9C1
+    \uC0AC\uC6A9\uD560 \uC218\uB294 \uC5C6\uB2E4."
   icon: {fileID: 0}
-  dropPrefab: {fileID: 685850989355714512, guid: 922825eefa658d34daa4295e7cdfdd93, type: 3}
   canStack: 1
   maxStackAmount: 99
