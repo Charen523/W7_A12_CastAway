@@ -11,7 +11,7 @@ public class MonsterData : ScriptableObject
     public ItemData[] dropOnDeath; //아이템 드롭
 
     [Header("AI")]
-    private eAIState aiState; // Ai 상태 저장
+    public eAIState aiState; // Ai 상태 저장
     public float detectDistance; //감지 거리
     public float safeDistance; // 안전 거리
 
@@ -27,3 +27,4 @@ public class MonsterData : ScriptableObject
     private float lastAttackTime; //최근 공격한 시간
     public float attackDistance; // 공격 거리
 }
+
