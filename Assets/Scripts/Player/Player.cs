@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public PlayerController controller; //플레이어 컨트롤러 호출
     public PlayerCondition condition;
 
-    //public ItemData itemData; 아이템 데이터 생성시 추가
+    public ItemData itemData; //아이템 데이터 생성시 추가
     public Action addItem;
 
     public Transform dropPosition; //아이템을 드롭할 위치
