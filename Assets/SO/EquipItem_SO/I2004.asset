@@ -15,7 +15,8 @@ MonoBehaviour:
   itemId: I2004
   type: 2
   displayName: "\uC870\uC7A1\uD55C \uD65C"
-  description: 
+  description: "\uB098\uBB34\uB97C \uAE4E\uACE0 \uC78E\uC0AC\uADC0\uB97C \uC5EE\uC5B4
+    \uB9CC\uB4E0 \uD65C. \uC0DD\uAC01\uBCF4\uB2E4 \uD2BC\uD2BC\uD558\uB2E4."
   icon: {fileID: 0}
   canStack: 0
   maxStackAmount: 0

@@ -15,7 +15,9 @@ MonoBehaviour:
   itemId: I2008
   type: 2
   displayName: "\uAC15\uCCA0 \uD65C"
-  description: 
+  description: "\uCCA0\uB85C \uB098\uBB34\uB97C \uB367\uB300\uACE0 \uC774\uD30C\uB9AC
+    \uB300\uC2E0 \uCC9C\uC744 \uC0AC\uC6A9\uD574 \uB0B4\uAD6C\uB3C4\uAC00 \uC62C\uB77C\uAC04
+    \uD65C. \uB354 \uBA40\uB9AC \uC3E0 \uC218 \uC788\uB2E4."
   icon: {fileID: 0}
   canStack: 0
   maxStackAmount: 0
