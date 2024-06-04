@@ -4,11 +4,11 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     [Header("Info")]
+    public string itemId;
     public eItemType type = eItemType.MATERIAL;
     public string displayName;
     public string description;
     public Sprite icon;
-    public GameObject dropPrefab;
 
     [Header("Stacking")]
     public bool canStack = true;

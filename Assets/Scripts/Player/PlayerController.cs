@@ -1,6 +1,7 @@
 using System;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -15,9 +16,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("Look")] // 카메라 화면 회전에 필요한 값들을 입력
     public Transform cameraContainer; //카메라를 담을 변수
+    public float distance; // 타겟으로부터의 기본 거리
+    public float minDistance = 1.0f; // 타겟으로부터의 최소 거리
+    public float maxDistance = 5.0f; // 타겟으로부터의 최대 거리
     public float minXLook;
-    public float maxXLook; //회전 범위 최소 최대값
+    public float maxXLook; //X축 최소,최대 이동범위
     private float camCurXRot; // Input Action 마우스의 델타값을 저장
+    private float camCurYRot;
     public float lookSensitivity; // 회전 민감도
 
     private Vector2 mouseDelta; //마우스의 델타값
@@ -45,12 +50,15 @@ public class PlayerController : MonoBehaviour
     //독립된 업데이트이므로 동일한 주기로 업데이트 영향을 받음(Time.Deltatime 필요없음)
     private void FixedUpdate()
     {
+        if(animator.GetBool("IsWalk") == true)
+        {
+            transform.eulerAngles = new Vector3(0, camCurYRot, 0);
+            AnimatorAim();
+        }
         if (IsGrounded())
         {
             Move(); //물리적 이동
         }
-        animator.gameObject.transform.localPosition = Vector3.zero; // 플레이어 위치와 캐릭터 아바타의 위치를 고정시키기 위해
-        animator.gameObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
     //프레임마다 한번씩 호출, Update 계산이 끝나면 그 뒤에 실행
@@ -137,11 +145,39 @@ public class PlayerController : MonoBehaviour
 
     void CameraLook() //카메라 회전을 시키는 로직
     {
-        camCurXRot += mouseDelta.y * lookSensitivity; //돌려줄 델타값을 민감도와 곱하여 저장 -Y값을 X에 더하는 이유 X축을 돌리려면 마우스의 Y값이 필요함
+        camCurXRot -= mouseDelta.y * lookSensitivity; //돌려줄 델타값을 민감도와 곱하여 저장 -Y값을 X에 더하는 이유 X축을 돌리려면 마우스의 Y값이 필요함
         camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook); // 최대값 최소값을 지정해주는 함수 Mathf.Clamp
-        cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0); //카메라 컨테이너의 '로컬' 좌표를 조정 Y값에 - 입력해야 정상 작동
+        camCurYRot += mouseDelta.x * lookSensitivity;
 
-        transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0); // 캐릭터의 각도는 마우스의 델타값에 민감도를 곱함 - X축을 Y에 더하는 이유 Y축을 돌리려면 마우스의 X값이 필요
+        Vector3 CamtoPlayer = new Vector3 (transform.position.x,transform.position.y+1,transform.position.z); //카메라가 캐릭터를 관찰하는 위치 지정
+
+        // 회전 각도에 따라 카메라 위치 계산
+        Quaternion rotation = Quaternion.Euler(camCurXRot, camCurYRot+1, 0);
+        Vector3 desiredPosition = CamtoPlayer - (rotation * Vector3.forward * distance);
+
+        // 카메라와 타겟 사이의 방향 벡터 계산
+        Vector3 direction = (desiredPosition - transform.position).normalized;
+        //Debug.Log(desiredPosition);
+        //Debug.Log(direction);
+        // 타겟에서 카메라 방향으로의 레이캐스트
+        RaycastHit hit;
+
+        if (Physics.Raycast(CamtoPlayer, direction, out hit, maxDistance+2, groundLayerMask))
+        {
+            // 레이캐스트가 지면과 충돌하면 거리 조정
+            distance = Mathf.Clamp(hit.distance, minDistance, maxDistance);
+            desiredPosition = CamtoPlayer - (rotation * Vector3.forward * distance);
+        }
+        else
+        {
+            // 충돌이 없으면 최대 거리 유지
+            distance = maxDistance;
+            desiredPosition = CamtoPlayer - (rotation * Vector3.forward * distance);
+        }
+
+        // 카메라 위치와 회전 적용
+        cameraContainer.transform.position = desiredPosition;
+        cameraContainer.transform.LookAt(CamtoPlayer);
     }
 
     bool IsGrounded() //땅에 있는지 알아내기 위해 Raycast 사용
@@ -188,6 +224,20 @@ public class PlayerController : MonoBehaviour
     void SetNext()
     {
         animator.SetBool("Next", false);
+    }
+
+    void AnimatorAim()
+    {
+        float cameraYRotation = cameraContainer.transform.localEulerAngles.y;
+
+        // 이동 방향 벡터의 Y축 회전값 계산
+        float moveDirectionYRotation = Mathf.Atan2(curMovementInput.x, curMovementInput.y) * Mathf.Rad2Deg; 
+
+        // 두 각도 사이의 차이 계산
+        float angleDifference = Mathf.DeltaAngle(cameraYRotation, moveDirectionYRotation);
+
+        animator.gameObject.transform.localPosition = Vector3.zero;
+        animator.gameObject.transform.localRotation = Quaternion.Euler(0f, angleDifference, 0f);
     }
 
 }
