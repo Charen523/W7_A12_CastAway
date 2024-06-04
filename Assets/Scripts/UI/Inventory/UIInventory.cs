@@ -1,129 +1,129 @@
-using tmpro;
-using unityengine;
-using unityengine.events;
-using unityengine.inputsystem;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
-public class uiinventory : monobehaviour
+public class UIInventory : MonoBehaviour
 {
-    public itemslot[] slots;
+    public ItemSlot[] slots;
 
-    public gameobject inventorywindow;
-    public transform slotpanel;
-    public transform dropposition;
+    public GameObject inventoryWindow;
+    public Transform slotPanel;
+    public Transform dropPosition;
 
-    [header("selected item")]
-    private itemslot selecteditem;
-    private int selecteditemindex;
-    public textmeshprougui selecteditemname;
-    public textmeshprougui selecteditemdescription;
-    public textmeshprougui selecteditemstatname;
-    public textmeshprougui selecteditemstatvalue;
-    public gameobject usebutton;
-    public gameobject equipbutton;
-    public gameobject unequipbutton;
-    public gameobject dropbutton;
+    [Header("Selected Item")]
+    private ItemSlot selectedItem;
+    private int selectedItemIndex;
+    public TextMeshProUGUI selectedItemName;
+    public TextMeshProUGUI selectedItemDescription;
+    public TextMeshProUGUI selectedItemStatName;
+    public TextMeshProUGUI selectedItemStatValue;
+    public GameObject useButton;
+    public GameObject equipButton;
+    public GameObject unEquipButton;
+    public GameObject dropButton;
 
-    private int curequipindex;
+    private int curEquipIndex;
 
-    private playercontroller controller;
-    private playercondition condition;
+    private PlayerController controller;
+    private PlayerCondition condition;
 
-    void start()
+    void Start()
     {
-        controller = charactermanager.instance.player.controller;
-        condition = charactermanager.instance.player.condition;
-        dropposition = charactermanager.instance.player.dropposition;
+        controller = CharacterManager.Instance.Player.controller;
+        condition = CharacterManager.Instance.Player.condition;
+        dropPosition = CharacterManager.Instance.Player.dropPosition;
 
-        controller.inventory += toggle;
-        charactermanager.instance.player.additem += additem;
+        controller.inventory += Toggle;
+        CharacterManager.Instance.Player.addItem += AddItem;
 
-        inventorywindow.setactive(false);
-        slots = new itemslot[slotpanel.childcount];
+        inventoryWindow.SetActive(false);
+        slots = new ItemSlot[slotPanel.childCount];
 
-        for (int i = 0; i < slots.length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            slots[i] = slotpanel.getchild(i).getcomponent<itemslot>();
+            slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
             slots[i].index = i;
             slots[i].inventory = this;
-            slots[i].clear();
+            slots[i].Clear();
         }
 
-        clearselecteditemwindow();
+        ClearSelectedItemWindow();
     }
 
-    public void toggle()
+    public void Toggle()
     {
-        if (inventorywindow.activeinhierarchy)
+        if (inventoryWindow.activeInHierarchy)
         {
-            inventorywindow.setactive(false);
+            inventoryWindow.SetActive(false);
         }
         else
         {
-            inventorywindow.setactive(true);
+            inventoryWindow.SetActive(true);
         }
     }
 
-    public bool isopen()
+    public bool IsOpen()
     {
-        return inventorywindow.activeinhierarchy;
+        return inventoryWindow.activeInHierarchy;
     }
 
-    public void additem()
+    public void AddItem()
     {
-        itemdata data = charactermanager.instance.player.itemdata;
+        ItemData data = CharacterManager.Instance.Player.itemData;
 
-        if (data.canstack)
+        if (data.canStack)
         {
-            itemslot slot = getitemstack(data);
+            ItemSlot slot = GetItemStack(data);
             if (slot != null)
             {
                 slot.quantity++;
-                updateui();
-                charactermanager.instance.player.itemdata = null;
+                UpdateUI();
+                CharacterManager.Instance.Player.itemData = null;
                 return;
             }
         }
 
-        itemslot emptyslot = getemptyslot();
+        ItemSlot emptySlot = GetEmptySlot();
 
-        if (emptyslot != null)
+        if (emptySlot != null)
         {
-            emptyslot.item = data;
-            emptyslot.quantity = 1;
-            updateui();
-            charactermanager.instance.player.itemdata = null;
+            emptySlot.item = data;
+            emptySlot.quantity = 1;
+            UpdateUI();
+            CharacterManager.Instance.Player.itemData = null;
             return;
         }
 
-        throwitem(data);
-        charactermanager.instance.player.itemdata = null;
+        ThrowItem(data);
+        CharacterManager.Instance.Player.itemData = null;
     }
 
-    public void throwitem(itemdata data)
+    public void ThrowItem(ItemData data)
     {
-        instantiate(data.dropprefab, dropposition.position, quaternion.euler(vector3.one * random.value * 360));
+        //Instantiate(data.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
     }
 
-    public void updateui()
+    public void UpdateUI()
     {
-        for (int i = 0; i < slots.length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item != null)
             {
-                slots[i].set();
+                slots[i].Set();
             }
             else
             {
-                slots[i].clear();
+                slots[i].Clear();
             }
         }
     }
 
-    itemslot getitemstack(itemdata data)
+    ItemSlot GetItemStack(ItemData data)
     {
-        for (int i = 0; i < slots.length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item == data && slots[i].quantity < data.maxstackamount)
+            if (slots[i].item == data && slots[i].quantity < data.maxStackAmount)
             {
                 return slots[i];
             }
@@ -131,9 +131,9 @@ public class uiinventory : monobehaviour
         return null;
     }
 
-    itemslot getemptyslot()
+    ItemSlot GetEmptySlot()
     {
-        for (int i = 0; i < slots.length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item == null)
             {
@@ -143,89 +143,89 @@ public class uiinventory : monobehaviour
         return null;
     }
 
-    public void selectitem(int index)
+    public void SelectItem(int index)
     {
         if (slots[index].item == null) return;
 
-        selecteditem = slots[index];
-        selecteditemindex = index;
+        selectedItem = slots[index];
+        selectedItemIndex = index;
 
-        selecteditemname.text = selecteditem.item.displayname;
-        selecteditemdescription.text = selecteditem.item.description;
+        selectedItemName.text = selectedItem.item.displayName;
+        selectedItemDescription.text = selectedItem.item.description;
 
-        selecteditemstatname.text = string.empty;
-        selecteditemstatvalue.text = string.empty;
+        selectedItemStatName.text = string.Empty;
+        selectedItemStatValue.text = string.Empty;
 
-        for (int i = 0; i < selecteditem.item.consumables.length; i++)
-        {
-            selecteditemstatname.text += selecteditem.item.consumables[i].type.tostring() + "\n";
-            selecteditemstatvalue.text += selecteditem.item.consumables[i].value.tostring() + "\n";
-        }
+        //for (int i = 0; i < selectedItem.item.consumables.Length; i++)
+        //{
+        //    selectedItemStatName.text += selectedItem.item.consumables[i].type.ToString() + "\n";
+        //    selectedItemStatValue.text += selectedItem.item.consumables[i].value.ToString() + "\n";
+        //}
 
-        usebutton.setactive(selecteditem.item.type == itemtype.consumable);
-        equipbutton.setactive(selecteditem.item.type == itemtype.equipable && !slots[index].equipped);
-        unequipbutton.setactive(selecteditem.item.type == itemtype.equipable && slots[index].equipped);
-        dropbutton.setactive(true);
+        //useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
+        //equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !slots[index].equipped);
+        //unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && slots[index].equipped);
+        dropButton.SetActive(true);
     }
 
-    void clearselecteditemwindow()
+    void ClearSelectedItemWindow()
     {
-        selecteditem = null;
+        selectedItem = null;
 
-        selecteditemname.text = string.empty;
-        selecteditemdescription.text = string.empty;
-        selecteditemstatname.text = string.empty;
-        selecteditemstatvalue.text = string.empty;
+        selectedItemName.text = string.Empty;
+        selectedItemDescription.text = string.Empty;
+        selectedItemStatName.text = string.Empty;
+        selectedItemStatValue.text = string.Empty;
 
-        usebutton.setactive(false);
-        equipbutton.setactive(false);
-        unequipbutton.setactive(false);
-        dropbutton.setactive(false);
+        useButton.SetActive(false);
+        equipButton.SetActive(false);
+        unEquipButton.SetActive(false);
+        dropButton.SetActive(false);
     }
 
-    public void onusebutton()
+    public void OnUseButton()
     {
-        if (selecteditem.item.type == itemtype.consumable)
+        //if (selectedItem.item.type == ItemType.Consumable)
+        //{
+        //    for (int i = 0; i < selectedItem.item.consumables.Length; i++)
+        //    {
+        //        switch (selectedItem.item.consumables[i].type)
+        //        {
+        //            case ConsumableType.Health:
+        //                condition.Heal(selectedItem.item.consumables[i].value); break;
+        //            case ConsumableType.Hunger:
+        //                condition.Eat(selectedItem.item.consumables[i].value); break;
+        //        }
+        //    }
+        //    RemoveSelctedItem();
+        //}
+    }
+
+    public void OnDropButton()
+    {
+        ThrowItem(selectedItem.item);
+        RemoveSelctedItem();
+    }
+
+    void RemoveSelctedItem()
+    {
+        selectedItem.quantity--;
+
+        if (selectedItem.quantity <= 0)
         {
-            for (int i = 0; i < selecteditem.item.consumables.length; i++)
+            if (slots[selectedItemIndex].equipped)
             {
-                switch (selecteditem.item.consumables[i].type)
-                {
-                    case consumabletype.health:
-                        condition.heal(selecteditem.item.consumables[i].value); break;
-                    case consumabletype.hunger:
-                        condition.eat(selecteditem.item.consumables[i].value); break;
-                }
-            }
-            removeselcteditem();
-        }
-    }
-
-    public void ondropbutton()
-    {
-        throwitem(selecteditem.item);
-        removeselcteditem();
-    }
-
-    void removeselcteditem()
-    {
-        selecteditem.quantity--;
-
-        if (selecteditem.quantity <= 0)
-        {
-            if (slots[selecteditemindex].equipped)
-            {
-                unequip(selecteditemindex);
+                //UnEquip(selectedItemIndex);
             }
 
-            selecteditem.item = null;
-            clearselecteditemwindow();
+            selectedItem.item = null;
+            ClearSelectedItemWindow();
         }
 
-        updateui();
+        UpdateUI();
     }
 
-    public bool hasitem(itemdata item, int quantity)
+    public bool HasItem(ItemData item, int quantity)
     {
         return false;
     }

@@ -4,26 +4,31 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    public ItemData item;
-
     public UIInventory inventory;
-    public Button button;
-    public Image icon;
-    public TextMeshProUGUI quatityText;
-    private Outline outline;
-
+   
+    public ItemData item;
+    
     public int index;
     public bool equipped;
+
+    [Header("Item Slot Info")]
+    private Button slotButton;
+
+    [Header("Item Slot Children")]
+    private Image icon;
+    private TextMeshProUGUI quatityText;
     public int quantity;
+    private GameObject Select;
+    public bool Selected;
 
     private void Awake()
     {
-        outline = GetComponent<Outline>();
+        
     }
 
     private void OnEnable()
     {
-        outline.enabled = equipped;
+        Select.SetActive(Selected);
     }
 
     public void Set()
@@ -32,9 +37,9 @@ public class ItemSlot : MonoBehaviour
         icon.sprite = item.icon;
         quatityText.text = quantity > 1 ? quantity.ToString() : string.Empty;
 
-        if (outline != null)
+        if (Select.activeSelf)
         {
-            outline.enabled = equipped;
+            Select.SetActive(Selected);
         }
     }
 
@@ -47,6 +52,6 @@ public class ItemSlot : MonoBehaviour
 
     public void OnClickButton()
     {
-        //inventory.SelectItem(index);
+        inventory.SelectItem(index);
     }
 }
