@@ -18,6 +18,6 @@ MonoBehaviour:
   description: "\uADC0\uC5EC\uC6B4 \uAC70\uBD81\uC774\uB97C \uD76C\uC0DD\uC2DC\uCF1C
     \uC5BB\uC740 \uD2BC\uD2BC\uD55C \uAECD\uC9C8. \uC2A4\uC2A4\uB85C\uB97C \uBCF4\uD638\uD560
     \uC218 \uC788\uB2E4."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
   canStack: 1
   maxStackAmount: 99

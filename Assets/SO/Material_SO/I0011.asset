@@ -17,6 +17,6 @@ MonoBehaviour:
   displayName: "\uCCA0\uBD99\uC774"
   description: "\uC11D\uD0C4\uC73C\uB85C \uC6D0\uC11D\uC744 \uB179\uC5EC \uB9CC\uB4E0
     \uC870\uAE08 \uB354 \uC21C\uC218\uD55C \uCCA0."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
   canStack: 1
   maxStackAmount: 99

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
   m_Name: I2003
   m_EditorClassIdentifier: 
-  itemId: I2003
+  itemId: I2
   type: 2
   displayName: "\uC870\uC7A1\uD55C \uBB34\uAE30"
   description: "\uC5EC\uB7EC \uC2DC\uD589\uCC29\uC624 \uB05D\uC5D0 \uB0A0\uBD99\uC774
     \uB300\uC2E0 \uBB49\uD22D\uD55C \uB3CC\uC744 \uACE8\uB77C \uB9CC\uB4E0 \uD6CC\uB96D\uD55C
     \uB300\uD654\uC218\uB2E8."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f26fa8880b3aeef4b8516c82dc12f2a5, type: 3}
   canStack: 0
   maxStackAmount: 0
   EquipId: E003
