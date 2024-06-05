@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canLook = true; // 인벤토리 나올시 화면 고정
 
-    public Action inventory; // 델리게이트 (인벤토리) 생성
+    public event Action Workshop; // 델리게이트 (인벤토리) 생성
 
     private Rigidbody rigidbody;
     private Animator animator;
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started) // 버튼이 눌렸다면
         {
-            inventory?.Invoke(); //UI인벤토리에 있는 기능 사용
+            Workshop?.Invoke(); //UI인벤토리에 있는 기능 사용
             ToggleCursor();
         }
     }
