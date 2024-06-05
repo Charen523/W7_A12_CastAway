@@ -545,6 +545,8 @@ GameObject:
   - component: {fileID: 155341506}
   - component: {fileID: 155341507}
   - component: {fileID: 155341508}
+  - component: {fileID: 155341509}
+  - component: {fileID: 155341510}
   m_Layer: 0
   m_Name: ResourceManager
   m_TagString: Untagged
@@ -739,6 +741,44 @@ MonoBehaviour:
   positionMax: {x: 560, y: 6.22, z: 343}
   scaleMin: {x: 2, y: 2, z: 2}
   scaleMax: {x: 2.1, y: 2.1, z: 2.1}
+  parentFolder: {fileID: 155341498}
+--- !u!114 &155341509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3692310909983594008, guid: 08264f470d19aba4ba8f88e4b4327b81, type: 3}
+  poolSize: 10
+  positionMin: {x: 428, y: 15.95, z: 673}
+  positionMax: {x: 472, y: 15.95, z: 703}
+  scaleMin: {x: 0.7, y: 1, z: 1}
+  scaleMax: {x: 1.5, y: 3, z: 1.5}
+  parentFolder: {fileID: 155341498}
+--- !u!114 &155341510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8180850596818051474, guid: 57c39072bca696d429479ff4d42a45c0, type: 3}
+  poolSize: 15
+  positionMin: {x: 758, y: 3, z: 623}
+  positionMax: {x: 791, y: 3, z: 688}
+  scaleMin: {x: 1, y: 1, z: 1}
+  scaleMax: {x: 2, y: 2.5, z: 2}
   parentFolder: {fileID: 155341498}
 --- !u!1 &172715562
 GameObject:
