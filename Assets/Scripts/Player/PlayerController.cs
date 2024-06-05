@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     //독립된 업데이트이므로 동일한 주기로 업데이트 영향을 받음(Time.Deltatime 필요없음)
     private void FixedUpdate()
     {
-        if(animator.GetBool("IsWalk") == true)
+        if (animator.GetBool("IsWalk") == true)
         {
             transform.eulerAngles = new Vector3(0, camCurYRot, 0);
             AnimatorAim();
@@ -118,15 +118,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnInventoryButton(InputAction.CallbackContext callbackContext) //인벤토리 버튼 동작
+    public void OnInventoryInput(InputAction.CallbackContext context) //인벤토리 버튼 동작
     {
-        if (callbackContext.phase == InputActionPhase.Started) // 버튼이 눌렸다면
+        if (context.phase == InputActionPhase.Started) // 버튼이 눌렸다면
         {
             inventory?.Invoke(); //UI인벤토리에 있는 기능 사용
             ToggleCursor();
         }
     }
 
+    public void OnSettingInput(InputAction.CallbackContext context)
+    {
+
+    }
     private void Move() //실제로 이동을 시키는 로직
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x; // 입력된 벡터값의 방향 X,y값 설정

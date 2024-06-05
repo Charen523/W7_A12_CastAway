@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fix
+  - DrinkableWater
+  - Item
+  - Equipment
   layers:
   - Default
   - TransparentFX
@@ -12,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
-  - 
+  - Player
+  - Resources
   - 
   - 
   - 

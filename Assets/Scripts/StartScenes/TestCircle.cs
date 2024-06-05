@@ -1,25 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class TestCircle : MonoBehaviour
 {
-    public int maxValue;
+    public int maxValue = 100;
     public Image fill;
 
     private int currentValue;
 
-
-    
     void Start()
     {
-        currentValue = maxValue;
-        fill.fillAmount = 0.5f;
-
+        currentValue = maxValue / 2; // 초기 fillAmount가 0.5가 되도록 설정
+        fill.fillAmount = 0.5f; // 초기 fillAmount를 0.5로 설정
     }
 
-    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -37,7 +32,7 @@ public class TestCircle : MonoBehaviour
         {
             currentValue = maxValue;
         }
-        fill.fillAmount = (float)currentValue/maxValue;
+        UpdateFillAmount();
     }
 
     public void Deduct(int i)
@@ -48,7 +43,11 @@ public class TestCircle : MonoBehaviour
         {
             currentValue = 0;
         }
-        fill.fillAmount = (float)currentValue / maxValue;
+        UpdateFillAmount();
     }
 
+    private void UpdateFillAmount()
+    {
+        fill.fillAmount = 0.5f * ((float)currentValue / (maxValue / 2)); // 비율 조정
+    }
 }
