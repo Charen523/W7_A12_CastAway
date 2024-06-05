@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterData : ScriptableObject
+[CreateAssetMenu(fileName = "Entity", menuName = "SO/New Entity", order = 3)]
+public class EntityData : ScriptableObject
 {
     [Header("Stats")]
-    public int health; //체력
+    public string Name; //이름
+    public int MaxHealth;
+    public int CureentHealth; //체력
     public float walkSpeed; //걷기, 달리기 속도
     public float runSpeed;
     public ItemData[] dropOnDeath; //아이템 드롭
@@ -24,7 +27,7 @@ public class MonsterData : ScriptableObject
     [Header("Combat")]
     public int damage; //데미지
     public float attackRate; // 공격 대기시간
-    private float lastAttackTime; //최근 공격한 시간
+    public float lastAttackTime; //최근 공격한 시간
     public float attackDistance; // 공격 거리
 }
 

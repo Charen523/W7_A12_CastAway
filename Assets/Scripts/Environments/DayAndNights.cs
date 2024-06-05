@@ -24,10 +24,19 @@ public class DayAndNight : MonoBehaviour
     public AnimationCurve lightingIntensityMultiplier;
     public AnimationCurve reflectionIntensityMultiplier;
 
+    private RandomRain randomRain;
+
     private void Start()
     {
         timeRate = 1.0f / fullDayLength;
         time = startTime;
+
+        
+        randomRain = FindObjectOfType<RandomRain>();
+        if (randomRain == null)
+        {
+            Debug.LogError("비가없음");
+        }
     }
 
     private void Update()
@@ -38,6 +47,19 @@ public class DayAndNight : MonoBehaviour
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
+
+        if (randomRain != null)
+        {
+            
+            if (!sun.gameObject.activeInHierarchy)
+            {
+                randomRain.EnableRain();
+            }
+            else
+            {
+                randomRain.DisableRain();
+            }
+        }
     }
 
     public void UpdateLighting(Light lightSource, Gradient gradient, AnimationCurve curve)
