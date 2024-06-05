@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2705822480671751524}
   - component: {fileID: 3807742974881060514}
   - component: {fileID: 8655777216227746430}
+  - component: {fileID: -3206268507880284237}
   m_Layer: 0
   m_Name: B1004
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-3206268507880284237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853945937288575525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628a994fb1324e549add23f631bd0812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 5
+  RespawnPrefab: {fileID: 2853945937288575525}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ResourcePoolManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class ResourcePoolManager : MonoBehaviour
     public GameObject prefab;
 
     // 풀의 크기 설정
-    public int poolSize = 10;
+    public int poolSize = 5;
 
     // 위치 및 크기 범위 설정
     [Header("Position")]
@@ -24,6 +25,12 @@ public class ResourcePoolManager : MonoBehaviour
 
     // 오브젝트를 배치할 부모 오브젝트
     public Transform parentFolder;
+
+    // 오브젝트 리턴 대기 시간
+    public float respawnDelay = 10f;
+
+    // 오브젝트 위치를 저장할 딕셔너리
+    private Dictionary<GameObject, Vector3> originalPositions = new Dictionary<GameObject, Vector3>();
 
     void Start()
     {
@@ -52,12 +59,13 @@ public class ResourcePoolManager : MonoBehaviour
     {
         foreach (GameObject obj in pool)
         {
-            obj.transform.position = new Vector3(
+            Vector3 position = new Vector3(
                 Random.Range(positionMin.x, positionMax.x),
                 positionMax.y,
                 Random.Range(positionMin.z, positionMax.z)
             );
 
+            obj.transform.position = position;
 
             obj.transform.localScale = new Vector3(
                 Random.Range(scaleMin.x, scaleMax.x),
@@ -65,6 +73,7 @@ public class ResourcePoolManager : MonoBehaviour
                 Random.Range(scaleMin.z, scaleMax.z)
             );
 
+            originalPositions[obj] = position; // 위치 저장
             obj.SetActive(true);
         }
     }
@@ -73,7 +82,19 @@ public class ResourcePoolManager : MonoBehaviour
     public void ReturnObjectToPool(GameObject obj)
     {
         obj.SetActive(false);
-        obj.transform.SetParent(parentFolder);
+        //obj.transform.SetParent(parentFolder);
         pool.Add(obj);
+        StartCoroutine(ReSpawnObject(obj, respawnDelay));
+    }
+
+    // 일정 시간이 지난 후 오브젝트를 재생성하는 코루틴
+    private IEnumerator ReSpawnObject(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        obj.transform.position = originalPositions[obj]; // 저장된 위치로 복원
+
+        obj.SetActive(true);
+        pool.Remove(obj);
     }
 }

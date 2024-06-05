@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3213380469461568081}
   - component: {fileID: 3644828624565076707}
   - component: {fileID: 5175175884664216677}
+  - component: {fileID: 2355470690940545141}
   - component: {fileID: 2691275013079743887}
   m_Layer: 0
   m_Name: B1006
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2355470690940545141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180850596818051474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628a994fb1324e549add23f631bd0812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 5
+  RespawnPrefab: {fileID: 8180850596818051474}
 --- !u!64 &2691275013079743887
 MeshCollider:
   m_ObjectHideFlags: 0
