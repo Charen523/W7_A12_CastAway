@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44824904, g: 0.49827605, b: 0.5755831, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482482, g: 0.49827528, b: 0.5755824, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -652,13 +652,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6565635948001159583, guid: f892104f62dfeab4d81021f04e0e0614, type: 3}
-  poolSize: 12
+  poolSize: 20
   positionMin: {x: 395, y: 6.927331, z: 224}
-  positionMax: {x: 400, y: 8, z: 234}
-  scaleMin: {x: 7, y: 6, z: 7}
+  positionMax: {x: 401, y: 6.927331, z: 235}
+  scaleMin: {x: 8, y: 6, z: 8}
   scaleMax: {x: 10, y: 6, z: 10}
   parentFolder: {fileID: 155341498}
-  carrotVisibleHeight: 0.025
+  carrotVisibleHeight: 0.001
   minDistance: 1
 --- !u!1 &172715562
 GameObject:
