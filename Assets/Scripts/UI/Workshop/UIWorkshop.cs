@@ -13,11 +13,20 @@ public class UIWorkshop : MonoBehaviour
     public List<GameObject> workshopBtns = new List<GameObject>();
     public int currentActiveIndex;
 
+    [Header("Workshop Content")]
+    public List<GameObject> workshopPanels = new List<GameObject>();
+
     private void Awake()
     {
         foreach ( Transform child in transform.Find("Btns"))
         {
             workshopBtns.Add(child.gameObject);
+        }
+
+        foreach (Transform child in transform.Find("Panels"))
+        {
+            workshopPanels.Add(child.gameObject);
+            child.gameObject.SetActive(false);
         }
     }
 
@@ -27,7 +36,7 @@ public class UIWorkshop : MonoBehaviour
 
         //인벤토리 창 Toggle 이벤트 등록.
         //TODO: 액션 이름 inventory > workshop으로 바꾸기.
-        controller.inventory += TogglePanel; 
+        controller.inventory += ToggleWorkshop; 
 
         /*버튼 이벤트 리스너 추가*/
         workshopBtns[0].GetComponent<Button>().onClick.AddListener(OnInvenClicked);
@@ -40,7 +49,7 @@ public class UIWorkshop : MonoBehaviour
         gameObject.SetActive(false); //모든 초기화 완료 후 자기자신 끄기.
     }
 
-    public void TogglePanel()
+    public void ToggleWorkshop()
     {
         if (gameObject.activeSelf)
         {
@@ -55,10 +64,11 @@ public class UIWorkshop : MonoBehaviour
     private void ToggleBtns(int index)
     {
         workshopBtns[currentActiveIndex].SetActive(true);
-        //판넬 false
+        workshopPanels[currentActiveIndex].SetActive(false); 
+
         currentActiveIndex = index;
         workshopBtns[currentActiveIndex].SetActive(false);
-        //판넬 true
+        workshopPanels[currentActiveIndex].SetActive(true);
     }
 
     private void OnInvenClicked()

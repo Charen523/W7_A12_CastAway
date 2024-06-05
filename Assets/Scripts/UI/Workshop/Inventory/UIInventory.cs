@@ -50,11 +50,6 @@ public class UIInventory : MonoBehaviour
         //ClearSelectedItemWindow();
     }
 
-    public bool IsOpen()
-    {
-        return inventoryWindow.activeInHierarchy;
-    }
-
     public void AddItem()
     {
         ItemData data = CharacterManager.Instance.Player.itemData;
