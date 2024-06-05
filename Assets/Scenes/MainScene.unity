@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44824904, g: 0.49827605, b: 0.5755831, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482482, g: 0.49827528, b: 0.5755824, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -258,6 +258,74 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.25828952, y: -0.030779175, z: 0.0023537427}
     m_Extent: {x: 0.64749, y: 0.13307583, z: 0.13566212}
   m_DirtyAABB: 0
+--- !u!1 &46989188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 46989191}
+  - component: {fileID: 46989190}
+  - component: {fileID: 46989189}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &46989189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46989188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &46989190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46989188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &46989191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46989188}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &55635303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 694531867989897999, guid: 2886d56be372ea54ca82347f4b7ab56b, type: 3}
@@ -468,10 +536,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 155341498}
+  - component: {fileID: 155341504}
   - component: {fileID: 155341500}
   - component: {fileID: 155341499}
   - component: {fileID: 155341501}
-  - component: {fileID: 155341502}
   - component: {fileID: 155341503}
   m_Layer: 0
   m_Name: ResourceManager
@@ -489,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 155341497}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 247.88828, y: 38.70292, z: 226.69737}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -552,25 +620,6 @@ MonoBehaviour:
   scaleMin: {x: 100, y: 100, z: 200}
   scaleMax: {x: 150, y: 170, z: 400}
   parentFolder: {fileID: 155341498}
---- !u!114 &155341502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155341497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 6565635948001159583, guid: f892104f62dfeab4d81021f04e0e0614, type: 3}
-  poolSize: 15
-  positionMin: {x: 397, y: 6.81, z: 227}
-  positionMax: {x: 400, y: 6.81, z: 232}
-  scaleMin: {x: 7, y: 5, z: 7}
-  scaleMax: {x: 10, y: 6, z: 10}
-  parentFolder: {fileID: 155341498}
 --- !u!114 &155341503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,7 +638,28 @@ MonoBehaviour:
   positionMax: {x: 154.22, y: 2.02, z: 152.46}
   scaleMin: {x: 2.95, y: 5.3, z: 3.5}
   scaleMax: {x: 2.95, y: 5.3, z: 3.5}
-  parentFolder: {fileID: 0}
+  parentFolder: {fileID: 155341498}
+--- !u!114 &155341504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55498294ad6ff6849bd6468a685c6f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6565635948001159583, guid: f892104f62dfeab4d81021f04e0e0614, type: 3}
+  poolSize: 12
+  positionMin: {x: 395, y: 6.927331, z: 224}
+  positionMax: {x: 400, y: 8, z: 234}
+  scaleMin: {x: 7, y: 6, z: 7}
+  scaleMax: {x: 10, y: 6, z: 10}
+  parentFolder: {fileID: 155341498}
+  carrotVisibleHeight: 0.025
+  minDistance: 1
 --- !u!1 &172715562
 GameObject:
   m_ObjectHideFlags: 0
@@ -11507,3 +11577,4 @@ SceneRoots:
   - {fileID: 155341498}
   - {fileID: 1562974227}
   - {fileID: 1759015772}
+  - {fileID: 46989191}
