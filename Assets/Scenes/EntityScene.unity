@@ -632,6 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e4459aad068a741812d811cac3c959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiCondition: {fileID: 0}
   noHungerHealthDecay: 5
 --- !u!114 &1993013722
 MonoBehaviour:
@@ -694,7 +695,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   curInteractGameObject: {fileID: 0}
-  camera: {fileID: 1739828051}
 --- !u!1001 &34206598433846394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -747,6 +747,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tortoise_v5
       objectReference: {fileID: 0}
+    - target: {fileID: 7490149963508797582, guid: 9a68e9865a877f744af79867ded76be8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -763,6 +767,10 @@ PrefabInstance:
     - target: {fileID: 475046253959928012, guid: df81b11001d39704da1960d975227102, type: 3}
       propertyPath: m_Name
       value: Deer_v5
+      objectReference: {fileID: 0}
+    - target: {fileID: 475046253959928012, guid: df81b11001d39704da1960d975227102, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8996180484412177943, guid: df81b11001d39704da1960d975227102, type: 3}
       propertyPath: m_LocalPosition.x
@@ -820,6 +828,10 @@ PrefabInstance:
     - target: {fileID: 5853061970549826797, guid: 76005dfce2f5b604ebf0959860f20f0e, type: 3}
       propertyPath: m_Name
       value: Wolf_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853061970549826797, guid: 76005dfce2f5b604ebf0959860f20f0e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8001436753619109896, guid: 76005dfce2f5b604ebf0959860f20f0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -882,6 +894,10 @@ PrefabInstance:
     - target: {fileID: 1798399210018087034, guid: 6704915af75462a49b457a3f0fc5313b, type: 3}
       propertyPath: m_Name
       value: Wolf_v6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798399210018087034, guid: 6704915af75462a49b457a3f0fc5313b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7895175788278165227, guid: 6704915af75462a49b457a3f0fc5313b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -985,6 +1001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deer_v4
       objectReference: {fileID: 0}
+    - target: {fileID: 8609788802486633103, guid: b1b25e0cbf33e1b4fa3a2b533d1c358f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1064,6 +1084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deer_v1
       objectReference: {fileID: 0}
+    - target: {fileID: 8775051326040667141, guid: ac9eac700edbedd468d3be5f828bd0ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1120,6 +1144,10 @@ PrefabInstance:
     - target: {fileID: 4322067523473989581, guid: 767cbabd4d8a551449aaaf3d6d435b77, type: 3}
       propertyPath: m_Name
       value: Tortoise_v3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322067523473989581, guid: 767cbabd4d8a551449aaaf3d6d435b77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1188,6 +1216,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buffalo_v1
       objectReference: {fileID: 0}
+    - target: {fileID: 4313707751272259688, guid: 4ff8f3a5edcd9964bbb72755954ababc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1254,6 +1286,10 @@ PrefabInstance:
     - target: {fileID: 7335303253446291657, guid: a9121bd0d52463e45835e9f10e6ccbf4, type: 3}
       propertyPath: m_Name
       value: Goat_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335303253446291657, guid: a9121bd0d52463e45835e9f10e6ccbf4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1389,6 +1425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goat_v3
       objectReference: {fileID: 0}
+    - target: {fileID: 5271576961091320173, guid: 2979fa1f24f935643bb04b7f51a8c87a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1446,6 +1486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goat_v5
       objectReference: {fileID: 0}
+    - target: {fileID: 5598666200751382624, guid: 79b7cffafbb55c64eb3301e7cc546eb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1502,6 +1546,10 @@ PrefabInstance:
     - target: {fileID: 3432958722817364008, guid: 8cfce164ccdcadf45a2c6b91ee58a330, type: 3}
       propertyPath: m_Name
       value: Wolf_v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432958722817364008, guid: 8cfce164ccdcadf45a2c6b91ee58a330, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1564,6 +1612,10 @@ PrefabInstance:
     - target: {fileID: 8415816289103191723, guid: 055f0cce1531a0d47a5a671173e99ab2, type: 3}
       propertyPath: m_Name
       value: Goat_v4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415816289103191723, guid: 055f0cce1531a0d47a5a671173e99ab2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1659,6 +1711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tortoise_v1
       objectReference: {fileID: 0}
+    - target: {fileID: 7664659315482313294, guid: 933ac450dc52e8243bcc4b2494f0067b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1675,6 +1731,10 @@ PrefabInstance:
     - target: {fileID: 5954458298711967141, guid: a01be47536c563e40a414b0a8f3e6801, type: 3}
       propertyPath: m_Name
       value: Wolf_v5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954458298711967141, guid: a01be47536c563e40a414b0a8f3e6801, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6018374578826724131, guid: a01be47536c563e40a414b0a8f3e6801, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1738,6 +1798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buffalo_v3
       objectReference: {fileID: 0}
+    - target: {fileID: 2512047398369795047, guid: a8b2300698627f948b4d15a1f02f3b82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4883116319869715118, guid: a8b2300698627f948b4d15a1f02f3b82, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.96
@@ -1795,6 +1859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buffalo_v2
       objectReference: {fileID: 0}
+    - target: {fileID: 2664497081920775755, guid: 23fee9241d2ae004e86f6b4e3bf0c246, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7152376718462335986, guid: 23fee9241d2ae004e86f6b4e3bf0c246, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.66
@@ -1851,6 +1919,10 @@ PrefabInstance:
     - target: {fileID: 232183005782824064, guid: f3aeb23757e0f704eb2e243b0ad25684, type: 3}
       propertyPath: m_Name
       value: Buffalo_v4
+      objectReference: {fileID: 0}
+    - target: {fileID: 232183005782824064, guid: f3aeb23757e0f704eb2e243b0ad25684, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8829789254898956129, guid: f3aeb23757e0f704eb2e243b0ad25684, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1953,6 +2025,10 @@ PrefabInstance:
     - target: {fileID: 6369172616538355905, guid: dc576c960e295ff4abd40672dcb0eec4, type: 3}
       propertyPath: m_Name
       value: Tortoise_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369172616538355905, guid: dc576c960e295ff4abd40672dcb0eec4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9059,6 +9135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf_v3
       objectReference: {fileID: 0}
+    - target: {fileID: 2962564096410491901, guid: 0ad7544db3678c7419cbadae4c0ea0f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2983314955983126133, guid: 0ad7544db3678c7419cbadae4c0ea0f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.037842
@@ -9156,6 +9236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deer_v3
       objectReference: {fileID: 0}
+    - target: {fileID: 5587337634423750903, guid: 36b759912d9b2d84e90007625ed9bef7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9172,6 +9256,10 @@ PrefabInstance:
     - target: {fileID: 4094245735043146123, guid: a564304d38c928c40b428190335319ec, type: 3}
       propertyPath: m_Name
       value: Goat_v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094245735043146123, guid: a564304d38c928c40b428190335319ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7258879079001061968, guid: a564304d38c928c40b428190335319ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9304,6 +9392,10 @@ PrefabInstance:
     - target: {fileID: 2130577060254430861, guid: dc1c74c40fd411c4f9031ee0ea37dfbb, type: 3}
       propertyPath: m_Name
       value: Wolf_v4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130577060254430861, guid: dc1c74c40fd411c4f9031ee0ea37dfbb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9618,6 +9710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shark_v1
       objectReference: {fileID: 0}
+    - target: {fileID: 5409734303945614224, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.972992
@@ -9674,6 +9770,10 @@ PrefabInstance:
     - target: {fileID: 3923445602044439455, guid: 5f3d3a4c397d6a04783a6563076b3f27, type: 3}
       propertyPath: m_Name
       value: Tortoise_v4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923445602044439455, guid: 5f3d3a4c397d6a04783a6563076b3f27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5467633697092152073, guid: 5f3d3a4c397d6a04783a6563076b3f27, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9793,6 +9893,10 @@ PrefabInstance:
     - target: {fileID: 7105944220497688298, guid: c371948a64c9ed84d86dfbe81740ab91, type: 3}
       propertyPath: m_Name
       value: Deer_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105944220497688298, guid: c371948a64c9ed84d86dfbe81740ab91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8465492703947564362, guid: c371948a64c9ed84d86dfbe81740ab91, type: 3}
       propertyPath: m_LocalPosition.x
