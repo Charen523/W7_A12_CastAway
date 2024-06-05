@@ -28,3 +28,6 @@ MonoBehaviour:
   damage: 5
   attackRate: 2
   attackDistance: 2
+  chargeDuration: 0.5
+  returnDuration: 0.5
+  isCharging: 1
