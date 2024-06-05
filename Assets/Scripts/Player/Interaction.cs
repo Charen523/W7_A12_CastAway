@@ -13,12 +13,11 @@ public interface IInteractable
 public class Interaction : MonoBehaviour
 {
     [Header("Interact Ray")]
-    public float checkRate = 0.05f;
+    public float checkRate = 0.01f;
     private float lastCheckTime; // 최근 체크한 시간
     public float maxCheckDistance; // 체크할 최대 거리
     public LayerMask layerMask; // 어떤 레이어가 달린 게임 오브젝트를 추출할 것인지 정하기
-    private Vector3 rayPos;
-
+    
     [Header("Ray Object")]
     public GameObject curInteractGameObject; // 검출할 오브젝트
     private IInteractable curInteractable; // IInteractable 캐싱
@@ -28,38 +27,49 @@ public class Interaction : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main; //메인 카메라 호출
-        rayPos = new Vector3(Screen.width / 2, Screen.height / 2);
     }
 
     private void Update()
     {
-        if (Time.time - lastCheckTime > checkRate) //레이 빈도.
+        if (Time.time - lastCheckTime > checkRate) // 레이 빈도
         {
             lastCheckTime = Time.time;
+            Vector3 rayPos = new Vector3(Screen.width / 2, Screen.height / 2);
 
             Ray ray = _camera.ScreenPointToRay(rayPos);
-            Debug.DrawRay(ray.origin, rayPos * maxCheckDistance, Color.red); //레이 그리기.
-            
-            if (Physics.Raycast(ray, out RaycastHit hit, maxCheckDistance, layerMask))
+            Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red); // 레이 그리기
+
+            RaycastHit[] hits = Physics.RaycastAll(ray, maxCheckDistance, layerMask);
+            bool interactableFound = false;
+
+            foreach (RaycastHit hit in hits)
             {
-                if (hit.collider.gameObject != curInteractGameObject)
+                //Player 레이어 무시.
+                if (((1 << hit.collider.gameObject.layer) & layerMask) != 0)
                 {
-                    curInteractGameObject = hit.collider.gameObject;
-                    
-                    if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
+                    if (hit.collider.gameObject != curInteractGameObject)
                     {
-                        curInteractable = interactable;
-                        curInteractable.GetInteractPrompt();
+                        curInteractGameObject = hit.collider.gameObject;
+
+                        if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
+                        {
+                            curInteractable = interactable;
+                            curInteractable.GetInteractPrompt();
+                        }
                     }
+                    interactableFound = true;
+                    break; // 첫 번째 충돌체만 처리하고 루프 종료.
                 }
             }
-            else
+
+            if (!interactableFound)
             {
-                curInteractGameObject = null; //부딪히지 않았다면 초기화
+                curInteractGameObject = null; // 부딪히지 않았다면 초기화
                 curInteractable = null;
             }
         }
     }
+
 
     public void OnInteractInput(InputAction.CallbackContext context)
     {
