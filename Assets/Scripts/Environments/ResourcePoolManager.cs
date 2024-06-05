@@ -54,9 +54,10 @@ public class ResourcePoolManager : MonoBehaviour
         {
             obj.transform.position = new Vector3(
                 Random.Range(positionMin.x, positionMax.x),
-                Random.Range(positionMin.y, positionMax.y),
+                positionMax.y,
                 Random.Range(positionMin.z, positionMax.z)
             );
+
 
             obj.transform.localScale = new Vector3(
                 Random.Range(scaleMin.x, scaleMax.x),
