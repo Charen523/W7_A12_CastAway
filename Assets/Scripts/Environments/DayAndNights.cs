@@ -35,7 +35,7 @@ public class DayAndNight : MonoBehaviour
         randomRain = FindObjectOfType<RandomRain>();
         if (randomRain == null)
         {
-            Debug.LogError("비가없음");
+            //Debug.LogError("비가없음");
         }
     }
 
