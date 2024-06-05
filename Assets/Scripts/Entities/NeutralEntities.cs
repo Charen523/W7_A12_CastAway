@@ -31,6 +31,11 @@ public class NeutralEntities : MonoBehaviour, IDamagable
 
         animator.SetBool("Moving", aiState != eAIState.IDLE); // ai의 상태가 기본 상태가 아니라면 Moving을 true로
 
+        if(data.CureentHealth < data.MaxHealth )
+        {
+            SetState(eAIState.FLEEING);
+        }
+
         switch (aiState)
         {
             case eAIState.IDLE: //idle과 wandering일경우 PassiveUpdate
@@ -144,8 +149,8 @@ public class NeutralEntities : MonoBehaviour, IDamagable
     }
     public void TakePhysicalDamage(int damageAmount) // 데미지를 받는 로직
     {
-        data.health -= damageAmount; //체력 - 데미지
-        if (data.health <= 0) //0보다 작거나 같아지면 죽음
+        data.CureentHealth -= damageAmount; //체력 - 데미지
+        if (data.CureentHealth <= 0) //0보다 작거나 같아지면 죽음
             Die();
 
         StartCoroutine(DamageFlash()); //아니라면 데미지를 받음 (코루틴)

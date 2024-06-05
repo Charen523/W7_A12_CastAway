@@ -6,7 +6,9 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     [Header("Stats")]
-    public int health; //체력
+    public string Name; //이름
+    public int MaxHealth;
+    public int CureentHealth; //체력
     public float walkSpeed; //걷기, 달리기 속도
     public float runSpeed;
     public ItemData[] dropOnDeath; //아이템 드롭
