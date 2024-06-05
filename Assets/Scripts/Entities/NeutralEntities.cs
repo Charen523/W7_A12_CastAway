@@ -4,11 +4,11 @@ using UnityEngine.AI;
 
 public class NeutralEntities : MonoBehaviour, IDamagable
 {
+    public EntityData data;
     private NavMeshAgent agent; //NavMeshAgent 불러오기
     private Animator animator;  // animator 호출
     private SkinnedMeshRenderer[] meshRenderers; //SkinnedMeshRenderer 불러오기 (오브젝트가 갖고있는 MeshRenderer)
     private eAIState aiState;
-    private EntityData data;
 
     private float playerDistance; //플레이어와의 거리
 
@@ -31,7 +31,7 @@ public class NeutralEntities : MonoBehaviour, IDamagable
 
         animator.SetBool("Moving", aiState != eAIState.IDLE); // ai의 상태가 기본 상태가 아니라면 Moving을 true로
 
-        if(data.CureentHealth < data.MaxHealth )
+        if(data.CureentHealth < data.MaxHealth ) //체력이 소진되면 도망치게 만듬(테스트 필요)
         {
             SetState(eAIState.FLEEING);
         }

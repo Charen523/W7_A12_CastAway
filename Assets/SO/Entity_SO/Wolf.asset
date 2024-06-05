@@ -16,7 +16,7 @@ MonoBehaviour:
   MaxHealth: 20
   CureentHealth: 20
   walkSpeed: 2
-  runSpeed: 3
+  runSpeed: 5
   dropOnDeath: []
   aiState: 0
   detectDistance: 3
@@ -26,5 +26,5 @@ MonoBehaviour:
   minWanderWaitTime: 1
   maxWanderWaitTime: 5
   damage: 5
-  attackRate: 1.5
+  attackRate: 1
   attackDistance: 2

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe086f1176a909d4e86ecfa3211e5ecf, type: 3}
   m_Name: Tortoise
   m_EditorClassIdentifier: 
-  Name: "\uB291\uB300"
-  MaxHealth: 20
-  CureentHealth: 20
-  walkSpeed: 2
-  runSpeed: 3
+  Name: "\uAC70\uBD81\uC774"
+  MaxHealth: 5
+  CureentHealth: 5
+  walkSpeed: 1
+  runSpeed: 1
   dropOnDeath: []
   aiState: 0
   detectDistance: 3
