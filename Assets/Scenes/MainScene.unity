@@ -7513,7 +7513,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1759015768}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnInventoryButton
+        m_MethodName: OnInventoryInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
