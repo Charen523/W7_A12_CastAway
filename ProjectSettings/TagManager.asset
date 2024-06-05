@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fix
   - DrinkableWater
+  - Item
+  - Equipment
   layers:
   - Default
   - TransparentFX
