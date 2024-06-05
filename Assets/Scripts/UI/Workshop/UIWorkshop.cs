@@ -9,12 +9,14 @@ public class UIWorkshop : MonoBehaviour
     /*플레이어.*/
     private PlayerController controller;
 
-    [Header("Workshop Button")]
+    [Header("Workshop")]
     public List<GameObject> workshopBtns = new List<GameObject>();
-    public int currentActiveIndex;
-
-    [Header("Workshop Content")]
     public List<GameObject> workshopPanels = new List<GameObject>();
+    public int currentActiveIndex;
+    //Workshop Index
+    //[0]: Inventory
+    //[1]: Equip
+    //[2]: Craft
 
     private void Awake()
     {
@@ -26,7 +28,6 @@ public class UIWorkshop : MonoBehaviour
         foreach (Transform child in transform.Find("Panels"))
         {
             workshopPanels.Add(child.gameObject);
-            child.gameObject.SetActive(false);
         }
     }
 
@@ -42,6 +43,11 @@ public class UIWorkshop : MonoBehaviour
         workshopBtns[0].GetComponent<Button>().onClick.AddListener(OnInvenClicked);
         workshopBtns[1].GetComponent<Button>().onClick.AddListener(OnEquipClicked);
         workshopBtns[2].GetComponent<Button>().onClick.AddListener(OnCraftClicked);
+
+        foreach (GameObject obj in workshopPanels)
+        {
+            obj.SetActive(false);
+        }
 
         currentActiveIndex = 0;
         ToggleBtns(currentActiveIndex);

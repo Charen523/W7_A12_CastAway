@@ -8,35 +8,21 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void GetInteractPrompt()
     {
-        throw new System.NotImplementedException();
+        //추후 주울 수 있는 아이템 옆에 [data.displayName] 띄워주기.
     }
 
     public void ClosePrompt()
     {
-        throw new System.NotImplementedException();
+        //판넬 setactive false
     }
 
     public void OnInteract()
     {
         //inventory에 아이템 넣기.
+        CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
-
+        
         // 아이템 오브젝트 파괴
         Destroy(gameObject);
-    }
-
-    private void HandleConsumable(ConsumableData consumableData)
-    {
-
-    }
-
-    private void HandleEquip(EquipData equipData)
-    {
-
-    }
-
-    private void HandleMaterial(ItemData itemData)
-    {
-
     }
 }
