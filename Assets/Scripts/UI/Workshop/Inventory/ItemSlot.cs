@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    public UIInventory inventory;
+    public UIInventory inventory; //UIInventory에서 초기화.
 
     [Header("Item Slot Info")]
-    public int slotIndex;
-    public ItemData item;
+    public int slotIndex; //UIInventory에서 초기화.
+    public ItemData item; //UIInventory에서 할당.
     private Button slotButton;
 
     private readonly string iconName = "Icon";
@@ -16,7 +16,7 @@ public class ItemSlot : MonoBehaviour
 
     private readonly string quantityName = "Quantity";
     private TextMeshProUGUI quatityText;
-    public int quantity;
+    public int quantity; //UIInventory에서 할당, default : 0.
 
     private readonly string selectName = "Select";
     private Image selectEdge;
@@ -68,9 +68,12 @@ public class ItemSlot : MonoBehaviour
 
     public void OnClickSlot()
     {
-        inventory.SelectItem(slotIndex);
-        isSelected = true;
-        selectEdge.enabled = isSelected;
+        if (item != null)
+        {
+            inventory.SelectItem(slotIndex);
+            isSelected = true;
+            selectEdge.enabled = isSelected;
+        }
     }
 
     public void SelectedDisable()
