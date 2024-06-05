@@ -541,6 +541,10 @@ GameObject:
   - component: {fileID: 155341499}
   - component: {fileID: 155341501}
   - component: {fileID: 155341503}
+  - component: {fileID: 155341505}
+  - component: {fileID: 155341506}
+  - component: {fileID: 155341507}
+  - component: {fileID: 155341508}
   m_Layer: 0
   m_Name: ResourceManager
   m_TagString: Untagged
@@ -660,6 +664,82 @@ MonoBehaviour:
   parentFolder: {fileID: 155341498}
   carrotVisibleHeight: 0.001
   minDistance: 1
+--- !u!114 &155341505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6194674592176918762, guid: 0d58538e39d675a4e8b68a484fdeb26f, type: 3}
+  poolSize: 20
+  positionMin: {x: 530, y: 6, z: 342}
+  positionMax: {x: 598, y: 6, z: 405}
+  scaleMin: {x: 1, y: 1, z: 1}
+  scaleMax: {x: 1.5, y: 1.5, z: 1.5}
+  parentFolder: {fileID: 155341498}
+--- !u!114 &155341506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1672817729052459913, guid: 9c5085c0d24f35f4ab5532adc9c4eb20, type: 3}
+  poolSize: 15
+  positionMin: {x: 540, y: 6.22, z: 308}
+  positionMax: {x: 556, y: 6.22, z: 318}
+  scaleMin: {x: 2, y: 2, z: 2}
+  scaleMax: {x: 2.2, y: 2.2, z: 2.2}
+  parentFolder: {fileID: 155341498}
+--- !u!114 &155341507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 524810640531231321, guid: e326112a572381244833911c1b4bc25f, type: 3}
+  poolSize: 13
+  positionMin: {x: 565, y: 6.22, z: 320}
+  positionMax: {x: 575, y: 6.22, z: 328}
+  scaleMin: {x: 2, y: 2, z: 2}
+  scaleMax: {x: 2.2, y: 2.2, z: 2.2}
+  parentFolder: {fileID: 155341498}
+--- !u!114 &155341508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155341497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4cac6902021b4390f12a9e3b5fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 286878617377838162, guid: 6180e514ec8ef824db5ef9271a8c0691, type: 3}
+  poolSize: 10
+  positionMin: {x: 550, y: 6.22, z: 333}
+  positionMax: {x: 560, y: 6.22, z: 343}
+  scaleMin: {x: 2, y: 2, z: 2}
+  scaleMax: {x: 2.1, y: 2.1, z: 2.1}
+  parentFolder: {fileID: 155341498}
 --- !u!1 &172715562
 GameObject:
   m_ObjectHideFlags: 0
