@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class ResourcePoolManager : MonoBehaviour
 {
-    // 오브젝트 풀에 사용할 프리팹
-    public GameObject prefab;
+    [System.Serializable]
+    public class Pool
+    {
+        public string tag;
+        public GameObject prefab;
+        public int size;
 
-    // 풀의 크기 설정
-    public int poolSize = 5;
+        [Header("Position")]
+        public Vector3 positionMin;
+        public Vector3 positionMax;
 
-    // 위치 및 크기 범위 설정
-    [Header("Position")]
-    public Vector3 positionMin;
-    public Vector3 positionMax;
+        [Header("Scale")]
+        public Vector3 scaleMin;
+        public Vector3 scaleMax;
+    }
 
-    [Header("Scale")]
-    public Vector3 scaleMin;
-    public Vector3 scaleMax;
+    public List<Pool> Pools;
 
-    // 오브젝트 풀 리스트
-    private List<GameObject> pool;
+    public Dictionary<string, Queue<GameObject>> PoolDictionary;
 
-    // 오브젝트를 배치할 부모 오브젝트
-    public Transform parentFolder;
+    private Transform parentFolder;
 
     // 오브젝트 리턴 대기 시간
     public float respawnDelay = 10f;
@@ -32,11 +34,15 @@ public class ResourcePoolManager : MonoBehaviour
     // 오브젝트 위치를 저장할 딕셔너리
     private Dictionary<GameObject, Vector3> originalPositions = new Dictionary<GameObject, Vector3>();
 
-    void Start()
+    private void Awake()
     {
+        parentFolder = GetComponent<Transform>();
         // 오브젝트 풀 초기화
         InitializePool();
+    }
 
+    void Start()
+    {
         // 오브젝트 배치
         PlaceObjects();
     }
@@ -44,37 +50,74 @@ public class ResourcePoolManager : MonoBehaviour
     // 오브젝트 풀 초기화 메서드
     void InitializePool()
     {
-        pool = new List<GameObject>();
-
-        for (int i = 0; i < poolSize; i++)
+        PoolDictionary = new Dictionary<string, Queue<GameObject>>();
+        foreach (var pool in Pools)
         {
-            GameObject obj = Instantiate(prefab, parentFolder);
-            obj.SetActive(false);
-            pool.Add(obj);
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            for (int i = 0; i < pool.size; i++)
+            {
+                GameObject obj = Instantiate(pool.prefab);
+                obj.SetActive(false);
+                // 줄의 가장 마지막에 세움.
+                objectPool.Enqueue(obj);
+            }
+            PoolDictionary.Add(pool.tag, objectPool);
         }
+    }
+
+    public GameObject SpawnFromPool(string tag)
+    {
+        // 애초에 Pool이 존재하지 않는 경우
+        if (!PoolDictionary.ContainsKey(tag))
+            return null;
+
+        // 제일 오래된 객체를 재활용
+        GameObject obj = PoolDictionary[tag].Dequeue();
+        PoolDictionary[tag].Enqueue(obj);
+        obj.SetActive(true);
+        return obj;
     }
 
     // 오브젝트 배치 메서드
     void PlaceObjects()
     {
-        foreach (GameObject obj in pool)
+        LayerMask terrainLayerMask = LayerMask.GetMask("Ground");
+
+        foreach (var pool in Pools)
         {
-            Vector3 position = new Vector3(
-                Random.Range(positionMin.x, positionMax.x),
-                positionMax.y,
-                Random.Range(positionMin.z, positionMax.z)
-            );
+            for (int i = 0; i < pool.size; i++)
+            {
+                Vector3 position = new Vector3(
+                    Random.Range(pool.positionMin.x, pool.positionMax.x),
+                    30f, // 레이캐스트 초기 y 위치
+                    Random.Range(pool.positionMin.z, pool.positionMax.z)
+                );
 
-            obj.transform.position = position;
+                GameObject obj = SpawnFromPool(pool.tag);
+                if (obj != null)
+                {
+                    RaycastHit hit;
+                    if (Physics.Raycast(position, Vector3.down, out hit, Mathf.Infinity, terrainLayerMask))
+                    {
+                        // y 위치를 지면에 맞추기
+                        position.y = hit.point.y;
+                    }
+                    else
+                    {
+                        // 레이캐스트 실패 시 기본 y 위치 사용
+                        position.y = pool.positionMin.y;
+                    }
 
-            obj.transform.localScale = new Vector3(
-                Random.Range(scaleMin.x, scaleMax.x),
-                Random.Range(scaleMin.y, scaleMax.y),
-                Random.Range(scaleMin.z, scaleMax.z)
-            );
+                    obj.transform.position = position; // 객체 위치 설정
+                    obj.transform.localScale = new Vector3(
+                        Random.Range(pool.scaleMin.x, pool.scaleMax.x),
+                        Random.Range(pool.scaleMin.y, pool.scaleMax.y),
+                        Random.Range(pool.scaleMin.z, pool.scaleMax.z)
+                    );
 
-            originalPositions[obj] = position; // 위치 저장
-            obj.SetActive(true);
+                    originalPositions[obj] = position; // 원래 위치 저장
+                }
+            }
         }
     }
 
@@ -82,8 +125,6 @@ public class ResourcePoolManager : MonoBehaviour
     public void ReturnObjectToPool(GameObject obj)
     {
         obj.SetActive(false);
-        //obj.transform.SetParent(parentFolder);
-        pool.Add(obj);
         StartCoroutine(ReSpawnObject(obj, respawnDelay));
     }
 
@@ -95,6 +136,33 @@ public class ResourcePoolManager : MonoBehaviour
         obj.transform.position = originalPositions[obj]; // 저장된 위치로 복원
 
         obj.SetActive(true);
-        pool.Remove(obj);
+    }
+
+    // 비활성화된 오브젝트를 리스트로 반환하는 메서드
+    public List<GameObject> GetInactiveObjectsFromPool(string tag)
+    {
+        List<GameObject> inactiveObjects = new List<GameObject>();
+        if (PoolDictionary.ContainsKey(tag))
+        {
+            foreach (var obj in PoolDictionary[tag])
+            {
+                if (!obj.activeSelf)
+                {
+                    inactiveObjects.Add(obj);
+                }
+            }
+        }
+        return inactiveObjects;
+    }
+
+    // 비활성화된 오브젝트를 활성화하는 메서드
+    public void ActivateInactiveObjects(string tag)
+    {
+        List<GameObject> inactiveObjects = GetInactiveObjectsFromPool(tag);
+        foreach (var obj in inactiveObjects)
+        {
+            obj.SetActive(true);
+            obj.transform.position = originalPositions[obj]; // 원래 위치로 복원
+        }
     }
 }
