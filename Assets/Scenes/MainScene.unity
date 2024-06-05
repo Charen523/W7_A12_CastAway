@@ -643,6 +643,13 @@ MonoBehaviour:
     positionMax: {x: 615, y: 1.85, z: 440}
     scaleMin: {x: 8, y: 6, z: 8}
     scaleMax: {x: 10, y: 6, z: 10}
+  - tag: B1011
+    prefab: {fileID: 2853945937288575525, guid: de4ba332b85cca54185dc7fb1a720b82, type: 3}
+    size: 1
+    positionMin: {x: 151.31, y: 4.8, z: 154.07}
+    positionMax: {x: 151.31, y: 4.8, z: 154.07}
+    scaleMin: {x: 1.4, y: 4.8, z: 3.8}
+    scaleMax: {x: 1.4, y: 4.8, z: 3.8}
   respawnDelay: 10
 --- !u!114 &155341506
 MonoBehaviour:
