@@ -3,9 +3,12 @@ using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class UIInventory : MonoBehaviour
 {
+    public bool initCheck = false;
+
     /*플레이어*/
     private PlayerCondition condition;
     private Transform dropPosition;
@@ -33,7 +36,6 @@ public class UIInventory : MonoBehaviour
     private void Awake()
     {
         holdings = transform.Find("Holdings");
-        Debug.Log(holdings.childCount);
         
         foreach (Transform transform in transform.Find("InvenBtns"))
         {
@@ -54,7 +56,7 @@ public class UIInventory : MonoBehaviour
         dropPosition = CharacterManager.Instance.Player.dropPosition; //아이템 버릴 때.
 
         CharacterManager.Instance.Player.addItem += AddItem; //아이템 습득 이벤트 등록.
-
+        
         slots = new ItemSlot[holdings.childCount];
 
         /*slot 초기화.*/
@@ -71,6 +73,8 @@ public class UIInventory : MonoBehaviour
 
         ClearSelectedItemWindow();
         UpdateUI();
+
+        initCheck = true;
     }
 
     private void OnUseButton()
@@ -140,6 +144,7 @@ public class UIInventory : MonoBehaviour
     public void AddItem()
     {
         ItemData data = CharacterManager.Instance.Player.itemData;
+        Debug.Log(data.name);
 
         if (data.canStack)
         {
@@ -176,7 +181,8 @@ public class UIInventory : MonoBehaviour
     public void SelectItem(int index)
     {
         if (slots[index].item == null) return;
-
+        if (selectedSlot != null) { selectedSlot.SelectedDisable(); }
+        
         selectedSlot = slots[index];
 
         selectedDescriptions[0].text = selectedSlot.item.displayName;

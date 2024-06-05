@@ -19,8 +19,9 @@ public class ItemObject : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         //inventory에 아이템 넣기.
+        CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
-
+        
         // 아이템 오브젝트 파괴
         Destroy(gameObject);
     }

@@ -28,7 +28,6 @@ public class UIWorkshop : MonoBehaviour
         foreach (Transform child in transform.Find("Panels"))
         {
             workshopPanels.Add(child.gameObject);
-            child.gameObject.SetActive(false);
         }
     }
 
@@ -44,6 +43,11 @@ public class UIWorkshop : MonoBehaviour
         workshopBtns[0].GetComponent<Button>().onClick.AddListener(OnInvenClicked);
         workshopBtns[1].GetComponent<Button>().onClick.AddListener(OnEquipClicked);
         workshopBtns[2].GetComponent<Button>().onClick.AddListener(OnCraftClicked);
+
+        foreach (GameObject obj in workshopPanels)
+        {
+            obj.SetActive(false);
+        }
 
         currentActiveIndex = 0;
         ToggleBtns(currentActiveIndex);
