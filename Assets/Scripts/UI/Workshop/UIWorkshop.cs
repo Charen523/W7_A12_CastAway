@@ -9,12 +9,14 @@ public class UIWorkshop : MonoBehaviour
     /*플레이어.*/
     private PlayerController controller;
 
-    [Header("Workshop Button")]
+    [Header("Workshop")]
     public List<GameObject> workshopBtns = new List<GameObject>();
-    public int currentActiveIndex;
-
-    [Header("Workshop Content")]
     public List<GameObject> workshopPanels = new List<GameObject>();
+    public int currentActiveIndex;
+    //Workshop Index
+    //[0]: Inventory
+    //[1]: Equip
+    //[2]: Craft
 
     private void Awake()
     {
