@@ -8,7 +8,7 @@ public class NeutralEntities : MonoBehaviour, IDamagable
     private Animator animator;  // animator 호출
     private SkinnedMeshRenderer[] meshRenderers; //SkinnedMeshRenderer 불러오기 (오브젝트가 갖고있는 MeshRenderer)
     private eAIState aiState;
-    private MonsterData data;
+    private EntityData data;
 
     private float playerDistance; //플레이어와의 거리
 

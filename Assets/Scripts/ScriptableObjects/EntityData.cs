@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterData : ScriptableObject
+[CreateAssetMenu(fileName = "Entity", menuName = "SO/New Entity", order = 3)]
+public class EntityData : ScriptableObject
 {
     [Header("Stats")]
     public int health; //체력
