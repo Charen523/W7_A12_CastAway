@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5058253760220510389}
   m_Layer: 0
   m_Name: B1010
-  m_TagString: Untagged
+  m_TagString: B1010
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHits: 5
-  RespawnPrefab: {fileID: 6565635948001159583}
+  respawnPrefabs: []
 --- !u!65 &5058253760220510389
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7031145320009338726}
   m_Layer: 0
   m_Name: B1002
-  m_TagString: Untagged
+  m_TagString: B1002
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,4 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHits: 5
-  RespawnPrefab: {fileID: 1029049566220150731}
+  respawnPrefabs: []

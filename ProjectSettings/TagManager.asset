@@ -8,6 +8,16 @@ TagManager:
   - DrinkableWater
   - Item
   - Equipment
+  - B1001
+  - B1002
+  - B1003
+  - B1004
+  - B1005
+  - B1006
+  - B1007
+  - B1008
+  - B1009
+  - B1010
   layers:
   - Default
   - TransparentFX
