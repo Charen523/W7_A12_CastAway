@@ -6,38 +6,43 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")] //변수 위에 구분점으로 타이틀 생성 , 이동에 필요한 값을 생성
-    public float moveSpeed;
-    private Vector2 curMovementInput;
-    public float jumptForce;
-    public LayerMask groundLayerMask;
-    public float runSpeed;
-    public float runStamina;
+    /*Events*/
+    public event Action WorkshopInput;
 
-    [Header("Look")] // 카메라 화면 회전에 필요한 값들을 입력
-    public Transform cameraContainer; //카메라를 담을 변수
+    [Header("Movement")]
+    public float baseSpeed;
+    public float runSpeedRatio = 2;
+    public float runStaminaDeltaValue;
+    public float jumpForce;
+    public LayerMask groundLayerMask;
+
+    [Header("Look")]
+    public float lookSensitivity;
+    public float minXLook;
+    public float maxXLook;
+
+    [Header("Camera")]
+    public Transform cameraContainer;
     public float distance; // 타겟으로부터의 기본 거리
     public float minDistance = 1.0f; // 타겟으로부터의 최소 거리
     public float maxDistance = 5.0f; // 타겟으로부터의 최대 거리
-    public float minXLook;
-    public float maxXLook; //X축 최소,최대 이동범위
-    private float camCurXRot; // Input Action 마우스의 델타값을 저장
+    
+    /*Player Input*/
+    private Vector2 moveInput;
+    private Vector2 mouseDelta;
+    private float camCurXRot;
     private float camCurYRot;
-    public float lookSensitivity; // 회전 민감도
 
-    private Vector2 mouseDelta; //마우스의 델타값
-
-    [HideInInspector]
-    public bool canLook = true; // 인벤토리 나올시 화면 고정
-
-    public event Action Workshop; // 델리게이트 (인벤토리) 생성
-
-    private Rigidbody rigidbody;
+    /*Contains*/
+    private Rigidbody rb;
     private Animator animator;
+
+    /*player Controllable Status*/
+    private bool canLook = true;
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>(); //Rigidbody 받아오기
+        rb = GetComponent<Rigidbody>(); //Rigidbody 받아오기
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -46,8 +51,6 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; // 마우스 커서를 보이지 않게 하기
     }
 
-    //Update보다 자주 호출됨, 프레임 속도가 높다면 프레임마다 여러번 호출,
-    //독립된 업데이트이므로 동일한 주기로 업데이트 영향을 받음(Time.Deltatime 필요없음)
     private void FixedUpdate()
     {
         if (animator.GetBool("IsWalk") == true)
@@ -61,8 +64,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //프레임마다 한번씩 호출, Update 계산이 끝나면 그 뒤에 실행
-    //특정 행동이 완전히 끝난 뒤 실행하고 싶다면 적용 ex)3인칭 카메라가 캐릭터를 따라 움직일시
     private void LateUpdate()
     {
         if (canLook) //canlook이 true일때만 카메라 회전
@@ -80,12 +81,12 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed) //분기점 인풋액션이 시작되었을 때 Start를 쓰지 않는 이유 - 입력값을 받았을 때만 행동하기 때문
         {
-            curMovementInput = context.ReadValue<Vector2>(); //값을 읽어옴 (Vectro2)
+            moveInput = context.ReadValue<Vector2>(); //값을 읽어옴 (Vectro2)
             animator.SetBool("IsWalk", true);
         }
         else if (context.phase == InputActionPhase.Canceled) //키가 떨어졌을 때 (취소되었을때)
         {
-            curMovementInput = Vector2.zero; // Vector를 초기화
+            moveInput = Vector2.zero; // Vector를 초기화
             if (animator.GetBool("IsRun") == true)
             {
                 animator.SetBool("IsRun", false);
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && IsGrounded()) //버튼이 눌렸을 때 , 땅바닥에 있을 때 두 가지 모두 만족하는 경우 점프 액션이 동작하도록 설정
         {
-            rigidbody.AddForce(Vector2.up * jumptForce, ForceMode.Impulse); //순간적으로 힘을 받아야 하기 때문에 Impulse를 사용
+            rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse); //순간적으로 힘을 받아야 하기 때문에 Impulse를 사용
             animator.SetTrigger("IsJump");
         }
     }
@@ -122,7 +123,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started) // 버튼이 눌렸다면
         {
-            Workshop?.Invoke(); //UI인벤토리에 있는 기능 사용
+            WorkshopInput?.Invoke(); //UI인벤토리에 있는 기능 사용
             ToggleCursor();
         }
     }
@@ -133,18 +134,13 @@ public class PlayerController : MonoBehaviour
     }
     private void Move() //실제로 이동을 시키는 로직
     {
-        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x; // 입력된 벡터값의 방향 X,y값 설정
-        if (animator.GetBool("IsRun") == true)
-        {
-            dir *= runSpeed; //달리기 속도 곱하기
-        }
-        else
-        {
-            dir *= moveSpeed; //이동속도를 곱하기
-        }
-        dir.y = rigidbody.velocity.y; // 점프했을 때만 Y축 영향을 받아야 하기 때문에 velocity 값으로 고정
+        Vector3 dir = transform.forward * moveInput.y + transform.right * moveInput.x; // 입력된 벡터값의 방향 X,y값 설정
 
-        rigidbody.velocity = dir; // 세팅값을 Velociy에 입력
+        dir *= animator.GetBool("IsRun") ? (baseSpeed * runSpeedRatio) : baseSpeed;
+        
+        dir.y = rb.velocity.y; // 점프했을 때만 Y축 영향을 받아야 하기 때문에 velocity 값으로 고정
+
+        rb.velocity = dir; // 세팅값을 Velociy에 입력
     }
 
     void CameraLook() //카메라 회전을 시키는 로직
@@ -214,8 +210,8 @@ public class PlayerController : MonoBehaviour
 
     void SubtractStamina()
     {
-        CharacterManager.Instance.Player.condition.UseStamina(runStamina);
-    }
+        CharacterManager.Instance.Player.condition.UseStamina(runStaminaDeltaValue);
+    } //요기 있으면 안됨!!
 
 
     //모션 테스트용
@@ -235,7 +231,7 @@ public class PlayerController : MonoBehaviour
         float cameraYRotation = cameraContainer.transform.localEulerAngles.y;
 
         // 이동 방향 벡터의 Y축 회전값 계산
-        float moveDirectionYRotation = Mathf.Atan2(curMovementInput.x, curMovementInput.y) * Mathf.Rad2Deg; 
+        float moveDirectionYRotation = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg; 
 
         // 두 각도 사이의 차이 계산
         float angleDifference = Mathf.DeltaAngle(cameraYRotation, moveDirectionYRotation);
