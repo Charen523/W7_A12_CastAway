@@ -1,7 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class UIInventory : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class UIInventory : MonoBehaviour
 
     public GameObject inventoryWindow;
     public Transform slotPanel;
-    public Transform dropPosition;
+    
 
     [Header("Selected Item")]
     private ItemSlot selectedItem;
@@ -25,42 +23,31 @@ public class UIInventory : MonoBehaviour
 
     private int curEquipIndex;
 
+    /*플레이어 스크립트들.*/
     private PlayerController controller;
     private PlayerCondition condition;
+    private Transform dropPosition;
 
     void Start()
     {
-        controller = CharacterManager.Instance.Player.controller;
-        condition = CharacterManager.Instance.Player.condition;
-        dropPosition = CharacterManager.Instance.Player.dropPosition;
+        ///*플레이어 스크립트 불러오기.*/
+        //controller = CharacterManager.Instance.Player.controller;
+        //condition = CharacterManager.Instance.Player.condition; //아이템 사용할 때.
+        //dropPosition = CharacterManager.Instance.Player.dropPosition; //아이템 버릴 때.
 
-        controller.inventory += Toggle;
-        CharacterManager.Instance.Player.addItem += AddItem;
+        //CharacterManager.Instance.Player.addItem += AddItem; //아이템 습득 이벤트 등록.
 
-        inventoryWindow.SetActive(false);
-        slots = new ItemSlot[slotPanel.childCount];
+        //slots = new ItemSlot[slotPanel.childCount];
 
-        for (int i = 0; i < slots.Length; i++)
-        {
-            slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
-            slots[i].index = i;
-            slots[i].inventory = this;
-            slots[i].Clear();
-        }
+        //for (int i = 0; i < slots.Length; i++)
+        //{
+        //    slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
+        //    slots[i].slotIndex = i;
+        //    slots[i].inventory = this;
+        //    slots[i].Clear();
+        //}
 
-        ClearSelectedItemWindow();
-    }
-
-    public void Toggle()
-    {
-        if (inventoryWindow.activeInHierarchy)
-        {
-            inventoryWindow.SetActive(false);
-        }
-        else
-        {
-            inventoryWindow.SetActive(true);
-        }
+        //ClearSelectedItemWindow();
     }
 
     public bool IsOpen()
@@ -213,7 +200,7 @@ public class UIInventory : MonoBehaviour
 
         if (selectedItem.quantity <= 0)
         {
-            if (slots[selectedItemIndex].equipped)
+           // if (slots[selectedItemIndex].equipped)
             {
                 //UnEquip(selectedItemIndex);
             }
