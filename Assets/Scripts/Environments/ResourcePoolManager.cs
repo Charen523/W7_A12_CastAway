@@ -23,13 +23,12 @@ public class ResourcePoolManager : MonoBehaviour
     }
 
     public List<Pool> Pools;
-
     public Dictionary<string, Queue<GameObject>> PoolDictionary;
 
     private Transform parentFolder;
 
     // 오브젝트 리턴 대기 시간
-    public float respawnDelay = 10f;
+    public float respawnDelay = 5f;
 
     // 오브젝트 위치를 저장할 딕셔너리
     private Dictionary<GameObject, Vector3> originalPositions = new Dictionary<GameObject, Vector3>();
@@ -56,9 +55,8 @@ public class ResourcePoolManager : MonoBehaviour
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject obj = Instantiate(pool.prefab);
+                GameObject obj = Instantiate(pool.prefab, parentFolder);
                 obj.SetActive(false);
-                // 줄의 가장 마지막에 세움.
                 objectPool.Enqueue(obj);
             }
             PoolDictionary.Add(pool.tag, objectPool);
@@ -120,49 +118,18 @@ public class ResourcePoolManager : MonoBehaviour
             }
         }
     }
-
-    // 오브젝트 풀로 반환하는 메서드
+    // 오브젝트 풀로 반환, 재생성 코루틴 호출하는 메서드
     public void ReturnObjectToPool(GameObject obj)
     {
         obj.SetActive(false);
-        StartCoroutine(ReSpawnObject(obj, respawnDelay));
+        StartCoroutine(RespawnObject(obj, respawnDelay));
     }
 
-    // 일정 시간이 지난 후 오브젝트를 재생성하는 코루틴
-    private IEnumerator ReSpawnObject(GameObject obj, float delay)
+    private IEnumerator RespawnObject(GameObject obj, float delay)
     {
+        Debug.Log("5초 후 생성");
         yield return new WaitForSeconds(delay);
-
-        obj.transform.position = originalPositions[obj]; // 저장된 위치로 복원
-
+        //obj.transform.position = originalPositions[obj];
         obj.SetActive(true);
-    }
-
-    // 비활성화된 오브젝트를 리스트로 반환하는 메서드
-    public List<GameObject> GetInactiveObjectsFromPool(string tag)
-    {
-        List<GameObject> inactiveObjects = new List<GameObject>();
-        if (PoolDictionary.ContainsKey(tag))
-        {
-            foreach (var obj in PoolDictionary[tag])
-            {
-                if (!obj.activeSelf)
-                {
-                    inactiveObjects.Add(obj);
-                }
-            }
-        }
-        return inactiveObjects;
-    }
-
-    // 비활성화된 오브젝트를 활성화하는 메서드
-    public void ActivateInactiveObjects(string tag)
-    {
-        List<GameObject> inactiveObjects = GetInactiveObjectsFromPool(tag);
-        foreach (var obj in inactiveObjects)
-        {
-            obj.SetActive(true);
-            obj.transform.position = originalPositions[obj]; // 원래 위치로 복원
-        }
     }
 }

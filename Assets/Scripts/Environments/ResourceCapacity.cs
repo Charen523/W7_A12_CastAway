@@ -6,7 +6,6 @@ public class ResourceCapacity : MonoBehaviour
 {
     // 자원 용량 설정
     public int maxHits = 5;
-    public List<GameObject> respawnPrefabs;
     private int currentHits;
 
     private ResourcePoolManager poolManager;
@@ -17,20 +16,6 @@ public class ResourceCapacity : MonoBehaviour
         poolManager = FindObjectOfType<ResourcePoolManager>();
     }
 
-    private void Update()
-    {
-        // 각 프리팹에 대해 비활성화 상태인지 확인하고, 비활성화 상태면 재생성 호출
-        foreach (var prefab in respawnPrefabs)
-        {
-            if (!prefab.activeSelf)
-            {   // 오브젝트풀로 반환
-                poolManager.ReturnObjectToPool(prefab);
-                // 비활성화된 오브젝트 활성화 호출
-                poolManager.ActivateInactiveObjects(prefab.tag);
-            }
-        }
-    }
-
     // 도끼로 쳤을 때 호출되는 메서드
     public void Hit(GameObject prefab)
     {
@@ -39,6 +24,18 @@ public class ResourceCapacity : MonoBehaviour
         {
             poolManager.ReturnObjectToPool(prefab);
             currentHits = 0;
+        }
+    }
+
+    // 플레이어와 부딪히면 풀로 반환, 5초 후 재생성 메서드
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // 충돌한 프리팹을 풀로 반환하고 재생성 코루틴 시작
+            GameObject prefab = gameObject;
+            Debug.Log("반환");
+            poolManager.ReturnObjectToPool(prefab);
         }
     }
 }

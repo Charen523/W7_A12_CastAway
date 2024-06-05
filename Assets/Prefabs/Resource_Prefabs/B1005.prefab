@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8296718709627792877}
   - component: {fileID: 4510712230579530434}
   - component: {fileID: 1625885729558189454}
-  - component: {fileID: -8475579571815503178}
   - component: {fileID: 2268208495654029132}
+  - component: {fileID: 5164220821700358898}
+  - component: {fileID: -8984192739423771844}
   m_Layer: 0
   m_Name: B1005
   m_TagString: B1005
@@ -85,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-8475579571815503178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3692310909983594008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 628a994fb1324e549add23f631bd0812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHits: 5
-  respawnPrefabs: []
 --- !u!64 &2268208495654029132
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -121,3 +108,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d4b241c485632de4681f506d0b31c588, type: 3}
+--- !u!65 &5164220821700358898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692310909983594008}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.66621, y: 6.2483063, z: 8.385578}
+  m_Center: {x: -0.9776802, y: 2.1314316, z: -0.48104906}
+--- !u!114 &-8984192739423771844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692310909983594008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628a994fb1324e549add23f631bd0812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 5
