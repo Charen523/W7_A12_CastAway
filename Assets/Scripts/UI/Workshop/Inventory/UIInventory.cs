@@ -199,10 +199,6 @@ public class UIInventory : MonoBehaviour
             }
             invenBtns[0].SetActive(true);
         }
-        else if (invenBtns[0].activeSelf) //사용 불가능하면 버튼 비활성화.
-        {
-            invenBtns[0].SetActive(false);
-        }
 
         invenBtns[1].SetActive(true);
     }
