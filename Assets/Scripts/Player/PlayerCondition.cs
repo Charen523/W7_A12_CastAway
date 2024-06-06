@@ -99,6 +99,11 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         OnDeath?.Invoke();
     }
 
+    public void GiveEnergy(float  amount)
+    {
+        stamina.ChangeValue(amount);
+    }
+
     public void Warm()
     {
         temperature.ChangeValue(Mathf.Max(temperature.curValue, 20));
