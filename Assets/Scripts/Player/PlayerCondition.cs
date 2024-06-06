@@ -10,6 +10,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 {
     /*Events*/
     public event Action onTakeDamage;
+    public event Action OnDeath;
 
     [Header("UI Condition")]
     public UICondition uiCondition;
@@ -25,48 +26,57 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     /*Components*/
     private PlayerController controller;
 
+    /**/
+    private bool isDead;
+
     private void Start()
     {
         controller = CharacterManager.Instance.Player.controller;
-       staminaRegen = stamina.regenRate; //회복될 값 받아오기
+       staminaRegen = stamina.deltaRate; //회복될 값 받아오기
     }
     private void Update()
     {
-        hunger.Subtract(hunger.regenRate * Time.deltaTime); // 꾸준히 hunger의 게이지를 깎아줌
-        thirst.Subtract(thirst.regenRate * Time.deltaTime);
-        stamina.Add(stamina.regenRate * Time.deltaTime); //꾸준히 stamina의 게이지를 채워줌
-
-        if (hunger.curValue == 0.0f) //배고픔 게이지가 0일 경우
-        {
-            health.Subtract(noHungerHealthDecay * Time.deltaTime); // hp게이지를 깎아줌
-        }
-
+        hunger.Subtract(hunger.deltaRate * Time.deltaTime);
+        thirst.Subtract(thirst.deltaRate * Time.deltaTime);
         
 
-        if (health.curValue == 0.0f)
+        if (hunger.curValue == 0.0f)
         {
-            Die(); //HP가 0일 경우 죽음
+            health.Subtract(noHungerHealthDecay * Time.deltaTime);
+        }
+
+        if (health.curValue == 0.0f && !isDead)
+        {
+            Die();
         }
 
         if (stamina.curValue == 0.0f)
         {
             controller.canRun = false;
         }
+        else
+        {
+            stamina.Add(stamina.deltaRate * Time.deltaTime);
+        }
+
+        Debug.Log(stamina.curValue);
     }
 
-    public void Heal(float amount) //회복하면 특정 양 만큼 회복함
+    public void Heal(float amount)
     {
         health.Add(amount);
     }
 
-    public void Eat(float amount) // 먹으면 배고픔을 특정 양 만큼 회복함
+    public void Eat(float amount)
     {
         hunger.Add(amount);
     }
 
     public void Die() // 죽었을 시 메세지 호출
     {
-        Debug.Log("플레이어가 죽었다.");
+        Debug.Log("플레이어 사망.");
+        isDead = true;
+        OnDeath?.Invoke();
     }
 
     public void TakePhysicalDamage(int damageAmount) //데미지를 받을 경우 데미지만큼 HP를 줄임
