@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IDamagable //데미지를 받을 수 있는 오브젝트에 인터페이스 다중상속을 위한 선언
 {
-    void TakePhysicalDamage(int damageAmount);
+    void TakeDamage(int damageAmount);
 }
 
 public class PlayerCondition : MonoBehaviour, IDamagable
@@ -18,80 +18,94 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     private Condition thirst { get { return uiCondition.thirst; } }
     private Condition health { get { return uiCondition.health; } }
     private Condition stamina { get { return uiCondition.stamina; } }
+    private Condition temperature { get { return uiCondition.temperature; } }
 
     [Header("Condition Delta Values")]
-    public float noHungerHealthDecay;
-    public float staminaRegen;
-
+    public float healthDecay;
+    
     /*Components*/
     private PlayerController controller;
 
-    /**/
+    /*player Condition Status*/
     private bool isDead;
 
     private void Start()
     {
         controller = CharacterManager.Instance.Player.controller;
-       staminaRegen = stamina.deltaRate; //회복될 값 받아오기
     }
+
     private void Update()
     {
-        hunger.Subtract(hunger.deltaRate * Time.deltaTime);
-        thirst.Subtract(thirst.deltaRate * Time.deltaTime);
+        /*default Decays*/
+        hunger.ChangeValue(-hunger.deltaRate * Time.deltaTime);
+        thirst.ChangeValue(-thirst.deltaRate * Time.deltaTime);
         
-
-        if (hunger.curValue == 0.0f)
+        if (hunger.curValue == 0 || thirst.curValue == 0)
         {
-            health.Subtract(noHungerHealthDecay * Time.deltaTime);
+            health.ChangeValue(-healthDecay * Time.deltaTime);
         }
 
-        if (health.curValue == 0.0f && !isDead)
+        if (health.curValue == 0 && !isDead)
         {
             Die();
         }
 
-        if (stamina.curValue == 0.0f)
+        if (controller.animator.GetBool("IsRun"))
         {
-            controller.canRun = false;
+            if (stamina.curValue != 0)
+            {
+                stamina.ChangeValue(-stamina.deltaRate * Time.deltaTime); //달리는 중 스테미나 소모
+            }
+            else
+            {
+                controller.canRun = false;
+            }
         }
         else
         {
-            stamina.Add(stamina.deltaRate * Time.deltaTime);
+            stamina.ChangeValue(stamina.deltaRate * Time.deltaTime); //스테미나 회복
         }
 
-        Debug.Log(stamina.curValue);
-    }
-
-    public void Heal(float amount)
-    {
-        health.Add(amount);
+        if (temperature.curValue > 80 || temperature.curValue < 20)
+        {
+            health.ChangeValue(-healthDecay * Time.deltaTime);
+        }
     }
 
     public void Eat(float amount)
     {
-        hunger.Add(amount);
+        hunger.ChangeValue(amount);
     }
 
-    public void Die() // 죽었을 시 메세지 호출
+    public void Drink(float amount)
     {
-        Debug.Log("플레이어 사망.");
+        hunger.ChangeValue(amount);
+    }
+
+    public void Heal(float amount)
+    {
+        health.ChangeValue(amount);
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        health.ChangeValue(-damageAmount);
+        onTakeDamage?.Invoke();
+    }
+
+    public void Die()
+    {
         isDead = true;
         OnDeath?.Invoke();
     }
 
-    public void TakePhysicalDamage(int damageAmount) //데미지를 받을 경우 데미지만큼 HP를 줄임
+    public void Warm()
     {
-        health.Subtract(damageAmount);
-        onTakeDamage?.Invoke();
+        temperature.ChangeValue(Mathf.Max(temperature.curValue, 20));
     }
 
-    public bool UseStamina(float amount)
+    public void Cool()
     {
-        if (stamina.curValue - amount < 0) // 스태미나가 충분하지 못할 때
-        {
-            return false; //false 반환
-        }
-        stamina.Subtract(amount); // 스태미나에서 amount만큼 제거
-        return true;
+        temperature.ChangeValue(Mathf.Min(temperature.curValue, 80));
     }
 }

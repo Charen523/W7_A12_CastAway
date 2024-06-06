@@ -11,11 +11,11 @@ public class Condition : MonoBehaviour
     public float curValue;
     public float deltaRate;
 
-    private Image uiBar;
+    protected Image uiBar;
 
     private void Awake()
     {
-        
+        uiBar = GetComponent<Image>();  
     }
 
     private void Start()
@@ -23,24 +23,14 @@ public class Condition : MonoBehaviour
         curValue = startValue;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         uiBar.fillAmount = GetPertentage();
     }
 
-    public void ChangeValue(float amount)
+    public virtual void ChangeValue(float amount)
     {
         curValue = Mathf.Clamp(curValue + amount, 0, float.MaxValue);
-    }
-
-    public void Add(float amount)
-    {
-        curValue = Mathf.Min(curValue + amount, maxValue);
-    }
-
-    public void Subtract(float amount)
-    {
-        curValue = Mathf.Max(curValue - amount, 0.0f);
     }
 
     public float GetPertentage()

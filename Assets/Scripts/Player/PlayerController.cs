@@ -1,7 +1,5 @@
 using System;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -36,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     /*Components*/
     private Rigidbody rb;
-    private Animator animator;
+    [HideInInspector] public Animator animator;
 
     /*player Controllable Status*/
     private bool canLook = true;
@@ -242,11 +240,6 @@ public class PlayerController : MonoBehaviour
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
-    }
-
-    private void SubtractStamina()
-    {
-        CharacterManager.Instance.Player.condition.UseStamina(runStaminaDeltaValue);
     }
 
     private void AnimatorAim()
