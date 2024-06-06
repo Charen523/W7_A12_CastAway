@@ -8,20 +8,27 @@ public interface IDamagable //데미지를 받을 수 있는 오브젝트에 인
 
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
-    public UICondition uiCondition; // Uicondition 스크립트 받아오기
+    /*Events*/
+    public event Action onTakeDamage;
 
-    private float standardRegen;
+    [Header("UI Condition")]
+    public UICondition uiCondition;
+    private Condition hunger { get { return uiCondition.hunger; } }
+    private Condition thirst { get { return uiCondition.thirst; } }
+    private Condition health { get { return uiCondition.health; } }
+    private Condition stamina { get { return uiCondition.stamina; } }
 
-    Condition health { get { return uiCondition.health; } }
-    Condition hunger { get { return uiCondition.hunger; } }
-    Condition stamina { get { return uiCondition.stamina; } } // 각 UI의 값을 받아옴.
-    Condition thirst { get { return uiCondition.thirst; } }
+    [Header("Condition Delta Values")]
+    public float noHungerHealthDecay;
+    public float staminaRegen;
 
-    public float noHungerHealthDecay; //배고픔 게이지가 0일시 줄어들 HP값
-    public event Action onTakeDamage; // 데미지를 입는 이벤트 추가
+    /*Components*/
+    private PlayerController controller;
+
     private void Start()
     {
-       // standardRegen = stamina.regenRate; //회복될 값 받아오기
+        controller = CharacterManager.Instance.Player.controller;
+       staminaRegen = stamina.regenRate; //회복될 값 받아오기
     }
     private void Update()
     {
@@ -34,9 +41,16 @@ public class PlayerCondition : MonoBehaviour, IDamagable
             health.Subtract(noHungerHealthDecay * Time.deltaTime); // hp게이지를 깎아줌
         }
 
+        
+
         if (health.curValue == 0.0f)
         {
             Die(); //HP가 0일 경우 죽음
+        }
+
+        if (stamina.curValue == 0.0f)
+        {
+            controller.canRun = false;
         }
     }
 
