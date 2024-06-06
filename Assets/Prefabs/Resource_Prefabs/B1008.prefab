@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 2677494297072981593}
   - component: {fileID: 5954734505793388588}
   - component: {fileID: 2462089248287296162}
-  - component: {fileID: -8825970329812274217}
+  - component: {fileID: -1088198382972723535}
+  - component: {fileID: -1398522825135714801}
   m_Layer: 0
   m_Name: B1008
-  m_TagString: Untagged
+  m_TagString: B1008
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +85,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-8825970329812274217
+--- !u!65 &-1088198382972723535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524810640531231321}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.39220637, y: 0.41596395, z: 0.522244}
+  m_Center: {x: -0.0030084774, y: 0.18921325, z: 0.03178916}
+--- !u!114 &-1398522825135714801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,4 +119,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHits: 5
-  RespawnPrefab: {fileID: 524810640531231321}
