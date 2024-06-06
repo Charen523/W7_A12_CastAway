@@ -113,13 +113,11 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             animator.SetBool("IsRun", true);
-            InvokeRepeating("SubtractStamina", 0, 0.1f);
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
             animator.SetBool("IsRun", false);
-            CancelInvoke("SubtractStamina");
             canRun = true;
         }
     }
@@ -170,10 +168,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (animator.GetBool("IsRun"))
         {
-            Debug.Log("못뜀");
             direction *= baseSpeed;
             animator.SetBool("IsRun", false);
-            CancelInvoke("SubtractStamina");
         }
         
         direction.y = rb.velocity.y; //y축 동기화

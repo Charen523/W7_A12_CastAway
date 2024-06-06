@@ -30,7 +30,7 @@ public class Condition : MonoBehaviour
 
     public virtual void ChangeValue(float amount)
     {
-        curValue = Mathf.Clamp(curValue + amount, 0, float.MaxValue);
+        curValue = Mathf.Clamp(curValue + amount, 0, maxValue);
     }
 
     public float GetPertentage()

@@ -61,7 +61,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
                 controller.canRun = false;
             }
         }
-        else
+        else if (stamina.curValue < stamina.maxValue)
         {
             stamina.ChangeValue(stamina.deltaRate * Time.deltaTime); //스테미나 회복
         }
