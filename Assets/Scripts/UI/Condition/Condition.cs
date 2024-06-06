@@ -5,34 +5,35 @@ using UnityEngine.UI;
 
 public class Condition : MonoBehaviour
 {
-    public float curValue;
-    public float maxValue;
+    [Header("Condition Values")]
     public float startValue;
-    public float regenRate;
-    public Image uiBar;
+    public float maxValue;
+    public float curValue;
+    public float deltaRate;
+
+    protected Image uiBar;
+
+    private void Awake()
+    {
+        uiBar = GetComponent<Image>();  
+    }
 
     private void Start()
     {
         curValue = startValue;
-
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        uiBar.fillAmount = GetPerventage();
+        uiBar.fillAmount = GetPertentage();
     }
 
-    public void Add(float amount)
+    public virtual void ChangeValue(float amount)
     {
-        curValue = Mathf.Min(curValue + amount, maxValue);
+        curValue = Mathf.Clamp(curValue + amount, 0, maxValue);
     }
 
-    public void Subtract(float amount)
-    {
-        curValue = Mathf.Max(curValue - amount, 0.0f);
-    }
-
-    public float GetPerventage()
+    public float GetPertentage()
     {
         return curValue / maxValue;
     }

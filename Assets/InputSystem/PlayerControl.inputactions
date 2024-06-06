@@ -51,36 +51,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sit",
-                    "type": "Button",
-                    "id": "26e8d276-186b-4784-a003-c81654b6e5c0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "d0ef7a10-f546-4662-9750-815ccbd9af24",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Settings",
                     "type": "Button",
                     "id": "f6d648ee-6f4b-41ff-9cf8-8f72e0bb29fc",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Interaction",
-                    "type": "Button",
-                    "id": "134f91e3-c428-44c4-bb1e-32382d190050",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -96,9 +69,36 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Sit",
+                    "type": "Button",
+                    "id": "26e8d276-186b-4784-a003-c81654b6e5c0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Test",
                     "type": "Button",
                     "id": "17fea61c-39ac-4a8c-8302-7c902e8e25b9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interaction",
+                    "type": "Button",
+                    "id": "134f91e3-c428-44c4-bb1e-32382d190050",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "d0ef7a10-f546-4662-9750-815ccbd9af24",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -207,45 +207,12 @@
                 },
                 {
                     "name": "",
-                    "id": "7d3a28e7-9f0d-4a23-b7f8-b9c6b7319858",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Sit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ac054ae8-4278-43d5-ab20-8c8770a7a26c",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3c8d3bf1-dc1d-4129-a317-bacd826022f8",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Settings",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "80bb6352-b5d3-44aa-b641-dd47faff0754",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -268,6 +235,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac054ae8-4278-43d5-ab20-8c8770a7a26c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80bb6352-b5d3-44aa-b641-dd47faff0754",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d3a28e7-9f0d-4a23-b7f8-b9c6b7319858",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
