@@ -10,30 +10,30 @@ public class PlayerController : MonoBehaviour
     public event Action WorkshopInput;
 
     [Header("Movement")]
-    public float baseSpeed;
+    public float baseSpeed = 5;
     public float runSpeedRatio = 2;
-    public float runStaminaDeltaValue;
-    public float jumpForce;
+    public float runStaminaDeltaValue = 10;
+    public float jumpForce = 80;
     public LayerMask groundLayerMask;
 
     [Header("Look")]
-    public float lookSensitivity;
-    public float minXLook;
-    public float maxXLook;
+    public float lookSensitivity = 0.05f;
+    public float minXLook = -50;
+    public float maxXLook = 60;
 
     [Header("Camera")]
     public Transform cameraContainer;
-    public float distance; // 타겟으로부터의 기본 거리
-    public float minDistance = 1.0f; // 타겟으로부터의 최소 거리
-    public float maxDistance = 5.0f; // 타겟으로부터의 최대 거리
-    
+    public float distance = 3; // 타겟으로부터의 기본 거리
+    public float minDistance = 1; // 타겟으로부터의 최소 거리
+    public float maxDistance = 5; // 타겟으로부터의 최대 거리
+
     /*Player Input*/
     private Vector2 moveInput;
     private Vector2 mouseDelta;
     private float camCurXRot;
     private float camCurYRot;
 
-    /*Contains*/
+    /*Components*/
     private Rigidbody rb;
     private Animator animator;
 
@@ -42,42 +42,39 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>(); //Rigidbody 받아오기
+        rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // 마우스 커서를 보이지 않게 하기
+        //default Cursor: Locked
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate()
     {
-        if (animator.GetBool("IsWalk") == true)
+        if (animator.GetBool("IsWalk"))
         {
             transform.eulerAngles = new Vector3(0, camCurYRot, 0);
             AnimatorAim();
         }
+
         if (IsGrounded())
         {
-            Move(); //물리적 이동
+            Move();
         }
     }
 
     private void LateUpdate()
     {
-        if (canLook) //canlook이 true일때만 카메라 회전
+        if (canLook)
         {
-            CameraLook(); // 카메라 룩은 LateUpdate에 저장
+            CameraLook();
         }
     }
 
-    public void OnLookInput(InputAction.CallbackContext context)
-    {
-        mouseDelta = context.ReadValue<Vector2>(); // 마우스 델타에 Vector2값을 읽어옴
-    }
-
-    public void OnMoveInput(InputAction.CallbackContext context) //이동 
+    public void OnMoveInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed) //분기점 인풋액션이 시작되었을 때 Start를 쓰지 않는 이유 - 입력값을 받았을 때만 행동하기 때문
         {
@@ -103,6 +100,11 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse); //순간적으로 힘을 받아야 하기 때문에 Impulse를 사용
             animator.SetTrigger("IsJump");
         }
+    }
+
+    public void OnLookInput(InputAction.CallbackContext context)
+    {
+        mouseDelta = context.ReadValue<Vector2>();
     }
 
     public void OnRunInput(InputAction.CallbackContext context)
@@ -132,6 +134,17 @@ public class PlayerController : MonoBehaviour
     {
 
     }
+
+    public void OnAimOffInput(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnSitInput(InputAction.CallbackContext context)
+    {
+        //Animation이 없어서 미구현.
+    }
+
     private void Move() //실제로 이동을 시키는 로직
     {
         Vector3 dir = transform.forward * moveInput.y + transform.right * moveInput.x; // 입력된 벡터값의 방향 X,y값 설정
