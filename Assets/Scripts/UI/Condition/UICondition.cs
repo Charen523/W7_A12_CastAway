@@ -14,7 +14,7 @@ public class UICondition : MonoBehaviour
         thirst = transform.Find("CurrentValues").GetChild(1).GetComponent<Condition>();
         health = transform.Find("CurrentValues").GetChild(2).GetComponent<Condition>();
         stamina = transform.Find("CurrentValues").GetChild(3).GetComponent<Condition>();
-        temperature = transform.Find("CurrentValues").GetChild(4).GetComponent<Temperature>();
+        temperature = transform.Find("CurrentValues").GetChild(5).GetComponent<Temperature>();
 
         CharacterManager.Instance.Player.condition.uiCondition = this;
     }

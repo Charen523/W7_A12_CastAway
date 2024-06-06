@@ -14,5 +14,10 @@ public class Temperature : Condition
     {
         base.ChangeValue(amount);
     }
+
+    public float GetCurrentValue()
+    {
+        return curValue;
+    }
 }
 
