@@ -1,3 +1,4 @@
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 //IInteractable 인터페이스 필요.
@@ -21,8 +22,13 @@ public class ItemObject : MonoBehaviour, IInteractable
         //inventory에 아이템 넣기.
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
-        
-        // 아이템 오브젝트 파괴
-        Destroy(gameObject);
+
+        //아이템 오브젝트 파괴(당근, 버섯이면 풀로 반환)
+        if (ResourcePoolManager.Instance.isCrop)
+        {
+            ResourcePoolManager.Instance.ReturnObjectToPool(gameObject);
+        }
+        else
+            Destroy(gameObject);
     }
 }
