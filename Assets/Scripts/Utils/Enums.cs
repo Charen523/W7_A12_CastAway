@@ -8,7 +8,7 @@ public enum eItemType
     EQUIP
 }
 
-public enum eConsumableType
+public enum eConditionType
 {
     HUNGER,
     THIRST,
@@ -17,10 +17,34 @@ public enum eConsumableType
     TEMPERATURE
 }
 
+public enum eEquipType
+{
+    DEFAULT,
+    HELMET,
+    RIGHT_HAND,
+    PANTS,
+    ARMOR,
+    LEFT_HAND
+}
+
+public enum eEquipStatType
+{
+    ATK,
+    DEF
+}
+
 public enum eAIState
 {
     IDLE, //기본
     WANDERING, //자동으로 이동
     ATTACKING, // 공격
     FLEEING // 도망
+}
+
+public enum eCraftTool
+{
+    DEFAULT,
+    HAND,
+    WORKBENCH,
+    FURNACE
 }
