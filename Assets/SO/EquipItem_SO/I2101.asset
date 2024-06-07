@@ -21,3 +21,8 @@ MonoBehaviour:
   canStack: 0
   maxStackAmount: 0
   EquipId: E101
+  equipType: 4
+  equipStats:
+  - type: 1
+    value: 25
+  isEquipped: 0
