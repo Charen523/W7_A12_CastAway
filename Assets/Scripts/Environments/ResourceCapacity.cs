@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ResourceCapacity : MonoBehaviour
 {
@@ -27,15 +28,16 @@ public class ResourceCapacity : MonoBehaviour
         }
     }
 
-    // 플레이어와 부딪히면 풀로 반환, 5초 후 재생성 메서드
+    // 플레이어와 충돌한 자원이 당근, 버섯인지 확인
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // 충돌한 프리팹을 풀로 반환하고 재생성 코루틴 시작
             GameObject prefab = gameObject;
-            Debug.Log("반환");
-            poolManager.ReturnObjectToPool(prefab);
+            if (prefab.tag == "B1010"|| prefab.tag == "B1007" || prefab.tag == "B1008" || prefab.tag == "B1009")
+            {
+                poolManager.isCrop = true;
+            }
         }
     }
 }

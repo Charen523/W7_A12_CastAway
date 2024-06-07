@@ -24,17 +24,43 @@ public class ResourcePoolManager : MonoBehaviour
 
     public List<Pool> Pools;
     public Dictionary<string, Queue<GameObject>> PoolDictionary;
+    public bool isCrop = false;
 
     private Transform parentFolder;
 
     // 오브젝트 리턴 대기 시간
-    public float respawnDelay = 5f;
+    public float respawnDelay = 10f;
 
     // 오브젝트 위치를 저장할 딕셔너리
     private Dictionary<GameObject, Vector3> originalPositions = new Dictionary<GameObject, Vector3>();
 
+    private static ResourcePoolManager _instance; // 유일한 인스턴스를 저장할 정적 변수
+    public static ResourcePoolManager Instance // 유일한 인스턴스를 반환하는 정적 프로퍼티
+    {
+        get
+        {   // 인스턴스가 없으면 새 게임 오브젝트를 만들어 인스턴스를 추가(방어코드)
+            if (_instance == null)
+            {
+                _instance = new GameObject("ResourcePoolManager").AddComponent<ResourcePoolManager>();
+            }
+            return _instance;
+        }
+    }
+
     private void Awake()
     {
+        if (_instance == null)
+        {   // 인스턴스 초기화
+            _instance = this;
+        }
+        else
+        {
+            if (_instance == this)
+            {   // 중복 인스턴스 제거
+                Destroy(gameObject);
+            }
+        }
+
         parentFolder = GetComponent<Transform>();
         // 오브젝트 풀 초기화
         InitializePool();
@@ -122,14 +148,15 @@ public class ResourcePoolManager : MonoBehaviour
     public void ReturnObjectToPool(GameObject obj)
     {
         obj.SetActive(false);
+        isCrop = false;
         StartCoroutine(RespawnObject(obj, respawnDelay));
     }
 
+    // 아이템 드랍 및 재생성 코루틴
     private IEnumerator RespawnObject(GameObject obj, float delay)
     {
-        Debug.Log("5초 후 생성");
+        Debug.Log("10초 후 생성");
         yield return new WaitForSeconds(delay);
-        //obj.transform.position = originalPositions[obj];
         obj.SetActive(true);
     }
 }
