@@ -778,6 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiInventory: {fileID: 0}
+  uiInventoryObject: {fileID: 0}
 --- !u!1 &141667348
 GameObject:
   m_ObjectHideFlags: 0
@@ -5078,6 +5079,11 @@ Transform:
   - {fileID: 204050268}
   m_Father: {fileID: 890142351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1258663717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7383093837698289605, guid: 9873eb919794c1e40adfc124066780ba, type: 3}
+  m_PrefabInstance: {fileID: 1621747256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1272297205
 GameObject:
   m_ObjectHideFlags: 0
@@ -6907,6 +6913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiInventory: {fileID: 1347361578}
+  uiInventoryObject: {fileID: 1258663717}
 --- !u!1001 &1621747256
 PrefabInstance:
   m_ObjectHideFlags: 0
