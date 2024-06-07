@@ -10933,6 +10933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64392c956242e374f98422b3667c5d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionType: 3
   startValue: 100
   maxValue: 100
   curValue: 0
@@ -11545,6 +11546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f694c1e24cfc4f346abdb8aa955ef270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionType: 4
   startValue: 50
   maxValue: 100
   curValue: 0
@@ -12245,6 +12247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64392c956242e374f98422b3667c5d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionType: 2
   startValue: 100
   maxValue: 100
   curValue: 0
@@ -12397,6 +12400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64392c956242e374f98422b3667c5d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionType: 0
   startValue: 0
   maxValue: 0
   curValue: 0
@@ -12780,6 +12784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64392c956242e374f98422b3667c5d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionType: 0
   startValue: 500
   maxValue: 600
   curValue: 0
@@ -13122,6 +13127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64392c956242e374f98422b3667c5d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionType: 1
   startValue: 200
   maxValue: 300
   curValue: 0

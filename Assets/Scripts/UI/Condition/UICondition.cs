@@ -14,21 +14,21 @@ public class UICondition : MonoBehaviour
 
         foreach (var condition in conditions)
         {
-            switch (condition.name)
+            switch (condition.conditionType)
             {
-                case "Hunger":
+                case eConditionType.HUNGER:
                     hunger = condition;
                     break;
-                case "Thirst":
+                case eConditionType.THIRST:
                     thirst = condition;
                     break;
-                case "Health":
+                case eConditionType.HEALTH:
                     health = condition;
                     break;
-                case "Stamina":
+                case eConditionType.STAMINA:
                     stamina = condition;
                     break;
-                case "Temperature":
+                case eConditionType.TEMPERATURE:
                     temperature = (Temperature)condition;
                     break;
             }

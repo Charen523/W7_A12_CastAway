@@ -85,19 +85,19 @@ public class UIInventory : MonoBehaviour
             {
                 switch (consumeData.consumables[i].type)
                 {
-                    case eConsumableType.HUNGER:
+                    case eConditionType.HUNGER:
                         condition.Eat(consumeData.consumables[i].value);
                         break;
-                    case eConsumableType.THIRST:
+                    case eConditionType.THIRST:
                         condition.Drink(consumeData.consumables[i].value);
                         break;
-                    case eConsumableType.HEALTH:
+                    case eConditionType.HEALTH:
                         condition.Heal(consumeData.consumables[i].value);
                         break;
-                    case eConsumableType.STAMINA:
+                    case eConditionType.STAMINA:
                         condition.GiveEnergy(consumeData.consumables[i].value); 
                         break;
-                    case eConsumableType.TEMPERATURE:
+                    case eConditionType.TEMPERATURE:
                         //고추 아이템 추가 시 더워지게 등등? 아이디어만 있음.
                         break;
                 }
