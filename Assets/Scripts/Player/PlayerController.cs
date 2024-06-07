@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Animator animator;
 
     /*player Controllable Status*/
-    private bool canLook = true;
+    public bool canLook = true;
     [HideInInspector] public bool canRun = true;
 
     private void Awake()
