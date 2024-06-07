@@ -1180,7 +1180,7 @@ GameObject:
   - component: {fileID: 1842726083722348626}
   - component: {fileID: 2419244753873372781}
   m_Layer: 5
-  m_Name: SelectedItemStatName
+  m_Name: ConsumeEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3610,7 +3610,7 @@ GameObject:
   - component: {fileID: 9102294210402081625}
   - component: {fileID: 6226160942941550756}
   m_Layer: 5
-  m_Name: SelectedItemDescription
+  m_Name: ItemDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5114,7 +5114,7 @@ GameObject:
   - component: {fileID: 326553828811846639}
   - component: {fileID: 3915009191922052878}
   m_Layer: 5
-  m_Name: SelectedItemStatValue
+  m_Name: ConsumeValues
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7150,7 +7150,7 @@ GameObject:
   - component: {fileID: 5961373457670008139}
   - component: {fileID: 648677922281594181}
   m_Layer: 5
-  m_Name: SelectedItemName
+  m_Name: ItemName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
