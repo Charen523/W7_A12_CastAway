@@ -16,7 +16,7 @@ public class ItemSlot : MonoBehaviour
 
     private readonly string quantityName = "Quantity";
     private TextMeshProUGUI quatityText;
-    public int quantity; //UIInventory에서 할당, default : 0.
+    public int quantity; //UIInventory에서 할당.
 
     private readonly string selectName = "Select";
     private Image selectEdge;

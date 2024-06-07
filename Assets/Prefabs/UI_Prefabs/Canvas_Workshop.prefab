@@ -1180,7 +1180,7 @@ GameObject:
   - component: {fileID: 1842726083722348626}
   - component: {fileID: 2419244753873372781}
   m_Layer: 5
-  m_Name: ConsumeEffects
+  m_Name: StatName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1202,7 +1202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49, y: 27}
+  m_AnchoredPosition: {x: -49, y: 45}
   m_SizeDelta: {x: 165.1479, y: 88.9258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1842726083722348626
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "HUNGER :\nTHIRST : \nHEALTH :"
+  m_text: "HUNGER :\nTHIRST : \nATK :"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5b8851c2ff1e9946b0a47705bb714a8, type: 2}
   m_sharedMaterial: {fileID: -8665269704768401707, guid: e5b8851c2ff1e9946b0a47705bb714a8, type: 2}
@@ -5114,7 +5114,7 @@ GameObject:
   - component: {fileID: 326553828811846639}
   - component: {fileID: 3915009191922052878}
   m_Layer: 5
-  m_Name: ConsumeValues
+  m_Name: StatValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5136,7 +5136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49, y: -106}
+  m_AnchoredPosition: {x: -49.000004, y: -85}
   m_SizeDelta: {x: 76.2221, y: 88.9258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &326553828811846639
@@ -7324,7 +7324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f67d13cbfe11a44a3eb69d3c13b0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initCheck: 0
   selectedDescriptions: []
   invenBtns: []
 --- !u!1 &9057742759980672696

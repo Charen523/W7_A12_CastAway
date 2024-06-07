@@ -17,6 +17,22 @@ public enum eConditionType
     TEMPERATURE
 }
 
+public enum eEquipType
+{
+    DEFAULT,
+    HELMET,
+    RIGHT_HAND,
+    PANTS,
+    ARMOR,
+    LEFT_HAND
+}
+
+public enum eEquipStatType
+{
+    ATK,
+    DEF
+}
+
 public enum eAIState
 {
     IDLE, //기본
