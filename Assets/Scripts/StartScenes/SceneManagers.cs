@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneManagers : MonoBehaviour
 {
     public UIInventory uiInventory;
-    public GameObject uiInventoryObject; 
+    
     public void StartBtn()
     {
         SceneManager.LoadScene("GameScene");
@@ -27,24 +27,7 @@ public class SceneManagers : MonoBehaviour
         Application.Quit();
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // 씬이 로드된 후 UIInventory 오브젝트를 활성화
-        if (uiInventoryObject != null)
-        {
-            uiInventoryObject.SetActive(true);
-        }
-    }
+    
 
 
 
