@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 393166264}
-  m_IndirectSpecularColor: {r: 0.44824904, g: 0.49827605, b: 0.5755831, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482482, g: 0.49827528, b: 0.5755824, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -575,29 +575,29 @@ MonoBehaviour:
   - tag: B1001
     prefab: {fileID: 8639434621024442481, guid: 522e34ea8193a0c4cacad2c15b8bf6ee, type: 3}
     size: 30
-    positionMin: {x: 303, y: 1.85, z: 200}
-    positionMax: {x: 615, y: 1.85, z: 440}
+    positionMin: {x: 280, y: 1.85, z: 198}
+    positionMax: {x: 598, y: 1.85, z: 488}
     scaleMin: {x: 100, y: 100, z: 100}
     scaleMax: {x: 120, y: 120, z: 120}
   - tag: B1002
     prefab: {fileID: 1029049566220150731, guid: 6a8e958b7db1f4f489af34a865586ef1, type: 3}
     size: 30
-    positionMin: {x: 303, y: 1.85, z: 200}
-    positionMax: {x: 615, y: 1.85, z: 440}
+    positionMin: {x: 280, y: 1.85, z: 198}
+    positionMax: {x: 598, y: 1.85, z: 488}
     scaleMin: {x: 3, y: 3, z: 3}
     scaleMax: {x: 6, y: 7, z: 6}
   - tag: B1003
     prefab: {fileID: 6194674592176918762, guid: 0d58538e39d675a4e8b68a484fdeb26f, type: 3}
     size: 40
-    positionMin: {x: 303, y: 1.85, z: 200}
-    positionMax: {x: 615, y: 1.85, z: 440}
+    positionMin: {x: 280, y: 1.85, z: 198}
+    positionMax: {x: 598, y: 1.85, z: 488}
     scaleMin: {x: 1, y: 1, z: 1}
     scaleMax: {x: 1.3, y: 1.3, z: 1.3}
   - tag: B1004
     prefab: {fileID: 2853945937288575525, guid: d9bcf36989ef7f84e919479ca7326184, type: 3}
     size: 30
-    positionMin: {x: 303, y: 1.85, z: 200}
-    positionMax: {x: 615, y: 1.85, z: 440}
+    positionMin: {x: 280, y: 1.85, z: 198}
+    positionMax: {x: 598, y: 1.85, z: 488}
     scaleMin: {x: 0.5, y: 1, z: 0.5}
     scaleMax: {x: 1, y: 1.5, z: 1}
   - tag: B1005
@@ -617,29 +617,29 @@ MonoBehaviour:
   - tag: B1007
     prefab: {fileID: 1672817729052459913, guid: 9c5085c0d24f35f4ab5532adc9c4eb20, type: 3}
     size: 30
-    positionMin: {x: 303, y: 1.85, z: 200}
-    positionMax: {x: 615, y: 1.85, z: 440}
+    positionMin: {x: 280, y: 1.85, z: 198}
+    positionMax: {x: 598, y: 1.85, z: 488}
     scaleMin: {x: 1, y: 1, z: 1}
     scaleMax: {x: 2, y: 2, z: 2}
   - tag: B1008
     prefab: {fileID: 524810640531231321, guid: e326112a572381244833911c1b4bc25f, type: 3}
     size: 30
-    positionMin: {x: 303, y: 1.85, z: 200}
-    positionMax: {x: 615, y: 1.85, z: 440}
+    positionMin: {x: 280, y: 1.85, z: 198}
+    positionMax: {x: 598, y: 1.85, z: 488}
     scaleMin: {x: 1, y: 1, z: 1}
     scaleMax: {x: 2, y: 2, z: 2}
   - tag: B1009
     prefab: {fileID: 286878617377838162, guid: 6180e514ec8ef824db5ef9271a8c0691, type: 3}
     size: 30
-    positionMin: {x: 303, y: 1.85, z: 200}
-    positionMax: {x: 615, y: 1.85, z: 440}
+    positionMin: {x: 280, y: 1.85, z: 198}
+    positionMax: {x: 598, y: 1.85, z: 488}
     scaleMin: {x: 1, y: 1, z: 1}
     scaleMax: {x: 2, y: 2, z: 2}
   - tag: B1010
     prefab: {fileID: 6565635948001159583, guid: f892104f62dfeab4d81021f04e0e0614, type: 3}
     size: 40
-    positionMin: {x: 303, y: 1.85, z: 200}
-    positionMax: {x: 615, y: 1.85, z: 440}
+    positionMin: {x: 298, y: 1.85, z: 198}
+    positionMax: {x: 598, y: 1.85, z: 488}
     scaleMin: {x: 6, y: 5, z: 6}
     scaleMax: {x: 7, y: 5, z: 7}
   - tag: B1011
