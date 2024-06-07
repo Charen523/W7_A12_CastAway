@@ -1,11 +1,16 @@
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UIWorkshop : MonoBehaviour
 {
+    private enum eWorkshop
+    {
+        INVENTORY,
+        EQUIP,
+        CRAFT
+    }
+
     /*플레이어.*/
     private PlayerController controller;
 
@@ -13,10 +18,6 @@ public class UIWorkshop : MonoBehaviour
     public List<GameObject> workshopBtns = new List<GameObject>();
     public List<GameObject> workshopPanels = new List<GameObject>();
     public int currentActiveIndex;
-    //Workshop Index
-    //[0]: Inventory
-    //[1]: Equip
-    //[2]: Craft
 
     private void Awake()
     {
@@ -28,6 +29,8 @@ public class UIWorkshop : MonoBehaviour
         foreach (Transform child in transform.Find("Panels"))
         {
             workshopPanels.Add(child.gameObject);
+            if (!child.gameObject.activeSelf)
+                child.gameObject.SetActive(true);
         }
     }
 
@@ -40,9 +43,9 @@ public class UIWorkshop : MonoBehaviour
         controller.WorkshopInput += ToggleWorkshop; 
 
         /*버튼 이벤트 리스너 추가*/
-        workshopBtns[0].GetComponent<Button>().onClick.AddListener(OnInvenClicked);
-        workshopBtns[1].GetComponent<Button>().onClick.AddListener(OnEquipClicked);
-        workshopBtns[2].GetComponent<Button>().onClick.AddListener(OnCraftClicked);
+        workshopBtns[(int)eWorkshop.INVENTORY].GetComponent<Button>().onClick.AddListener(OnInvenClicked);
+        workshopBtns[(int)eWorkshop.EQUIP].GetComponent<Button>().onClick.AddListener(OnEquipClicked);
+        workshopBtns[(int)eWorkshop.CRAFT].GetComponent<Button>().onClick.AddListener(OnCraftClicked);
 
         foreach (GameObject obj in workshopPanels)
         {
@@ -79,16 +82,16 @@ public class UIWorkshop : MonoBehaviour
 
     private void OnInvenClicked()
     {
-        ToggleBtns(0);
+        ToggleBtns((int)eWorkshop.INVENTORY);
     }
 
     private void OnEquipClicked()
     {
-        ToggleBtns(1);
+        ToggleBtns((int)eWorkshop.EQUIP);
     }
 
     private void OnCraftClicked()
     {
-        ToggleBtns(2);
+        ToggleBtns((int)eWorkshop.CRAFT);
     }
 }
