@@ -50,8 +50,10 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (health.curValue == 0 && !isDead)
         {
             Die();
+            controller.baseSpeed = 0;
             deathUIController.ShowDeathUI();
             controller.ToggleCursor();
+            
         }
 
         if (controller.animator.GetBool("IsRun"))

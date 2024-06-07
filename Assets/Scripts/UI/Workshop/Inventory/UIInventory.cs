@@ -49,10 +49,12 @@ public class UIInventory : MonoBehaviour
         {
             invenBtns.Add(transform.gameObject);
         }
+
     }
 
     private void Start()
     {
+        Debug.Log("들어옴");
         invenBtns[(int)eBtnIndex.USE_BTN].GetComponent<Button>().onClick.AddListener(OnUseBtn);
         invenBtns[(int)eBtnIndex.DROP_BTN].GetComponent<Button>().onClick.AddListener(OnDropBtn);
         invenBtns[(int)eBtnIndex.EQUIP_BTN].GetComponent<Button>().onClick.AddListener(OnEquipBtn);
@@ -310,8 +312,32 @@ public class UIInventory : MonoBehaviour
             slot.quantity = 0;
             slot.Clear();
         }
+        //for (int i = 0; invenBtns[i]; i++)
+        //{
+        //    invenBtns[i] = null;
+        //}
         ClearSelectedItemWindow();
         UpdateUI();
         Debug.Log("인벤토리 비워짐");
+    }
+    public void InitializeInventory()
+    {
+        invenBtns[(int)eBtnIndex.USE_BTN].GetComponent<Button>().onClick.AddListener(OnUseBtn);
+        invenBtns[(int)eBtnIndex.DROP_BTN].GetComponent<Button>().onClick.AddListener(OnDropBtn);
+        invenBtns[(int)eBtnIndex.EQUIP_BTN].GetComponent<Button>().onClick.AddListener(OnEquipBtn);
+        invenBtns[(int)eBtnIndex.UNEQUIP_BTN].GetComponent<Button>().onClick.AddListener(OnUnequipBtn);
+
+        slots = new ItemSlot[holdings.childCount];
+        
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i] = holdings.GetChild(i).GetComponent<ItemSlot>();
+            slots[i].inventory = this;
+            slots[i].slotIndex = i;
+            slots[i].Clear();
+        }
+
+        ClearSelectedItemWindow();
+        UpdateUI();
     }
 }
