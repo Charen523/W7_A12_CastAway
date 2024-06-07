@@ -301,4 +301,18 @@ public class UIInventory : MonoBehaviour
         }
         return null;
     }
+
+    public bool GetItemInInventory(string id, int quantity)
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item.name == id && quantity <= slots[i].quantity)
+            {
+                return true;
+            }
+        }
+
+
+        return false;
+    }
 }
