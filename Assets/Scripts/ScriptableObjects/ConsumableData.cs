@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class ItemDataConsumable
 {
-    public eConsumableType type;
+    public eConditionType type;
     public float value;
 }
 

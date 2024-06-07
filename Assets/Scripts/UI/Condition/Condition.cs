@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Condition : MonoBehaviour
 {
     [Header("Condition Values")]
+    public eConditionType conditionType;
     public float startValue;
     public float maxValue;
     public float curValue;
