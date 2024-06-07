@@ -82,6 +82,11 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         hunger.ChangeValue(amount);
     }
 
+    public float GetThirstMaxValue()
+    {
+        return thirst.maxValue;
+    }
+
     public void Heal(float amount)
     {
         health.ChangeValue(amount);
