@@ -25,10 +25,12 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     
     /*Components*/
     private PlayerController controller;
-
+    public DeathUIController deathUIController;
     /*player Condition Status*/
     private bool isDead;
 
+
+    
     private void Start()
     {
         controller = CharacterManager.Instance.Player.controller;
@@ -48,6 +50,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (health.curValue == 0 && !isDead)
         {
             Die();
+            deathUIController.ShowDeathUI();
+            controller.ToggleCursor();
         }
 
         if (controller.animator.GetBool("IsRun"))

@@ -242,4 +242,17 @@ public class UIInventory : MonoBehaviour
         }
         return null;
     }
+
+    public void ClearInventory()
+    {
+        foreach (var slot in slots)
+        {
+            slot.item = null;
+            slot.quantity = 0;
+            slot.Clear();
+        }
+        ClearSelectedItemWindow();
+        UpdateUI();
+        Debug.Log("인벤토리 비워짐");
+    }
 }
