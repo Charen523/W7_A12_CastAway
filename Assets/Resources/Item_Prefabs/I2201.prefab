@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8160908526846722394}
   - component: {fileID: 6594608010425539209}
   - component: {fileID: -2950280488816211442}
-  - component: {fileID: 1233960241984869213}
   - component: {fileID: -4718355062236554998}
   m_Layer: 6
   m_Name: I2201
@@ -135,28 +134,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &1233960241984869213
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775719851354697419}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1388986636967069719, guid: 0c70a1c8c591d1f4caf785297bccc393, type: 3}
 --- !u!114 &-4718355062236554998
 MonoBehaviour:
   m_ObjectHideFlags: 0

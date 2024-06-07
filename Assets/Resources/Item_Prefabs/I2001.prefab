@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4339637703610696850}
   - component: {fileID: -37718422596597004}
   - component: {fileID: -4810797730271248784}
-  - component: {fileID: 1802982751576606311}
   - component: {fileID: -7772095245719758821}
   m_Layer: 6
   m_Name: I2001
@@ -135,28 +134,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &1802982751576606311
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8824289032586821766}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7243244776062849328, guid: 829b122512a90914986a375d72271b29, type: 3}
 --- !u!114 &-7772095245719758821
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -147,7 +147,7 @@ public class NeutralEntities : MonoBehaviour, IDamagable
     {
         return Vector3.Angle(transform.position - CharacterManager.Instance.Player.transform.position, transform.position + targetPos);
     }
-    public void TakePhysicalDamage(int damageAmount) // 데미지를 받는 로직
+    public void TakeDamage(int damageAmount) // 데미지를 받는 로직
     {
         data.CureentHealth -= damageAmount; //체력 - 데미지
         if (data.CureentHealth <= 0) //0보다 작거나 같아지면 죽음
