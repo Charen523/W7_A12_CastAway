@@ -13,7 +13,4 @@ public class ItemData : ScriptableObject
     [Header("Stacking")]
     public bool canStack = true;
     public int maxStackAmount = 99;
-
-    [Header("Equip")]
-    public GameObject equipPrefab; // 장착한 장비 프리펩
 }
