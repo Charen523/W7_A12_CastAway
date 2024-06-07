@@ -40,4 +40,6 @@ public class ResourceCapacity : MonoBehaviour
             }
         }
     }
+
+    // 플레이어와 충돌한 자원이 동굴 앞 돌이면, currentHits >= maxHits 일 때, Destroy(gameObject)
 }

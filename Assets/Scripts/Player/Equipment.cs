@@ -29,7 +29,7 @@ public class Equipment : MonoBehaviour
     public void EquipNew(ItemData data) //장착하기
     {
         UnEquip(); //현재 장착한 장비를 해제
-        curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>(); // 장착을 할 장비를 curEquip에 넣어줌 
+        //curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>(); // 장착을 할 장비를 curEquip에 넣어줌 
     }
 
     public void UnEquip()

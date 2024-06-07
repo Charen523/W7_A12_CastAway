@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -113,7 +114,7 @@ public class ResourcePoolManager : MonoBehaviour
             {
                 Vector3 position = new Vector3(
                     Random.Range(pool.positionMin.x, pool.positionMax.x),
-                    30f, // 레이캐스트 초기 y 위치
+                    30f,
                     Random.Range(pool.positionMin.z, pool.positionMax.z)
                 );
 
