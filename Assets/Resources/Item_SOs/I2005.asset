@@ -10,20 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
-  m_Name: I2003
+  m_Name: I2005
   m_EditorClassIdentifier: 
   itemId: I2
-  type: 2
-  displayName: "\uC870\uC7A1\uD55C \uBB34\uAE30"
-  description: "\uC5EC\uB7EC \uC2DC\uD589\uCC29\uC624 \uB05D\uC5D0 \uB0A0\uBD99\uC774
-    \uB300\uC2E0 \uBB49\uD22D\uD55C \uB3CC\uC744 \uACE8\uB77C \uB9CC\uB4E0 \uD6CC\uB96D\uD55C
-    \uB300\uD654\uC218\uB2E8."
+  itemType: 2
+  displayName: "\uCCA0 \uB3C4\uB07C"
+  description: "\uCCA0\uBD99\uC774\uB85C \uB9CC\uB4E0 \uD2BC\uD2BC\uD55C \uB3C4\uB07C.
+    \uB098\uBB34\uB97C \uC870\uAE08 \uB354 \uBE60\uB974\uAC8C \uBCA8 \uC218 \uC788\uB2E4."
   icon: {fileID: 21300000, guid: f26fa8880b3aeef4b8516c82dc12f2a5, type: 3}
   canStack: 0
   maxStackAmount: 0
-  EquipId: E003
-  equipType: 2
+  craftTool: 2
+  recipe:
+  - itemId: I0005
+    value: 2
+  - itemId: I0011
+    value: 5
+  resultQuantity: 1
+  EquipId: E005
+  equipType: 0
   equipStats:
   - type: 0
-    value: 25
+    value: 50
   isEquipped: 0

@@ -40,3 +40,11 @@ public enum eAIState
     ATTACKING, // 공격
     FLEEING // 도망
 }
+
+public enum eCraftTool
+{
+    DEFAULT,
+    HAND,
+    WORKBENCH,
+    FURNACE
+}

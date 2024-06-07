@@ -205,7 +205,7 @@ public class UIInventory : MonoBehaviour
 
     public void ThrowItem(ItemData data)
     {
-        Instantiate(Resources.Load(($"Item_Prefabs/{data.itemId}")), dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
+        Instantiate(DataManager.Instance.itemPrefabDictionary[data.name], dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
     }
 
     public void SelectItem(int index)

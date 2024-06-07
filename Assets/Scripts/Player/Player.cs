@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     public Transform dropPosition; //아이템을 드롭할 위치
 
+    public int collisionMask;
+
     private void Awake()
     {
         CharacterManager.Instance.Player = this; // 캐릭터 매니저에 존재하는 Player에 자신을 넣어줌

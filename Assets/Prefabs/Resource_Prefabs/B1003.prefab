@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1669340448805708484}
   - component: {fileID: 5764890222071904387}
   - component: {fileID: 4421874949299217915}
-  - component: {fileID: -5101175303545710647}
   - component: {fileID: -6360766718195212276}
   m_Layer: 0
   m_Name: B1003
@@ -29,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6194674592176918762}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -110,27 +109,6 @@ CapsuleCollider:
   m_Height: 13.553929
   m_Direction: 1
   m_Center: {x: 0.01, y: 5.69, z: 0.02}
---- !u!65 &-5101175303545710647
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6194674592176918762}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 12.521061, y: 13.553925, z: 12.640932}
-  m_Center: {x: -0.21279335, y: 6.276413, z: -0.357795}
 --- !u!114 &-6360766718195212276
 MonoBehaviour:
   m_ObjectHideFlags: 0
