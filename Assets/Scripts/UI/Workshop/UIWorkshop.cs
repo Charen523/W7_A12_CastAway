@@ -37,7 +37,7 @@ public class UIWorkshop : MonoBehaviour
 
         //인벤토리 창 Toggle 이벤트 등록.
         //TODO: 액션 이름 inventory > workshop으로 바꾸기.
-        controller.Workshop += ToggleWorkshop; 
+        controller.WorkshopInput += ToggleWorkshop; 
 
         /*버튼 이벤트 리스너 추가*/
         workshopBtns[0].GetComponent<Button>().onClick.AddListener(OnInvenClicked);

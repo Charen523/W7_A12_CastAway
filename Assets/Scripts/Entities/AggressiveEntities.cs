@@ -13,6 +13,8 @@ public class AggressiveEntities : MonoBehaviour
 
     private float playerDistance; //플레이어와의 거리
 
+
+    public float lastAttackTime = 0; //최근 공격한 시간
     public float fieldOfView = 120f; //시야각 (120도)
 
     private void Awake()
@@ -115,10 +117,11 @@ public class AggressiveEntities : MonoBehaviour
         else
         {
             agent.isStopped = true; //멈춰서
-            if (Time.time - data.lastAttackTime > data.attackRate) //공격 대기시간을 계산하여
+            if (Time.time - lastAttackTime > data.attackRate) //공격 대기시간을 계산하여
             {
-                data.lastAttackTime = Time.time;
-                CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakePhysicalDamage(data.damage); //IDamagable의 물리 데미지 주는 함수를 호출
+                lastAttackTime = Time.time;
+                StartCoroutine(ChargeAndReturn());
+                CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakeDamage(data.damage); //IDamagable의 물리 데미지 주는 함수를 호출
                 animator.speed = 1; //애니메이터의 속도를 1로 고정
                 animator.SetTrigger("Attack"); //트리거 Attack을 발동
             }
@@ -224,5 +227,39 @@ public class AggressiveEntities : MonoBehaviour
         yield return new WaitForSeconds(0.1f); //색을 0.1초만큼 기다렸다가 변경
         for (int x = 0; x < meshRenderers.Length; x++) // 하얀색으로 섬광이 일어남
             meshRenderers[x].material.color = Color.white;
+    }
+
+    IEnumerator ChargeAndReturn()
+    {
+        Vector3 originalPosition = transform.position;
+        data.isCharging = true;
+
+        // 캐릭터의 방향으로 돌진
+        Vector3 chargeDirection = (CharacterManager.Instance.Player.transform.position - transform.position).normalized;
+        Vector3 chargeTarget = CharacterManager.Instance.Player.transform.position;
+        float chargeElapsedTime = 0f;
+
+        while (chargeElapsedTime < data.chargeDuration)
+        {
+            transform.position = Vector3.Lerp(transform.position, chargeTarget, chargeElapsedTime / data.chargeDuration);
+            chargeElapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // 정확히 캐릭터의 위치로 이동
+        transform.position = chargeTarget;
+
+        // 일정 시간 후에 원래 위치로 돌아옴
+        float returnElapsedTime = 0f;
+        while (returnElapsedTime < data.returnDuration)
+        {
+            transform.position = Vector3.Lerp(transform.position, originalPosition, returnElapsedTime / data.returnDuration);
+            returnElapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // 정확히 원래 위치로 이동
+        transform.position = originalPosition;
+        data.isCharging = false;
     }
 }

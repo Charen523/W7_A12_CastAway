@@ -27,7 +27,9 @@ public class EntityData : ScriptableObject
     [Header("Combat")]
     public int damage; //데미지
     public float attackRate; // 공격 대기시간
-    public float lastAttackTime; //최근 공격한 시간
     public float attackDistance; // 공격 거리
+    public float chargeDuration = 0.5f; // 캐릭터에게 돌진하는 시간
+    public float returnDuration = 0.5f; // 원래 위치로 돌아오는 시간
+    public bool isCharging = false;
 }
 

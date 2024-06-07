@@ -85,19 +85,20 @@ public class UIInventory : MonoBehaviour
             {
                 switch (consumeData.consumables[i].type)
                 {
-                    case eConsumableType.HUNGER:
+                    case eConditionType.HUNGER:
                         condition.Eat(consumeData.consumables[i].value);
                         break;
-                    case eConsumableType.THIRST:
+                    case eConditionType.THIRST:
+                        condition.Drink(consumeData.consumables[i].value);
                         break;
-                    case eConsumableType.HEALTH:
+                    case eConditionType.HEALTH:
                         condition.Heal(consumeData.consumables[i].value);
                         break;
-                    case eConsumableType.STAMINA:
-                        //플레이어 컨디션 완료 후 추가 예정.
+                    case eConditionType.STAMINA:
+                        condition.GiveEnergy(consumeData.consumables[i].value); 
                         break;
-                    case eConsumableType.TEMPERATURE:
-                        //미구현.
+                    case eConditionType.TEMPERATURE:
+                        //고추 아이템 추가 시 더워지게 등등? 아이디어만 있음.
                         break;
                 }
             }

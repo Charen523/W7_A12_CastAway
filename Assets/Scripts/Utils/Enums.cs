@@ -8,7 +8,7 @@ public enum eItemType
     EQUIP
 }
 
-public enum eConsumableType
+public enum eConditionType
 {
     HUNGER,
     THIRST,
