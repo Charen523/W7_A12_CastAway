@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1349116540380491199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8131674128358275672}
+  - component: {fileID: 1177197098796904294}
+  m_Layer: 0
+  m_Name: BuildManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8131674128358275672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349116540380491199}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177197098796904294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349116540380491199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235a628727170124c8f47dd18275ed32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crafts:
+  - tag: B0001
+    name: "\uBAA8\uB2E5\uBD88"
+    actualPrefab: {fileID: 5948996664620845445, guid: 73072c2c2f86a07459828138d4f454b2, type: 3}
+    matInfo: "\uB3CC 5, \uBAA9\uC7AC 3"
+  - tag: B0003
+    name: "\uC774\uB3D9\uC2DD \uBAA8\uB2E5\uBD88"
+    actualPrefab: {fileID: 8876789504606613471, guid: 923318b5817a508499b6796c798215b3, type: 3}
+    matInfo: "\uB3CC 8, \uBAA9\uC7AC 4"
+  - tag: B0004
+    name: "\uCE68\uB300"
+    actualPrefab: {fileID: 7035959111163218515, guid: 74182b88b7f7aa845972d88b6d41ecdb, type: 3}
+    matInfo: "\uBAA9\uD310 4, \uCC9C 8"
+  - tag: B0006
+    name: "\uC9D1"
+    actualPrefab: {fileID: 600868153343580663, guid: eacf3ec9f4dc24a4daecac657f0d2c29, type: 3}
+    matInfo: "\uB3CC 10, \uBAA9\uD310 12"
+  - tag: B0007
+    name: "\uC6B0\uBB3C"
+    actualPrefab: {fileID: 8703707389580662045, guid: 18a89e398b48f344da9fd7f337e6215f, type: 3}
+    matInfo: "\uB3CC 12"
+  promptText: {fileID: 0}
+  promptPanel: {fileID: 0}

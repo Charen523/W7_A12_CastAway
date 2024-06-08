@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2073797464564745751}
   - component: {fileID: 1602631957011423892}
   - component: {fileID: 4027082670263645903}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: B0004
-  m_TagString: Untagged
+  m_TagString: B0004
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

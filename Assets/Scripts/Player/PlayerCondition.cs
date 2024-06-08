@@ -80,7 +80,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Drink(float amount)
     {
-        hunger.ChangeValue(amount);
+        thirst.ChangeValue(amount);
     }
 
     public float GetThirstMaxValue()

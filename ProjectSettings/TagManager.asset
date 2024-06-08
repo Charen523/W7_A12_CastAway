@@ -19,6 +19,11 @@ TagManager:
   - B1009
   - B1010
   - B1011
+  - B0001
+  - B0003
+  - B0004
+  - B0006
+  - B0007
   layers:
   - Default
   - TransparentFX
