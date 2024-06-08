@@ -9,6 +9,10 @@ public class SceneManagers : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
+    public void RetryBtn()
+    {
+        SceneManager.LoadScene(1);
+    }
     public void GameExit()
     {
         Application.Quit();
