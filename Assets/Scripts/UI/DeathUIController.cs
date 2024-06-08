@@ -4,6 +4,7 @@ using UnityEngine;
 public class DeathUIController : MonoBehaviour
 {
     public CanvasGroup deathUICanvasGroup;
+    public GameObject DeathUI;
     public float fadeDuration = 1.0f;
 
 
@@ -14,13 +15,15 @@ public class DeathUIController : MonoBehaviour
 
     public void ShowDeathUI()
     {
+        DeathUI.SetActive(true);
         StartCoroutine(FadeIn());
     }
 
     private IEnumerator FadeIn()
     {
+        
         float elapsedTime = 0f;
-
+        
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
