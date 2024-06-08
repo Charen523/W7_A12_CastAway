@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static CraftSystem;
 
 
 
-public class CraftSystem : MonoBehaviour, IInteractable
+public class CraftSystem : MonoBehaviour
 {
     [System.Serializable]
     public class Craft
@@ -17,107 +18,46 @@ public class CraftSystem : MonoBehaviour, IInteractable
 
         [Header("Prefab")]
         public GameObject actualPrefab;
+        public GameObject previewPrefab;
 
         [Header("Materials")]
         public string matInfo;
-    }
 
+        [HideInInspector]
+        public Vector3 initialLocation;
+    }
     public List<Craft> crafts;
     public TextMeshProUGUI promptText;
     public GameObject promptPanel;
-    
-
-    private GameObject currentPreview; // 현재 프리뷰 오브젝트
-    private Material previewMaterial; // 재질
+    public GameObject oldFence;
+    public Material fontMat;
+    public Material plantMat;
 
     void Start()
     {
         promptPanel.SetActive(false);
+        Initialize();
         foreach (var craft in crafts)
         {
+            craft.actualPrefab.SetActive(false);
             craft.isBuilt = false;
         }
     }
 
-    void Update()
-    {
-        //if(currentPreview != null)
-        //{
-            //// 마우스를 따라 이동
-            //FollowMouse();
-
-            //// 건축 가능 여부 확인 및 색상 변경
-            //CheckInstallableColor();
-        //}
-
-        //// 초록색일 때 실제 오브젝트 생성
-        //if (previewMaterial.color == Color.green)
-        //{
-        //    PlaceObject();
-        //}
-
-    }
-
-    public void GetInteractPrompt()
-    {
-        foreach (var craft in crafts)
-        {   // 아직 지어지지 않았으면,
-            if (!craft.isBuilt)
-            {
-                CreatePreviewObject(); // 가까이 다가가면 초록색 프리뷰 띄우기
-                DisplayPrompt(); // 프롬프트 표시
-            }
-        }
-    }
-
-    // 프리뷰 오브젝트 생성
-    void CreatePreviewObject()
-    {
-        foreach(var craft in crafts)
-        {
-            if(craft.tag == gameObject.tag)
-            {
-                currentPreview = Instantiate(craft.actualPrefab);
-                previewMaterial = currentPreview.GetComponent<Renderer>().material;
-                previewMaterial.color = Color.green; // 초기 색상 초록색
-            }
-        }
-    }
-
-    public void DisplayPrompt()
+    public void Initialize()
     {
         foreach (var craft in crafts)
         {
-            if (craft.tag == gameObject.tag)
+            if (craft.previewPrefab != null)
             {
-                promptPanel.SetActive(true); // 판넬 setActive true
-                string str = $"[E] 키를 눌러 {craft.name} 건설하기\n재료: {craft.matInfo}";// (가까이 다가갔을 때, 화면에 띄울 프롬프트)
-                promptText.text = str; // 오브젝트 설명 표시
-            }
-        }
-    }
+                craft.previewPrefab.SetActive(true);
 
-    public void ClosePrompt()
-    {   //상호작용 완료시, 판넬 setActive false
-        promptPanel.SetActive(false); 
-        promptText.text = "";
-    }
-
-    public void OnInteract()
-    {
-        // 재료가 모두 있으면,
-        PlaceObject();
-    }
-
-    // 실제 오브젝트 생성
-    void PlaceObject()
-    {
-        foreach (var craft in crafts)
-        {
-            if (craft.tag == gameObject.tag)
-            {
-                Instantiate(craft.actualPrefab, currentPreview.transform.position, Quaternion.identity);
-                craft.isBuilt = true;
+                // previewPrefab의 모든 Renderer의 material을 null로 설정
+                Renderer[] renderers = craft.previewPrefab.GetComponentsInChildren<Renderer>();
+                foreach (Renderer renderer in renderers)
+                {
+                    renderer.material = fontMat; // material을 null로 설정하여 보이지 않게 만듦
+                }
             }
         }
     }

@@ -23,10 +23,10 @@ public class DrinkLake : MonoBehaviour, IInteractable
     {
         // 물을 마실 수 있는 횟수(가까이 다가갔을 때, 화면에 띄울 프롬프트) ex) 7/7
         craftSystem.promptPanel.SetActive(true);
-        string str = $"이용 가능 횟수: {maxDrink-currentDrink}/{maxDrink}\n[E] 키를 눌러 갈증 해소하기";
+        string str = $"이용 가능 횟수: {maxDrink-currentDrink}/{maxDrink}\n[E]를 눌러 갈증 해소하기";
         craftSystem.promptText.text = str;
 
-        // 1초 뒤에 ClosePrompt 실행
+        // 3초 뒤에 ClosePrompt 실행
         StartCoroutine(ClosePromptAfterDelay(3.0f));
     }
 

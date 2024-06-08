@@ -19,10 +19,10 @@ public class DrinkWell : MonoBehaviour, IInteractable
     {
         // 가까이 다가갔을 때, 화면에 띄울 프롬프트
         craftSystem.promptPanel.SetActive(true);
-        string str = $"갈증을 해소할 수 있습니다.\n[E] 키를 눌러 물통 획득하기";
+        string str = $"갈증을 해소할 수 있습니다.\n[E]를 눌러 물통 획득하기";
         craftSystem.promptText.text = str;
 
-        // 1초 뒤에 ClosePrompt 실행
+        // 3초 뒤에 ClosePrompt 실행
         StartCoroutine(ClosePromptAfterDelay(3.0f));
     }
 
