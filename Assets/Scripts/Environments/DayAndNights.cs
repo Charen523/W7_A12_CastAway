@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class DayAndNight : MonoBehaviour
 {
-    [Range(0f, 1f)] public float time;
-    public float fullDayLength;
-    public float startTime = 0.4f; //0.4f = 9시 36분
-    private float timeRate;
+    private float time => GameManager.Instance.time;
+    private float fullDayLength;
     public Vector3 noon;
 
     [Header("Sun")]
@@ -30,15 +28,7 @@ public class DayAndNight : MonoBehaviour
 
     private void Start()
     {
-        timeRate = 0.005f; //(fullDayLength * 2);
-        time = startTime;
-
-
-        randomRain = FindObjectOfType<RandomRain>();
-        if (randomRain == null)
-        {
-            //Debug.LogError("비가없음");
-        }
+        fullDayLength = GameManager.Instance.fullDayLength;
 
         temperature = FindObjectOfType<Temperature>();
         if (temperature == null)
@@ -46,31 +36,35 @@ public class DayAndNight : MonoBehaviour
             Debug.LogError("Temperature 없음");
         }
 
+        //randomRain = FindObjectOfType<RandomRain>();
+        //if (randomRain == null)
+        //{
+        //    Debug.LogError("비가없음");
+        //}
     }
 
     private void Update()
     {
-        time = (time + timeRate * Time.deltaTime) % 1.0f;
         UpdateLighting(sun, sunColor, sunIntensity);
         UpdateLighting(moon, moonColor, moonIntensity);
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
+        
         UpdateTemperature();
 
-        if (randomRain != null)
-        {
+        //if (randomRain != null)
+        //{
 
-            if (!sun.gameObject.activeInHierarchy)
-            {
-                randomRain.EnableRain();
-            }
-            else
-            {
-                randomRain.DisableRain();
-            }
-        }
-
+        //    if (!sun.gameObject.activeInHierarchy)
+        //    {
+        //        randomRain.EnableRain();
+        //    }
+        //    else
+        //    {
+        //        randomRain.DisableRain();
+        //    }
+        //}
     }
 
     public void UpdateLighting(Light lightSource, Gradient gradient, AnimationCurve curve)
@@ -92,26 +86,36 @@ public class DayAndNight : MonoBehaviour
     {
         if (temperature != null)
         {
-            float targetTemperature = 0.0f;
+            float targetTemperature = 0;
 
-            // 정오(12시)에 온도가 90이 되도록 설정
-            if (time >= 0.5f && time <= 0.65f)
+            if (time > 0f && time <= 0.05f) // 밤: 혹한.
             {
-                targetTemperature = 90.0f;
+                targetTemperature = Random.Range(0, 15);
             }
-            // 밤 시간대 (0.85 <= time < 1.0 또는 0 <= time < 0.25)에 온도가 20 이하가 되도록 설정
-            else if (time >= 0.9f || time < 0.25f)
-            {               
-                targetTemperature = 15.0f;
-            }
-            // 그 외 시간대에는 온도가 40에서 60 사이에서 변화하도록 설정
-            else //if (time > 0.25f && time < 0.89f)
+            else if (time > 0.05f && time <= 0.25f)
             {
-                targetTemperature = Mathf.Lerp(40.0f, 60.0f, Mathf.PingPong((time - 0.25f) * 4.0f, 1.0f));
+                targetTemperature = Random.Range(15, 50);
+            }
+            else if (time > 0.25f && time <= 0.5f) // 아침: 따뜻함.
+            {
+                targetTemperature = Random.Range(50, 85);
+            }
+            else if (time > 0.5f && time <= 0.55f) // 정오: 무더위.
+            {
+                targetTemperature = Random.Range(85, 100);
+            }
+            else if (time > 0.55f && time <= 0.75f) // 오후: 따뜻함.
+            {
+                targetTemperature = Random.Range(50, 85);
+            }
+            else if (time > 0.75f && time <= 1f) // 저녁: 쌀쌀함.
+            {
+                targetTemperature = Random.Range(15, 50);
             }
 
             // 온도가 목표 온도에 점진적으로 도달하도록 변경 속도를 조절.
-            float temperatureChangeRate = 0.05f; // 온도가 천천히 변화하는 속도
+            //인게임 1시간동안 체온 변화가 이루어짐.
+            float temperatureChangeRate = Mathf.Log(0.01f) / (1 / fullDayLength * Time.deltaTime); 
             float currentTemperature = temperature.GetCurrentValue();
             float newTemperature = Mathf.Lerp(currentTemperature, targetTemperature, temperatureChangeRate * Time.deltaTime);
 
