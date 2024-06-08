@@ -25,6 +25,8 @@ public class DayAndNight : MonoBehaviour
 
     private RandomRain randomRain;
     private Temperature temperature;
+    private float targetTemperature = 50;
+    private int timeFlag = 0;
 
     private void Start()
     {
@@ -86,36 +88,42 @@ public class DayAndNight : MonoBehaviour
     {
         if (temperature != null)
         {
-            float targetTemperature = 0;
+            if (time > 0.99f)
+                timeFlag = 0;
 
-            if (time > 0f && time <= 0.05f) // 밤: 혹한.
+            if (time > 0.75f && timeFlag == 5) // 저녁: 쌀쌀함.
             {
-                targetTemperature = Random.Range(0, 15);
+                targetTemperature = Random.Range(25, 50);
+                timeFlag++;
             }
-            else if (time > 0.05f && time <= 0.25f)
+            else if (time > 0.55f && timeFlag == 4) // 오후: 따뜻함.
             {
-                targetTemperature = Random.Range(15, 50);
+                targetTemperature = Random.Range(50, 75);
+                timeFlag++;
             }
-            else if (time > 0.25f && time <= 0.5f) // 아침: 따뜻함.
+            else if (time > 0.49f && timeFlag == 3) // 정오: 무더위.
             {
-                targetTemperature = Random.Range(50, 85);
+                targetTemperature = Random.Range(75, 100);
+                timeFlag++;
             }
-            else if (time > 0.5f && time <= 0.55f) // 정오: 무더위.
+            else if (time > 0.25f && timeFlag == 2) // 아침: 따뜻함.
             {
-                targetTemperature = Random.Range(85, 100);
+                targetTemperature = Random.Range(50, 75);
+                timeFlag++;
             }
-            else if (time > 0.55f && time <= 0.75f) // 오후: 따뜻함.
+            else if (time > 0.05f && timeFlag == 1) //새벽: 쌀쌀함.
             {
-                targetTemperature = Random.Range(50, 85);
+                targetTemperature = Random.Range(25, 50);
+                timeFlag++;
             }
-            else if (time > 0.75f && time <= 1f) // 저녁: 쌀쌀함.
+            else if (time > 0f && timeFlag == 0) // 밤: 혹한.
             {
-                targetTemperature = Random.Range(15, 50);
+                targetTemperature = Random.Range(0, 25);
+                timeFlag++;
             }
-
             // 온도가 목표 온도에 점진적으로 도달하도록 변경 속도를 조절.
             //인게임 1시간동안 체온 변화가 이루어짐.
-            float temperatureChangeRate = Mathf.Log(0.01f) / (1 / fullDayLength * Time.deltaTime); 
+            float temperatureChangeRate = 0.5f; 
             float currentTemperature = temperature.GetCurrentValue();
             float newTemperature = Mathf.Lerp(currentTemperature, targetTemperature, temperatureChangeRate * Time.deltaTime);
 

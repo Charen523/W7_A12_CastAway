@@ -40,7 +40,11 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
+        float beforeTime = time;
         time = (time + timeRate * Time.deltaTime) % 1.0f;
+
+        if (beforeTime > time)
+            day++;
     }
 
     public void OnPauseEvent()
