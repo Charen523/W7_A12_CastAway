@@ -112,6 +112,7 @@ public class ResourcePoolManager : MonoBehaviour
         {
             for (int i = 0; i < pool.size; i++)
             {
+                Vector3 offset = new Vector3(i * 0.01f, 0, i * 0.001f);
                 Vector3 position = new Vector3(
                     Random.Range(pool.positionMin.x, pool.positionMax.x),
                     30f,
@@ -133,7 +134,8 @@ public class ResourcePoolManager : MonoBehaviour
                         position.y = pool.positionMin.y;
                     }
 
-                    obj.transform.position = position; // 객체 위치 설정
+                    obj.transform.position = position + offset; // 객체 위치 설정(오프셋 더함)
+
                     obj.transform.localScale = new Vector3(
                         Random.Range(pool.scaleMin.x, pool.scaleMax.x),
                         Random.Range(pool.scaleMin.y, pool.scaleMax.y),

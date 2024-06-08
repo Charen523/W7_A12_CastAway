@@ -7900,7 +7900,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -10729,6 +10729,26 @@ PrefabInstance:
     - target: {fileID: 4689579389014484160, guid: 491f7554b87c87743815d7405a2c71a9, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299138850115742432, guid: 491f7554b87c87743815d7405a2c71a9, type: 3}
+      propertyPath: m_TreeDistance
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299138850115742432, guid: 491f7554b87c87743815d7405a2c71a9, type: 3}
+      propertyPath: m_HeightmapPixelError
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299138850115742432, guid: 491f7554b87c87743815d7405a2c71a9, type: 3}
+      propertyPath: m_TreeCrossFadeLength
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299138850115742432, guid: 491f7554b87c87743815d7405a2c71a9, type: 3}
+      propertyPath: m_TreeBillboardDistance
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299138850115742432, guid: 491f7554b87c87743815d7405a2c71a9, type: 3}
+      propertyPath: m_TreeMaximumFullLODCount
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
