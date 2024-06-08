@@ -13,6 +13,7 @@ public class CraftSystem : MonoBehaviour, IInteractable
         [Header("Info")]
         public string tag;
         public string name;
+        public bool isBuilt;
 
         [Header("Prefab")]
         public GameObject actualPrefab;
@@ -24,6 +25,7 @@ public class CraftSystem : MonoBehaviour, IInteractable
     public List<Craft> crafts;
     public TextMeshProUGUI promptText;
     public GameObject promptPanel;
+    
 
     private GameObject currentPreview; // 현재 프리뷰 오브젝트
     private Material previewMaterial; // 재질
@@ -31,6 +33,10 @@ public class CraftSystem : MonoBehaviour, IInteractable
     void Start()
     {
         promptPanel.SetActive(false);
+        foreach (var craft in crafts)
+        {
+            craft.isBuilt = false;
+        }
     }
 
     void Update()
@@ -54,8 +60,14 @@ public class CraftSystem : MonoBehaviour, IInteractable
 
     public void GetInteractPrompt()
     {
-        CreatePreviewObject(); // 가까이 다가가면 초록색 프리뷰 띄우기
-        DisplayPrompt(); // 프롬프트 표시
+        foreach (var craft in crafts)
+        {   // 아직 지어지지 않았으면,
+            if (!craft.isBuilt)
+            {
+                CreatePreviewObject(); // 가까이 다가가면 초록색 프리뷰 띄우기
+                DisplayPrompt(); // 프롬프트 표시
+            }
+        }
     }
 
     // 프리뷰 오브젝트 생성
@@ -79,20 +91,21 @@ public class CraftSystem : MonoBehaviour, IInteractable
             if (craft.tag == gameObject.tag)
             {
                 promptPanel.SetActive(true); // 판넬 setActive true
-                string str = $"E 키를 눌러 {craft.name} 건설하기\n재료: {craft.matInfo}";// (가까이 다가갔을 때, 화면에 띄울 프롬프트)
+                string str = $"[E] 키를 눌러 {craft.name} 건설하기\n재료: {craft.matInfo}";// (가까이 다가갔을 때, 화면에 띄울 프롬프트)
                 promptText.text = str; // 오브젝트 설명 표시
             }
         }
     }
 
     public void ClosePrompt()
-    {
-        promptPanel.SetActive(false); //상호작용 완료시, 판넬 setActive false
-        promptText.text = "null";
+    {   //상호작용 완료시, 판넬 setActive false
+        promptPanel.SetActive(false); 
+        promptText.text = "";
     }
 
     public void OnInteract()
     {
+        // 재료가 모두 있으면,
         PlaceObject();
     }
 
@@ -104,6 +117,7 @@ public class CraftSystem : MonoBehaviour, IInteractable
             if (craft.tag == gameObject.tag)
             {
                 Instantiate(craft.actualPrefab, currentPreview.transform.position, Quaternion.identity);
+                craft.isBuilt = true;
             }
         }
     }
