@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4193408292625758975}
   - component: {fileID: 5341280762575539181}
   - component: {fileID: 6314521866893593959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: B0001
-  m_TagString: Untagged
+  m_TagString: B0001
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6931615737284895193}
   - component: {fileID: 7908927846036450600}
   - component: {fileID: 8191628278376604673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
