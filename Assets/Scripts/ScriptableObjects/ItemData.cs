@@ -22,7 +22,7 @@ public class ItemData : ScriptableObject
     public int maxStackAmount = 99;
 
     [Header("Recipe")]
-    public eCraftTool craftTool;
+    public eCraftType craftType;
     public RecipeMaterials[] recipe;
     public int resultQuantity;
 }

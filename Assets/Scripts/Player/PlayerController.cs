@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     /*Events*/
     public event Action WorkshopInput;
     public event Action SettingInput;
+    public event Action AltInfoOn;
+    public event Action AltInfoOff;
 
     [Header("Movement")]
     public float baseSpeed = 5;
@@ -144,11 +146,13 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             ToggleCursor();
+            AltInfoOn?.Invoke();
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
             ToggleCursor();
+            AltInfoOff?.Invoke();
         }
     }
 

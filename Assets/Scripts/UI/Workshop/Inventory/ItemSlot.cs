@@ -36,10 +36,6 @@ public class ItemSlot : MonoBehaviour
             quantity = 0;
             isSelected = false;
         }
-        else
-        {
-            Debug.LogWarning("icon 오브젝트를 찾을 수 없음!");
-        }
     }
 
     private void Start()

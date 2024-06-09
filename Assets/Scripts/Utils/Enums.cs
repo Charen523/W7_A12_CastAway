@@ -5,7 +5,8 @@ public enum eItemType
 {
     MATERIAL,
     CONSUME,
-    EQUIP
+    EQUIP,
+    Builts
 }
 
 public enum eConditionType
@@ -41,7 +42,7 @@ public enum eAIState
     FLEEING // 도망
 }
 
-public enum eCraftTool
+public enum eCraftType
 {
     DEFAULT,
     HAND,
