@@ -411,7 +411,6 @@ GameObject:
   - component: {fileID: 9156246366934270180}
   - component: {fileID: 6322478510585119906}
   - component: {fileID: 7546141533500303725}
-  - component: {fileID: 7006236147341782198}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -520,7 +519,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7006236147341782198}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
         m_MethodName: SetPause
         m_Mode: 1
@@ -532,21 +531,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7006236147341782198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334801401320087912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e39a2d8aa82c13459a26e288c9efbf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Pause: {fileID: 0}
-  SettingUI: {fileID: 0}
-  InventoryUI: {fileID: 0}
 --- !u!1 &1995702001986408959
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429625197959487516}
+  - component: {fileID: 2975925828580102595}
   m_Layer: 5
   m_Name: TimeUI
   m_TagString: Untagged
@@ -893,6 +878,18 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: 20}
   m_SizeDelta: {x: 200, y: 300}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &2975925828580102595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732437450324122472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f3eaa5d148ec340b25af902244781d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3986054837950336502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,7 +1717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Day 1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5b8851c2ff1e9946b0a47705bb714a8, type: 2}
   m_sharedMaterial: {fileID: -8665269704768401707, guid: e5b8851c2ff1e9946b0a47705bb714a8, type: 2}

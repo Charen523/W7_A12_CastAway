@@ -37,9 +37,6 @@ public class UIWorkshop : MonoBehaviour
     private void Start()
     {
         controller = CharacterManager.Instance.Player.controller;
-
-        //인벤토리 창 Toggle 이벤트 등록.
-        //TODO: 액션 이름 inventory > workshop으로 바꾸기.
         controller.WorkshopInput += ToggleWorkshop; 
 
         /*버튼 이벤트 리스너 추가*/
@@ -58,7 +55,7 @@ public class UIWorkshop : MonoBehaviour
         gameObject.SetActive(false); //모든 초기화 완료 후 자기자신 끄기.
     }
 
-    public void ToggleWorkshop()
+    private void ToggleWorkshop()
     {
         if (gameObject.activeSelf)
         {
