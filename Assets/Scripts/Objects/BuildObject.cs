@@ -76,6 +76,7 @@ public class BuildObject : MonoBehaviour, IInteractable
                 if(gameObject.tag == "B0006")
                 {
                     Destroy(oldFence);
+                    
                 }
                 ClosePrompt(); // 상호작용 후 프롬프트 닫기
                 break;
