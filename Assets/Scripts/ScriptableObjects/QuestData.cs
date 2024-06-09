@@ -5,8 +5,10 @@ using UnityEngine;
 public class QuestData : ScriptableObject
 {
     [Header("Info")]
+    public int QuestID;
     public string QuestName;
     public string QuestDescription;
     public string CurrentCount;
     public string MaxCount;
+    public bool BoolClear;
 }

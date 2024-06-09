@@ -8,6 +8,7 @@ public class DataManager : Singleton<DataManager>
     public Dictionary<string, ItemData> itemDataDictionary;
     public Dictionary<string, GameObject> itemPrefabDictionary;
     public Dictionary<string, GameObject> EquipPrefabDictionary;
+    public Dictionary<string, QuestData> QuestDataDictionary;
 
     protected override void Awake()
     {
@@ -15,6 +16,7 @@ public class DataManager : Singleton<DataManager>
         itemDataDictionary = new Dictionary<string, ItemData>();
         itemPrefabDictionary = new Dictionary<string, GameObject>();
         EquipPrefabDictionary = new Dictionary<string, GameObject>();
+        QuestDataDictionary = new Dictionary<string, QuestData>();
 
 
         foreach (var data in Resources.LoadAll<ItemData>("Item_SOs")) 
@@ -29,6 +31,10 @@ public class DataManager : Singleton<DataManager>
         foreach (var data in Resources.LoadAll<GameObject>("Equip_Prefabs"))
         {
             EquipPrefabDictionary.Add(data.name, data);
+        }
+        foreach (var data in Resources.LoadAll<QuestData>("Quest_SO"))
+        {
+            QuestDataDictionary.Add(data.name, data);
         }
     }
 }
