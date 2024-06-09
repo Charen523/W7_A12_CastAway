@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: I1008
   m_EditorClassIdentifier: 
   itemId: I1008
-  type: 1
+  itemType: 1
   displayName: "\uC0DD \uC0AC\uC2B4\uACE0\uAE30"
-  description: 
+  description: "\uBED1\uBED1\uD55C \uB0A0\uC9D0\uC2B9\uC758 \uB9DB\uC774 \uADF8\uB300\uB85C
+    \uB098\uB294 \uACE0\uAE30. \uADF8\uB798\uB3C4 \uBD80\uC871\uD55C \uB2E8\uBC31\uC9C8\uC740
+    \uBCF4\uCDA9\uD574\uC900\uB2E4!"
   icon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
   canStack: 1
   maxStackAmount: 99
+  craftType: 0
+  recipe: []
+  resultQuantity: 0
   consumables:
   - type: 0
     value: 10

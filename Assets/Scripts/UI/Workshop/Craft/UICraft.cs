@@ -23,6 +23,7 @@ public class UICraft : MonoBehaviour
     public List<RecipeSlot> slots = new List<RecipeSlot>();
     private RecipeSlot selectedSlot;
     private bool isCraftable;
+    private Dictionary<int, int> materialIndexes = new Dictionary<int, int>();
 
     [Header("Inventory")]
     public UIInventory inventory; //인스펙터창
@@ -45,6 +46,10 @@ public class UICraft : MonoBehaviour
     private void Start()
     {
         craftButton.GetComponent<Button>().onClick.AddListener(OnCraftBtn);
+        CharacterManager.Instance.Player.NearWorkBench += EnableWorkBenchRecipe;
+        CharacterManager.Instance.Player.FarWorkBench += DisableWorkBenchRecipe;
+        CharacterManager.Instance.Player.NearFurnace += EnableFurnaceRecipe;
+        CharacterManager.Instance.Player.FarFurnace += DisableFurnaceRecipe;
 
         for (int i = 0; i <  slots.Count; i++)
         {
@@ -58,6 +63,10 @@ public class UICraft : MonoBehaviour
 
     private void OnCraftBtn()
     {
+        foreach (var data in materialIndexes)
+        {
+            inventory.RemoveUsedItem(data.Key, data.Value);
+        }
         inventory.AddItem(selectedSlot.itemData);
         ClearSelectedRecipeWindow();
     }
@@ -72,6 +81,7 @@ public class UICraft : MonoBehaviour
         }
 
         resultImg.sprite = null;
+        materialIndexes.Clear();
         craftButton.SetActive(false);
     }
 
@@ -111,6 +121,7 @@ public class UICraft : MonoBehaviour
             else
             {
                 selectedRecipe[(int)eRecipeIndex.CURRENT_VALUE].text += findSlot.quantity + "\n";
+                materialIndexes.Add(findSlot.slotIndex, selectedSlot.itemData.recipe[i].value);
 
                 if (findSlot.quantity >= selectedSlot.itemData.recipe[i].value)
                     currentSufficient++;
@@ -135,5 +146,49 @@ public class UICraft : MonoBehaviour
             craftButton.SetActive(false);
         }
 
+    }
+
+    private void EnableWorkBenchRecipe()
+    {
+        for (int i =0; i < slots.Count; i++)
+        {
+            if (slots[i].craftType == eCraftType.WORKBENCH)
+            {
+                slots[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private void DisableWorkBenchRecipe()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].craftType == eCraftType.WORKBENCH)
+            {
+                slots[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void EnableFurnaceRecipe()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].craftType == eCraftType.FURNACE)
+            {
+                slots[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private void DisableFurnaceRecipe()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].craftType == eCraftType.FURNACE)
+            {
+                slots[i].gameObject.SetActive(false);
+            }
+        }
     }
 }

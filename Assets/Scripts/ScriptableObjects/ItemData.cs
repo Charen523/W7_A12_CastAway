@@ -4,7 +4,7 @@ using UnityEngine;
 public class RecipeMaterials
 {
     public string itemId;
-    public float value;
+    public int value;
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "SO/New Item", order = 0)]
