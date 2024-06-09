@@ -6,7 +6,7 @@ public class SceneManagers : MonoBehaviour
 {
     public void StartBtn()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(1);
     }
 
     public void RetryBtn()
