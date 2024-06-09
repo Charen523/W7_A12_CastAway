@@ -20,7 +20,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   canStack: 0
   maxStackAmount: 0
-  craftType: 2
+  craftType: 1
   recipe:
   - itemId: I0001
     value: 4

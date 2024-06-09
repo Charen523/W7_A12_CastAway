@@ -20,7 +20,7 @@ public class UICraft : MonoBehaviour
     public List<TextMeshProUGUI> selectedRecipe; //인스펙터창
     public Image resultImg;
     public GameObject craftButton;
-    private List<RecipeSlot> slots = new List<RecipeSlot>();
+    public List<RecipeSlot> slots = new List<RecipeSlot>();
     private RecipeSlot selectedSlot;
     private bool isCraftable;
 
@@ -31,11 +31,13 @@ public class UICraft : MonoBehaviour
     {
         foreach (var data in DataManager.Instance.itemDataDictionary)
         {
-            if (data.Value.craftType != default)
+            if (data.Value.craftType != eCraftType.DEFAULT)
             {
                 RecipeSlot newSlot = Instantiate(recipeSlot, content).GetComponent<RecipeSlot>();
                 newSlot.craft = this;
                 newSlot.itemData = data.Value;
+                newSlot.craftType = data.Value.craftType;
+                slots.Add(newSlot);
             }  
         }
     }
@@ -46,6 +48,7 @@ public class UICraft : MonoBehaviour
 
         for (int i = 0; i <  slots.Count; i++)
         {
+            slots[i].slotIndex = i;
             if (slots[i].craftType != eCraftType.HAND) 
                 slots[i].gameObject.SetActive(false);
         }
