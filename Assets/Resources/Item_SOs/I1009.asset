@@ -19,7 +19,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
   canStack: 1
   maxStackAmount: 99
-  craftTool: 3
+  craftType: 3
   recipe:
   - itemId: I1008
     value: 1
