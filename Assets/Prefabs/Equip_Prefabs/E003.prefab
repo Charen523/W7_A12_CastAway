@@ -122,4 +122,4 @@ MonoBehaviour:
   attackRange: 2
   attackDelay: 1
   doesDealDamage: 1
-  damage: 10
+  damage: 25

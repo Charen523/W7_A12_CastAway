@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -13,7 +14,9 @@ public class DataManager : Singleton<DataManager>
         base.Awake();
         itemDataDictionary = new Dictionary<string, ItemData>();
         itemPrefabDictionary = new Dictionary<string, GameObject>();
-        
+        EquipPrefabDictionary = new Dictionary<string, GameObject>();
+
+
         foreach (var data in Resources.LoadAll<ItemData>("Item_SOs")) 
         {
             itemDataDictionary.Add(data.name, data);
