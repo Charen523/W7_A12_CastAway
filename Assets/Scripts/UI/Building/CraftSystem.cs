@@ -151,12 +151,14 @@ public class CraftSystem : MonoBehaviour
         {
             finalRenderers[i].material = originalMaterials[i];
         }
+        currentPreview = null;
+        actualObject = null;
 
         // Inventory에서 아이템 제거
         UIInventory inventory = CraftManager.Instance.UIInventory;
         if (inventory != null)
         {
-            inventory.RemoveItemByName(data.name);
+            inventory.RemoveItemByName(data.itemId);
         }
     }
 }

@@ -337,11 +337,11 @@ public class UIInventory : MonoBehaviour
         RemoveSelectedItem();
     }
 
-    public void RemoveItemByName(string itemName)
+    public void RemoveItemByName(string itemID)
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item != null && slots[i].item.name == itemName)
+            if (slots[i].item != null && slots[i].item.itemId ==itemID)
             {
                 slots[i].quantity--;
 
@@ -352,7 +352,6 @@ public class UIInventory : MonoBehaviour
                 }
 
                 UpdateUI();
-                return;
             }
         }
     }
