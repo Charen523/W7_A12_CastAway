@@ -18,6 +18,7 @@ public class EquipRightHand : Equip
     {
         animator = GetComponent<Animator>();
         _camera = Camera.main;
+
     }
 
     public override void OnEquip()
@@ -47,7 +48,6 @@ public class EquipRightHand : Equip
 
     protected virtual void PerformAttack()
     {
-        // 공격 로직 구현
-        // 공격 애니메이션 재생?
+        CharacterManager.Instance.Player.controller.animator.SetTrigger("Attack");
     }
 }
