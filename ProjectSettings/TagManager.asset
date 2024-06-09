@@ -28,6 +28,7 @@ TagManager:
   - Furnace
   - BI0001
   - BI0002
+  - Ground
   layers:
   - Default
   - TransparentFX
