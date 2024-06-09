@@ -26,6 +26,8 @@ TagManager:
   - B0007
   - B0002
   - Furnace
+  - BI0001
+  - BI0002
   layers:
   - Default
   - TransparentFX
