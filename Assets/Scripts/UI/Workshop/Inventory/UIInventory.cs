@@ -302,4 +302,24 @@ public class UIInventory : MonoBehaviour
         }
         return null;
     }
+
+    public void RemoveUsedItem(int slotIndex, int quantity)
+    {
+        if (slots[slotIndex].quantity >= quantity)
+        {
+            slots[slotIndex].quantity -= quantity;
+        }
+        else
+        {
+            Debug.LogError("잘못된 수량을 제거하려 함.");
+        }
+
+        if (slots[slotIndex].quantity <= 0)
+        {
+            slots[slotIndex].item = null;
+            ClearSelectedItemWindow();
+        }
+
+        UpdateUI();
+    }
 }
