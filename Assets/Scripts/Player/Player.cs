@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    /*events*/
+    public Action addItem;
+    public event Action NearWorkBench;
+    public event Action FarWorkBench;
+    public event Action NearFurnace;
+    public event Action FarFurnace; 
+
     public PlayerController controller; //플레이어 컨트롤러 호출
     public PlayerCondition condition;
     public Equipment equip;
 
     public ItemData itemData; //아이템 데이터 생성시 추가
-    public Action addItem;
 
     public Transform dropPosition; //아이템을 드롭할 위치
 
@@ -22,5 +28,33 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>(); //GetComponent로 PlayerController 넣어줌
         condition = GetComponent<PlayerCondition>();
         equip = GetComponent<Equipment>();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("B0002"))
+        {
+            NearWorkBench?.Invoke();
+        }
+
+        //Trigger로 바뀔 수도 있음.
+        if (collision.gameObject.CompareTag("Furnace"))
+        {
+            NearFurnace?.Invoke();
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("B0002"))
+        {
+            FarWorkBench?.Invoke();
+        }
+
+        //Trigger로 바뀔 수도 있음.
+        if (collision.gameObject.CompareTag("Furnace"))
+        {
+            FarFurnace?.Invoke();
+        }
     }
 }

@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class UIInventory : MonoBehaviour
 {
@@ -29,7 +28,6 @@ public class UIInventory : MonoBehaviour
     public List<GameObject> invenBtns = new List<GameObject>();
     private ItemSlot[] slots;
     private ItemSlot selectedSlot;
-    private int selectedSlotIndex; 
     
     /*플레이어*/
     private PlayerCondition condition;
@@ -172,8 +170,11 @@ public class UIInventory : MonoBehaviour
     public void AddItem()
     {
         ItemData data = CharacterManager.Instance.Player.itemData;
-        Debug.Log(data.name);
+        AddItem(data);
+    }
 
+    public void AddItem(ItemData data)
+    {
         if (data.canStack)
         {
             ItemSlot slot = GetItemStack(data);
@@ -277,7 +278,7 @@ public class UIInventory : MonoBehaviour
     }
 
     //인벤토리에 들어온 아이템을 쌓을 수 있는지 여부. 
-    private ItemSlot GetItemStack(ItemData data)
+    public ItemSlot GetItemStack(ItemData data)
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -300,5 +301,25 @@ public class UIInventory : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void RemoveUsedItem(int slotIndex, int quantity)
+    {
+        if (slots[slotIndex].quantity >= quantity)
+        {
+            slots[slotIndex].quantity -= quantity;
+        }
+        else
+        {
+            Debug.LogError("잘못된 수량을 제거하려 함.");
+        }
+
+        if (slots[slotIndex].quantity <= 0)
+        {
+            slots[slotIndex].item = null;
+            ClearSelectedItemWindow();
+        }
+
+        UpdateUI();
     }
 }

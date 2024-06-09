@@ -25,7 +25,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     
     /*Components*/
     private PlayerController controller;
-
+    public DeathUIController deathUIController;
     /*player Condition Status*/
     private bool isDead;
 
@@ -48,6 +48,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (health.curValue == 0 && !isDead)
         {
             Die();
+            
         }
 
         if (controller.animator.GetBool("IsRun"))
@@ -79,7 +80,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Drink(float amount)
     {
-        hunger.ChangeValue(amount);
+        thirst.ChangeValue(amount);
     }
 
     public float GetThirstMaxValue()
@@ -101,6 +102,9 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void Die()
     {
         isDead = true;
+        controller.baseSpeed = 0;
+        deathUIController.ShowDeathUI();
+        controller.ToggleCursor();
         OnDeath?.Invoke();
     }
 

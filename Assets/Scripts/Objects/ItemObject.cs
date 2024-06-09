@@ -23,12 +23,6 @@ public class ItemObject : MonoBehaviour, IInteractable
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
 
-        //아이템 오브젝트 파괴(당근, 버섯이면 풀로 반환)
-        if (ResourcePoolManager.Instance.isCrop)
-        {
-            ResourcePoolManager.Instance.ReturnObjectToPool(gameObject);
-        }
-        else
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

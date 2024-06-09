@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     /*Events*/
     public event Action WorkshopInput;
     public event Action SettingInput;
+    public event Action AltInfoOn;
+    public event Action AltInfoOff;
 
     [Header("Movement")]
     public float baseSpeed = 5;
@@ -136,7 +138,6 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             SettingInput?.Invoke();
-            ToggleCursor();
         }
     }
 
@@ -145,11 +146,13 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             ToggleCursor();
+            AltInfoOn?.Invoke();
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
             ToggleCursor();
+            AltInfoOff?.Invoke();
         }
     }
 
@@ -231,7 +234,7 @@ public class PlayerController : MonoBehaviour
         cameraContainer.transform.LookAt(CamToPlayer);
     }
 
-    private void ToggleCursor()
+    public void ToggleCursor()
     {
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;

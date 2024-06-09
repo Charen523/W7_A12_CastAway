@@ -4,7 +4,7 @@ using UnityEngine;
 public class RecipeMaterials
 {
     public string itemId;
-    public float value;
+    public int value;
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "SO/New Item", order = 0)]
@@ -22,7 +22,7 @@ public class ItemData : ScriptableObject
     public int maxStackAmount = 99;
 
     [Header("Recipe")]
-    public eCraftTool craftTool;
+    public eCraftType craftType;
     public RecipeMaterials[] recipe;
     public int resultQuantity;
 }
