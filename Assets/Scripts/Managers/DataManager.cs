@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
@@ -36,5 +37,17 @@ public class DataManager : Singleton<DataManager>
         {
             QuestDataDictionary.Add(data.name, data);
         }
+    }
+
+    public QuestData GetQuest()
+    {
+        foreach (var quest in QuestDataDictionary.Values)
+        {
+            if (!quest.BoolClear)
+            {
+                return quest;
+            }
+        }
+        return null;
     }
 }
