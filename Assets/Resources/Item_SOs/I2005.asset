@@ -33,3 +33,4 @@ MonoBehaviour:
   - type: 0
     value: 50
   isEquipped: 0
+  equipPrefab: {fileID: 4907071409199488718, guid: 87cec3cf711ee924591e35c236db6959, type: 3}
