@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,15 +19,6 @@ public class Equipment : MonoBehaviour
     {
         controller = CharacterManager.Instance.Player.controller;
         condition = CharacterManager.Instance.Player.condition;
-
-
-        //장착 테스트용 스크립트
-        equipPosition = curEquip.transform.position;
-        equipRotation = curEquip.transform.rotation;
-
-        curEquip.transform.SetParent(equipParent);
-        curEquip.transform.localPosition = equipPosition;
-        curEquip.transform.localRotation = equipRotation;
     }
 
     private void Update()
@@ -42,10 +34,14 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    public void EquipNew(ItemData data) //장착하기
+    public void EquipNew(EquipData data) //장착하기
     {
         UnEquip(); //현재 장착한 장비를 해제
-        curEquip = Instantiate(DataManager.Instance.EquipPrefabDictionary[data.name], equipParent).GetComponent<EquipRightHand>(); // 장착을 할 장비를 curEquip에 넣어줌 
+        equipPosition = data.equipPrefab.transform.position; //기존 설정해 둔 position과 rotation값 저장
+        equipRotation = data.equipPrefab.transform.rotation;
+        curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<EquipRightHand>();// 장착을 할 장비를 curEquip에 넣어줌 
+        curEquip.transform.localPosition = equipPosition; // 설정해두었던 값 적용
+        curEquip.transform.localRotation = equipRotation;
     }
 
     public void UnEquip()
