@@ -28,7 +28,7 @@ public class DayAndNight : MonoBehaviour
     {
         time = 0.25f;
 
-        if (SceneManager.GetActiveScene().Equals(1))
+        if (SceneManager.GetSceneByBuildIndex(1).name == SceneManager.GetActiveScene().name)
         {
             time = GameManager.Instance.time;
             temperature = FindObjectOfType<Temperature>();
@@ -40,7 +40,7 @@ public class DayAndNight : MonoBehaviour
         UpdateLighting(sun, sunColor, sunIntensity);
         UpdateLighting(moon, moonColor, moonIntensity);
 
-        if (SceneManager.GetActiveScene().Equals(1))
+        if (SceneManager.GetSceneByBuildIndex(1).name == SceneManager.GetActiveScene().name)
         {
             time = GameManager.Instance.time;
             UpdateTemperature(); //쓰읍... 위치 옮겨야 하는데.

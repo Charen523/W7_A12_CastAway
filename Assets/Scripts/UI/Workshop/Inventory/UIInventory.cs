@@ -217,14 +217,20 @@ public class UIInventory : MonoBehaviour
     public void SelectItem(int index)
     {
         if (slots[index].item == null) return;
-        if (selectedSlot != null) { selectedSlot.SelectedDisable(); }
+        
+        if (selectedSlot != null) 
+        { 
+            selectedSlot.SelectedDisable();
 
+            if (selectedSlot.item is EquipData equip)
+                equip.isEquipped = false;
+        }
+
+        ClearSelectedItemWindow();
         selectedSlot = slots[index];
 
         selectedDescriptions[(int)eDescriptionIndex.ITEM_NAME].text = selectedSlot.item.displayName;
         selectedDescriptions[(int)eDescriptionIndex.ITEM_DESCRIPTION].text = selectedSlot.item.description;
-        selectedDescriptions[(int)eDescriptionIndex.STAT_NAME].text = string.Empty;
-        selectedDescriptions[(int)eDescriptionIndex.STAT_VALUE].text = string.Empty;
 
         if (selectedSlot.item is ConsumableData consumableItem)
         {
@@ -245,9 +251,6 @@ public class UIInventory : MonoBehaviour
         }
         else
         {
-            invenBtns[(int)eBtnIndex.USE_BTN].SetActive(false);
-            invenBtns[(int)eBtnIndex.INSTALL_BTN].SetActive(false);
-
             if (selectedSlot.item is EquipData equipItem)
             {
                 for (int i = 0; i < equipItem.equipStats.Length; i++)
@@ -261,12 +264,10 @@ public class UIInventory : MonoBehaviour
                 if (equipItem.isEquipped)
                 {
                     invenBtns[(int)eBtnIndex.UNEQUIP_BTN].SetActive(true);
-                    invenBtns[(int)eBtnIndex.EQUIP_BTN].SetActive(false);
                 }
                 else
                 {
                     invenBtns[(int)eBtnIndex.EQUIP_BTN].SetActive(true);
-                    invenBtns[(int)eBtnIndex.UNEQUIP_BTN].SetActive(false);
                 }
             }
         }

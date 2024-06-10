@@ -134,8 +134,10 @@ public class EntitiesPoolManager : MonoBehaviour
 
                     obj.transform.localPosition = position; //+ offset; // 객체 위치 설정(오프셋 더함)
 
-                    obj.GetComponent<NavMeshAgent>().enabled = true;
-
+                    if(obj.GetComponent<NavMeshAgent>() != null)
+                    {
+                        obj.GetComponent<NavMeshAgent>().enabled = true;
+                    }
                     originalPositions[obj] = position; // 원래 위치 저장
                 }
             }

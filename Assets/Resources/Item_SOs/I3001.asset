@@ -23,7 +23,7 @@ MonoBehaviour:
   craftType: 1
   recipe:
   - itemId: I0001
-    value: 4
+    value: 2
   - itemId: I0003
-    value: 4
+    value: 2
   resultQuantity: 0

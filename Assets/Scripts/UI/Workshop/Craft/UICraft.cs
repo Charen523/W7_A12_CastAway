@@ -21,9 +21,11 @@ public class UICraft : MonoBehaviour
     public Image resultImg;
     public GameObject craftButton;
     public List<RecipeSlot> slots = new List<RecipeSlot>();
+    public Sprite defaultIcon;
     private RecipeSlot selectedSlot;
     private bool isCraftable;
     private Dictionary<int, int> materialIndexes = new Dictionary<int, int>();
+    
 
     [Header("Inventory")]
     public UIInventory inventory; //인스펙터창
@@ -61,6 +63,16 @@ public class UICraft : MonoBehaviour
         ClearSelectedRecipeWindow();
     }
 
+    private void OnEnable()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            slots[i].slotIndex = i;
+            if (slots[i].craftType != eCraftType.HAND)
+                slots[i].gameObject.SetActive(false);
+        }
+    }
+
     private void OnCraftBtn()
     {
         foreach (var data in materialIndexes)
@@ -80,7 +92,7 @@ public class UICraft : MonoBehaviour
             element.text = string.Empty;
         }
 
-        resultImg.sprite = null;
+        resultImg.sprite = defaultIcon;
         materialIndexes.Clear();
         craftButton.SetActive(false);
     }
@@ -95,6 +107,7 @@ public class UICraft : MonoBehaviour
 
         selectedSlot = slots[index];
 
+        resultImg.sprite = selectedSlot.itemData.icon;
         selectedRecipe[(int)eRecipeIndex.MATERIAL_NAME].text = string.Empty;
         selectedRecipe[(int)eRecipeIndex.REQUIRE_VALUE].text = string.Empty;
         selectedRecipe[(int)eRecipeIndex.CURRENT_VALUE].text = string.Empty;
