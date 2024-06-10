@@ -1,8 +1,5 @@
-using UnityEditor.EditorTools;
 using UnityEngine;
 
-//IInteractable 인터페이스 필요.
-//인벤토리 스크립트와 연결되게 수정 필요.
 public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemData data;

@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public event Action FarWorkBench;
     public event Action InHome;
     public event Action OutHome;
+    public event Action NearBed;
+    public event Action FarBed; 
 
     public PlayerController controller; //플레이어 컨트롤러 호출
     public PlayerCondition condition;
@@ -48,7 +50,10 @@ public class Player : MonoBehaviour
             NearWorkBench?.Invoke();
         }
 
-        //Trigger로 바뀔 수도 있음.
+        if (collision.gameObject.CompareTag("B0004"))
+        {
+            NearBed?.Invoke();
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -56,6 +61,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("B0002"))
         {
             FarWorkBench?.Invoke();
+        }
+
+        if (collision.gameObject.CompareTag("B0004"))
+        {
+            FarBed?.Invoke();
         }
     }
 
