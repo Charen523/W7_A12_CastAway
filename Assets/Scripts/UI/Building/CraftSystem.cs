@@ -119,8 +119,6 @@ public class CraftSystem : MonoBehaviour
 
         // 최종 위치에 오브젝트 설치
         PlaceFinalObject(data);
-        Destroy(currentPreview); // 프리뷰 오브젝트 삭제
-        currentPreview = null; // 현재 프리뷰 오브젝트 초기화
     }
 
     // 캐릭터 위치로 이동 메서드
@@ -155,7 +153,9 @@ public class CraftSystem : MonoBehaviour
         UIInventory inventory = CraftManager.Instance.UIInventory;
         if (inventory != null)
         {
-            //inventory.RemoveItemByName(data.itemId);
+            inventory.RemoveItemByName(data.itemId);
         }
+        Destroy(currentPreview); // 프리뷰 오브젝트 삭제
+        currentPreview = null; // 현재 프리뷰 오브젝트 초기화
     }
 }
