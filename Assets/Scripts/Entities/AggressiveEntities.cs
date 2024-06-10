@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AggressiveEntities : MonoBehaviour
+public class AggressiveEntities : MonoBehaviour, IDamagable
 {
     public EntityData data;
     private NavMeshAgent agent; //NavMeshAgent 불러오기
     private Animator animator;  // animator 호출
     private SkinnedMeshRenderer[] meshRenderers; //SkinnedMeshRenderer 불러오기 (오브젝트가 갖고있는 MeshRenderer)
     private eAIState aiState;
+
+    private int CurrentHealth;
 
     private float playerDistance; //플레이어와의 거리
 
@@ -27,6 +29,8 @@ public class AggressiveEntities : MonoBehaviour
     private void Start()
     {
         SetState(eAIState.WANDERING); //시작 Ai 상태 지정 
+
+        CurrentHealth = data.MaxHealth;
     }
 
     private void Update()
@@ -36,7 +40,7 @@ public class AggressiveEntities : MonoBehaviour
 
         animator.SetBool("Moving", aiState != eAIState.IDLE); // ai의 상태가 기본 상태가 아니라면 Moving을 true로
 
-        if (data.CureentHealth < data.MaxHealth) //체력이 소진되면 도망치게 만듬(테스트 필요)
+        if (CurrentHealth < data.MaxHealth / 10) //체력이 소진되면 도망치게 만듬(테스트 필요)
         {
             SetState(eAIState.FLEEING);
         }
@@ -123,7 +127,6 @@ public class AggressiveEntities : MonoBehaviour
                 StartCoroutine(ChargeAndReturn());
                 CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakeDamage(data.damage); //IDamagable의 물리 데미지 주는 함수를 호출
                 animator.speed = 1; //애니메이터의 속도를 1로 고정
-                animator.SetTrigger("Attack"); //트리거 Attack을 발동
             }
         }
     }
@@ -200,10 +203,11 @@ public class AggressiveEntities : MonoBehaviour
     {
         return Vector3.Angle(transform.position - CharacterManager.Instance.Player.transform.position, transform.position + targetPos);
     }
-    public void TakePhysicalDamage(int damageAmount) // 데미지를 받는 로직
+    public void TakeDamage(int damageAmount) // 데미지를 받는 로직
     {
-        data.CureentHealth -= damageAmount; //체력 - 데미지
-        if (data.CureentHealth <= 0) //0보다 작거나 같아지면 죽음
+        Debug.Log("맞았다!");
+        CurrentHealth -= damageAmount; //체력 - 데미지
+        if (CurrentHealth <= 0) //0보다 작거나 같아지면 죽음
             Die();
 
         StartCoroutine(DamageFlash()); //아니라면 데미지를 받음 (코루틴)

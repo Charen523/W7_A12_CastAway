@@ -11,13 +11,14 @@ public class EquipRightHand : Equip
     public bool doesDealDamage;
     public int damage;
 
-    private Animator animator;
     protected Camera _camera;
+    protected Player player;
 
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
         _camera = Camera.main;
+        player = GetComponent<Player>();
+
     }
 
     public override void OnEquip()
@@ -47,7 +48,6 @@ public class EquipRightHand : Equip
 
     protected virtual void PerformAttack()
     {
-        // 공격 로직 구현
-        // 공격 애니메이션 재생?
+        CharacterManager.Instance.Player.controller.animator.SetTrigger("Attack");
     }
 }

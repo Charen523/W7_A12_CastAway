@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 1993013722}
   - component: {fileID: 1993013721}
   - component: {fileID: 1993013724}
+  - component: {fileID: 1993013725}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -516,7 +517,19 @@ MonoBehaviour:
     m_ActionId: 26e8d276-186b-4784-a003-c81654b6e5c0
     m_ActionName: Player/Sit[/Keyboard/ctrl]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1993013725}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d0ef7a10-f546-4662-9750-815ccbd9af24
     m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -633,7 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
-  noHungerHealthDecay: 5
+  healthDecay: 0
 --- !u!114 &1993013722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,8 +661,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   condition: {fileID: 0}
+  equip: {fileID: 0}
   itemData: {fileID: 0}
   dropPosition: {fileID: 1858089622}
+  collisionMask: 0
 --- !u!114 &1993013723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,21 +677,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8e17ae949855e4cbf6942b09aab591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumptForce: 80
+  baseSpeed: 5
+  runSpeedRatio: 2
+  runStaminaDeltaValue: 10
+  jumpForce: 80
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  runSpeed: 5
-  runStamina: 2
+  lookSensitivity: 0.05
+  minXLook: -50
+  maxXLook: 60
   cameraContainer: {fileID: 1739828052}
   distance: 3
   minDistance: 1
   maxDistance: 3
-  minXLook: -50
-  maxXLook: 60
-  lookSensitivity: 0.05
+  animator: {fileID: 0}
   canLook: 1
+  canRun: 1
 --- !u!114 &1993013724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +712,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   curInteractGameObject: {fileID: 0}
+--- !u!114 &1993013725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993013716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf67407b884d7ad4b8f8020deec4eae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curEquip: {fileID: -2964022279138711942, guid: a7e03205582cab2449f5ee488959093d, type: 3}
+  equipParent: {fileID: 6867368608255156838}
+  RightHand: {fileID: 0}
 --- !u!1001 &34206598433846394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2066,7 +2098,13 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'Character1_Reference'\n\tTransform 'Character1_RightFoot'\n\tTransform
+    'Character1_LeftHandThumb3'\n\tTransform 'Character1_LeftFoot'\n\tTransform 'Character1_LeftHandIndex1'\n\tTransform
+    'Character1_LeftHandRing3'\n\tTransform 'Character1_RightHand'\n\tTransform 'Character1_Spine1'\n\tTransform
+    'Character1_LeftShoulder'\n\tTransform 'Character1_RightUpLeg'\n\tand more ...\n\tFrom
+    animation clip 'mixamo.com'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -9712,7 +9750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5409734303945614224, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
       propertyPath: m_LocalPosition.x

@@ -155,7 +155,7 @@ public class CraftSystem : MonoBehaviour
         UIInventory inventory = CraftManager.Instance.UIInventory;
         if (inventory != null)
         {
-            inventory.RemoveItemByName(data.itemId);
+            //inventory.RemoveItemByName(data.itemId);
         }
     }
 }
