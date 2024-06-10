@@ -75,16 +75,9 @@ public class EntitiesPoolManager : MonoBehaviour
     void InitializePool()
     {
         PoolDictionary = new Dictionary<string, Queue<GameObject>>();
-        HashSet<string> tags = new HashSet<string>();
 
         foreach (var pool in Pools)
         {
-            if (!tags.Add(pool.tag))
-            {
-                Debug.LogError($"Duplicate tag found: {pool.tag}"); //중복된 태그 찾을시 로그
-                continue; // 중복된 태그는 건너뜀
-            }
-
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
@@ -123,7 +116,6 @@ public class EntitiesPoolManager : MonoBehaviour
                     Random.Range(pool.positionMin.x, pool.positionMax.x),
                     50f,
                     Random.Range(pool.positionMin.z, pool.positionMax.z));
-                Debug.Log(position);
 
                 GameObject obj = SpawnFromPool(pool.tag);
                 if (obj != null)
@@ -144,8 +136,6 @@ public class EntitiesPoolManager : MonoBehaviour
 
                     obj.GetComponent<NavMeshAgent>().enabled = true;
 
-                    Debug.Log(obj.transform.position);
-
                     originalPositions[obj] = position; // 원래 위치 저장
                 }
             }
@@ -161,7 +151,6 @@ public class EntitiesPoolManager : MonoBehaviour
     // 아이템 드랍 및 재생성 코루틴
     private IEnumerator RespawnObject(GameObject obj, float delay)
     {
-        Debug.Log("10초 후 생성");
         yield return new WaitForSeconds(delay);
         obj.SetActive(true);
     }

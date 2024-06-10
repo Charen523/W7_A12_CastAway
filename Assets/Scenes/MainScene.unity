@@ -3749,7 +3749,7 @@ MonoBehaviour:
     positionMin: {x: 480, y: 50, z: 320}
     positionMax: {x: 570, y: 50, z: 350}
   IsDead: 0
-  respawnDelay: 10
+  respawnDelay: 60
 --- !u!4 &699140874
 Transform:
   m_ObjectHideFlags: 0
@@ -14573,8 +14573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f45dcf1932e7648931d416c98868b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshSurface: {fileID: 0}
-  navMeshModifierVolume: {fileID: 0}
 --- !u!114 &663035898682503915
 MonoBehaviour:
   m_ObjectHideFlags: 0
