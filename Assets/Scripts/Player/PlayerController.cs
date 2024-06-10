@@ -111,6 +111,10 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("IsJump");
             Jumpaudio.Play();
         }
+        if(animator.GetBool("IsJump") == false)
+        {
+            Jumpaudio.Stop();
+        }
     }
 
     public void OnLookInput(InputAction.CallbackContext context)
