@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static CraftSystem;
+using static ResourcePoolManager;
 
 public class ResourceCapacity : MonoBehaviour, IInteractable
 {
@@ -12,11 +16,15 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     int cropCount = 0;
 
     private ResourcePoolManager poolManager;
+    public List<Pool> pools;
+    private CraftSystem craftSystem;
 
     void Start()
     {
         currentHits = 0;
         poolManager = FindObjectOfType<ResourcePoolManager>();
+        pools = poolManager.Pools; 
+        craftSystem = FindObjectOfType<CraftSystem>();
     }
 
     // 도끼로 쳤을 때 호출되는 메서드
@@ -30,28 +38,39 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
         }
     }
 
-    // 플레이어와 충돌한 자원이 당근, 버섯인지 확인
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            GameObject prefab = gameObject;
-            if (prefab.tag == "B1010"|| prefab.tag == "B1007" || prefab.tag == "B1008" || prefab.tag == "B1009"
-                || prefab.tag == "B1001" || prefab.tag == "B1002")
-            {
-                poolManager.isCrop = true;
-            }
-        }
-    }
-
     public void GetInteractPrompt()
     {
-        //추후 주울 수 있는 아이템 옆에 [data.displayName] 띄워주기.
+        GameObject prefab = gameObject;
+        craftSystem.promptPanel.SetActive(true);
+        foreach (var pool in pools)
+        {
+
+            if (prefab.tag == "B1002" && pool.tag == gameObject.tag)
+            {
+                string str = $"채집 가능 횟수: {3 - cropCount}/3\n[E]를 눌러 {pool.itemName} 얻기";
+                craftSystem.promptText.text = str;
+            }
+            else if(prefab.tag != "B1002" && pool.tag == gameObject.tag)
+            {
+                string str = $"[E]를 눌러 {pool.itemName} 얻기";
+                craftSystem.promptText.text = str;
+            }
+
+        }
+            
+        // 3초 뒤에 ClosePrompt 실행
+        StartCoroutine(ClosePromptAfterDelay(3.0f));
+    }
+
+    private IEnumerator ClosePromptAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ClosePrompt();
     }
 
     public void ClosePrompt()
     {
-        //판넬 setactive false
+        craftSystem.promptPanel.SetActive(false);
     }
 
     public void OnInteract()

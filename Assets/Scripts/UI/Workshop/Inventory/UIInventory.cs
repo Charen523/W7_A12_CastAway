@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -19,14 +20,17 @@ public class UIInventory : MonoBehaviour
         USE_BTN,
         DROP_BTN,
         EQUIP_BTN,
-        UNEQUIP_BTN
+        UNEQUIP_BTN,
+        INSTALL_BTN
     }
+
+    public event Action InventoryRefresh;
 
     [Header("Inventory")]
     private Transform holdings;
     public List<TextMeshProUGUI> selectedDescriptions;
     public List<GameObject> invenBtns = new List<GameObject>();
-    private ItemSlot[] slots;
+    public ItemSlot[] slots { get; private set; }
     private ItemSlot selectedSlot;
     
     /*플레이어*/
@@ -55,6 +59,7 @@ public class UIInventory : MonoBehaviour
         invenBtns[(int)eBtnIndex.DROP_BTN].GetComponent<Button>().onClick.AddListener(OnDropBtn);
         invenBtns[(int)eBtnIndex.EQUIP_BTN].GetComponent<Button>().onClick.AddListener(OnEquipBtn);
         invenBtns[(int)eBtnIndex.UNEQUIP_BTN].GetComponent<Button>().onClick.AddListener(OnUnequipBtn);
+        invenBtns[(int)eBtnIndex.INSTALL_BTN].GetComponent<Button>().onClick.AddListener(OnInstallBtn);
 
         /*slot 초기화.*/
         slots = new ItemSlot[holdings.childCount];
@@ -165,6 +170,8 @@ public class UIInventory : MonoBehaviour
                 slots[i].Clear();
             }
         }
+
+        InventoryRefresh?.Invoke();
     }
 
     public void AddItem()
@@ -204,7 +211,7 @@ public class UIInventory : MonoBehaviour
 
     public void ThrowItem(ItemData data)
     {
-        Instantiate(DataManager.Instance.itemPrefabDictionary[data.name], dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
+        Instantiate(DataManager.Instance.itemPrefabDictionary[data.name], dropPosition.position, Quaternion.Euler(Vector3.one * UnityEngine.Random.value * 360));
     }
 
     public void SelectItem(int index)
@@ -231,9 +238,15 @@ public class UIInventory : MonoBehaviour
 
             invenBtns[(int)eBtnIndex.USE_BTN].SetActive(true);
         }
+        // 선택한 아이템타입이 건설이면, 설치 버튼 활성화
+        else if (selectedSlot.item.itemType == eItemType.Builts)
+        {
+            invenBtns[(int)eBtnIndex.INSTALL_BTN].SetActive(true);
+        }
         else
         {
             invenBtns[(int)eBtnIndex.USE_BTN].SetActive(false);
+            invenBtns[(int)eBtnIndex.INSTALL_BTN].SetActive(false);
 
             if (selectedSlot.item is EquipData equipItem)
             {
@@ -264,7 +277,7 @@ public class UIInventory : MonoBehaviour
         invenBtns[(int)eBtnIndex.DROP_BTN].SetActive(true);
     }
 
-    void RemoveSelectedItem()
+    public void RemoveSelectedItem()
     {
         selectedSlot.quantity--;
 
@@ -321,5 +334,31 @@ public class UIInventory : MonoBehaviour
         }
 
         UpdateUI();
+    }
+
+    private void OnInstallBtn()
+    {
+        CraftManager.Instance.CraftSystem.Install(selectedSlot.item);
+        RemoveSelectedItem();
+    }
+
+    public void RemoveItemByName(string itemID)
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item != null && slots[i].item.itemId ==itemID)
+            {
+                slots[i].quantity--;
+
+                if (slots[i].quantity <= 0)
+                {
+                    slots[i].item = null;
+                    ClearSelectedItemWindow();
+                }
+
+                UpdateUI();
+                break;
+            }
+        }
     }
 }

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1026100436897561833}
   - component: {fileID: 5299138850115742432}
   - component: {fileID: 3297023203940630983}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain 1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4689579389014484160}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -346.27634, y: 190.33871, z: -479.32666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -43,13 +43,13 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: da9b55dbdaa1b884a93ae3a0ead6902f, type: 2}
-  m_TreeDistance: 5000
-  m_TreeBillboardDistance: 80
-  m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 50
+  m_TreeDistance: 400
+  m_TreeBillboardDistance: 200
+  m_TreeCrossFadeLength: 50
+  m_TreeMaximumFullLODCount: 100
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 5
+  m_HeightmapPixelError: 200
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 1

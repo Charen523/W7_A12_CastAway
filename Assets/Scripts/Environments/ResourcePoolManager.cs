@@ -14,6 +14,9 @@ public class ResourcePoolManager : MonoBehaviour
         public GameObject prefab;
         public int size;
 
+        [Header("DropInfo")]
+        public string itemName;
+
         [Header("Position")]
         public Vector3 positionMin;
         public Vector3 positionMax;

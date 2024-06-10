@@ -10,13 +10,14 @@ public class BuildObject : MonoBehaviour, IInteractable
     private Material plantMat;
     private GameObject oldFence;
 
+
     private void Start()
     {
         craftSystem = FindObjectOfType<CraftSystem>();
         if (craftSystem != null)
         {
             crafts = craftSystem.crafts; // CraftSystem에서 crafts 리스트 가져오기
-            plantMat = craftSystem.plantMat;
+            plantMat = craftSystem.transparentMat;
             oldFence = craftSystem.oldFence;
         }
     }
@@ -76,6 +77,7 @@ public class BuildObject : MonoBehaviour, IInteractable
                 if(gameObject.tag == "B0006")
                 {
                     Destroy(oldFence);
+                    
                 }
                 ClosePrompt(); // 상호작용 후 프롬프트 닫기
                 break;
