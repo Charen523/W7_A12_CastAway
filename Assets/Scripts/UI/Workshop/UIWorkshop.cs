@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,11 +45,17 @@ public class UIWorkshop : MonoBehaviour
         workshopBtns[(int)eWorkshop.EQUIP].GetComponent<Button>().onClick.AddListener(OnEquipClicked);
         workshopBtns[(int)eWorkshop.CRAFT].GetComponent<Button>().onClick.AddListener(OnCraftClicked);
 
+        StartCoroutine(DelayedStart());
+    }
+
+    private IEnumerator DelayedStart()
+    {
+        yield return null;
+
         foreach (GameObject obj in workshopPanels)
         {
             obj.SetActive(false);
         }
-
         currentActiveIndex = 0;
         ToggleBtns(currentActiveIndex);
 
