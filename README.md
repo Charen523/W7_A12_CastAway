@@ -45,7 +45,7 @@
  `Key Guide`
 
 
- ![Keyboard](https://github.com/Charen523/W7_A12_CastAway/assets/108499207/0550bc98-cf24-49d9-aa63-30fb30d92eda)
+![KeyGuide](https://github.com/Charen523/W7_A12_CastAway/assets/108499207/ebb63cd9-3db6-4bda-9de0-39b8337a2f8d)
 
 ---
 
