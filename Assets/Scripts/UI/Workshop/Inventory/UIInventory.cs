@@ -262,16 +262,13 @@ public class UIInventory : MonoBehaviour
                 if (equipItem.isEquipped)
                 {
                     invenBtns[(int)eBtnIndex.UNEQUIP_BTN].SetActive(true);
+                    invenBtns[(int)eBtnIndex.EQUIP_BTN].SetActive(false);
                 }
                 else
                 {
                     invenBtns[(int)eBtnIndex.EQUIP_BTN].SetActive(true);
+                    invenBtns[(int)eBtnIndex.UNEQUIP_BTN].SetActive(false);
                 }
-            }
-            else
-            {
-                invenBtns[(int)eBtnIndex.EQUIP_BTN].SetActive(false);
-                invenBtns[(int)eBtnIndex.UNEQUIP_BTN].SetActive(false);
             }
         }
 

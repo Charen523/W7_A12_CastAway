@@ -50,8 +50,6 @@ public class DayAndNight : MonoBehaviour
             time += Time.deltaTime * 0.005f;
         }
 
-        Debug.Log(time);
-
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
 
