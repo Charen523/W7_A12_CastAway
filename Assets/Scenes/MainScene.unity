@@ -915,7 +915,7 @@ MonoBehaviour:
     scaleMin: {x: 1.2, y: 1.2, z: 1.2}
     scaleMax: {x: 1.2, y: 1.3, z: 1.2}
   isCrop: 0
-  respawnDelay: 60
+  respawnDelay: 120
 --- !u!4 &155834598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7957705567747632114, guid: 9c5085c0d24f35f4ab5532adc9c4eb20, type: 3}
@@ -3632,7 +3632,7 @@ MonoBehaviour:
     positionMin: {x: -30, y: 50, z: 15}
     positionMax: {x: -15, y: 50, z: 85}
   IsDead: 0
-  respawnDelay: 60
+  respawnDelay: 120
 --- !u!4 &699140874
 Transform:
   m_ObjectHideFlags: 0
