@@ -164,4 +164,10 @@ public class ResourcePoolManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         obj.SetActive(true);
     }
+
+    // 오브젝트 풀로 반환, 재생성 코루틴 호출하는 메서드
+    public void Remove(GameObject obj)
+    {
+        Destroy(obj);
+    }
 }

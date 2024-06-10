@@ -22,7 +22,7 @@ public class ItemObject : MonoBehaviour, IInteractable
             string str = $"[{data.displayName}]\n{data.description}";
             craftSystem.promptText.text = str;
 
-            StartCoroutine(ClosePromptAfterDelay(4.0f));
+            StartCoroutine(ClosePromptAfterDelay(3.0f));
         }
     }
 
