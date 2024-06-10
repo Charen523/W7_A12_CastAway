@@ -14,6 +14,8 @@ public class NeutralEntities : MonoBehaviour, IDamagable
 
     private float playerDistance; //플레이어와의 거리
 
+    private ResourcePoolManager poolManager;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -165,7 +167,8 @@ public class NeutralEntities : MonoBehaviour, IDamagable
             //Instantiate(data.dropOnDeath[x].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
         }
 
-        Destroy(gameObject); //몬스터 삭제
+        poolManager.ReturnObjectToPool(this.gameObject);
+        CurrentHealth = data.MaxHealth;
     }
 
     IEnumerator DamageFlash()

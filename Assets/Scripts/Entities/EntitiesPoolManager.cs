@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
 
-public class EntitiesPoolManager : Singleton<EntitiesPoolManager>
+public class EntitiesPoolManager : MonoBehaviour
 {
     [System.Serializable]
     public class Pool
@@ -31,10 +32,59 @@ public class EntitiesPoolManager : Singleton<EntitiesPoolManager>
     // 오브젝트 위치를 저장할 딕셔너리
     private Dictionary<GameObject, Vector3> originalPositions = new Dictionary<GameObject, Vector3>();
 
+    private static EntitiesPoolManager _instance; // 유일한 인스턴스를 저장할 정적 변수
+    public static EntitiesPoolManager Instance // 유일한 인스턴스를 반환하는 정적 프로퍼티
+    {
+        get
+        {   // 인스턴스가 없으면 새 게임 오브젝트를 만들어 인스턴스를 추가(방어코드)
+            if (_instance == null)
+            {
+                _instance = new GameObject("EntitiesPoolManager").AddComponent<EntitiesPoolManager>();
+            }
+            return _instance;
+        }
+    }
+    private void Awake()
+    {
+        if (_instance == null)
+        {   // 인스턴스 초기화
+            _instance = this;
+        }
+        else
+        {
+            if (_instance == this)
+            {   // 중복 인스턴스 제거
+                Destroy(gameObject);
+            }
+        }
+
+        parentFolder = GetComponent<Transform>();
+        // 오브젝트 풀 초기화
+        InitializePool();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+
         PlaceObjects();
+    }
+
+    // 오브젝트 풀 초기화 메서드
+    void InitializePool()
+    {
+        PoolDictionary = new Dictionary<string, Queue<GameObject>>();
+        foreach (var pool in Pools)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            for (int i = 0; i < pool.size; i++)
+            {
+                GameObject obj = Instantiate(pool.prefab, parentFolder);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
+            PoolDictionary.Add(pool.tag, objectPool);
+        }
     }
 
     public GameObject SpawnFromPool(string tag)
