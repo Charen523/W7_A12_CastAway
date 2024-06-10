@@ -28,6 +28,7 @@ public class SleepObject : MonoBehaviour, IInteractable
         CharacterManager.Instance.Player.NearBed += CheckSleepable;
 
         sleepPrompt.transform.GetChild(0).gameObject.SetActive(false);
+        Debug.Log(sleepPrompt.transform.GetChild(0).gameObject.activeSelf);
     }
 
     public void CheckSleepable()
