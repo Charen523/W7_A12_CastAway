@@ -11,13 +11,13 @@ public class EquipRightHand : Equip
     public bool doesDealDamage;
     public int damage;
 
-    private Animator animator;
     protected Camera _camera;
+    protected Player player;
 
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
         _camera = Camera.main;
+        player = GetComponent<Player>();
 
     }
 
