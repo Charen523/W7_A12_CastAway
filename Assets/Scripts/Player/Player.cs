@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public UIInventory inventory;
 
     public ItemData itemData; //아이템 데이터 생성시 추가
+    public ItemSlot[] invenSlots = new ItemSlot[16];
 
     public Transform dropPosition; //아이템을 드롭할 위치
 
@@ -34,14 +35,12 @@ public class Player : MonoBehaviour
     private void Start()
     {
         inventory.InventoryRefresh += OnInvenRefresh;
+        invenSlots = inventory.slots;
     }
 
     private void OnInvenRefresh()
     {
-        if (inventory.slots[0].item != null)
-        {
-            Debug.Log(inventory.slots[0].item.displayName);
-        }
+        invenSlots = inventory.slots;
     }
 
     private void OnCollisionEnter(Collision collision)
