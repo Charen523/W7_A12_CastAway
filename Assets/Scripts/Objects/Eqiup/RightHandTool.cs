@@ -10,21 +10,24 @@ public class RightHandTool : EquipRightHand
     protected override void PerformAttack()
     {
         base.PerformAttack();
+        if (doesGatherResources)
+        {
+            GatherResources();
+        }
 
     }
 
-    public void GatherResources()
+    void GatherResources()
     {
-        float cameraPlayerDistance = Vector3.Distance(_camera.transform.position, transform.position);
-
-        Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)); // 스크린의 정 중앙으로 Ray를 쏨
+        // 자원 수집 로직 구현
+        Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, attackRange + cameraPlayerDistance)) // 공격 범위 내의 객체 정보가 있다면
+        if (Physics.Raycast(ray, out hit, attackRange))
         {
-            if (doesGatherResources && hit.collider.TryGetComponent(out ResourceCapacity resource)) // 장비가 자원채취용일때 + 콜라이더에 닿은 오브젝트가 자원일때
+            ResourceCapacity resourceCapacity = hit.collider.GetComponent<ResourceCapacity>();
+            if (resourceCapacity != null)
             {
-                //resource.Gather(hit.point, hit.normal);  // Gather 실행
+                resourceCapacity.Hit();
             }
         }
     }
