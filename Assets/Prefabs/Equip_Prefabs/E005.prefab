@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 5
-  attackDelay: 1
+  attackDelay: 0.4
   doesDealDamage: 0
   damage: 0
   doesGatherResources: 1

@@ -11,7 +11,7 @@ using static ResourcePoolManager;
 public class ResourceCapacity : MonoBehaviour, IInteractable
 {
     // 자원 용량 설정
-    public int maxHits = 3;
+    public int maxHits = 5;
     public ItemData data;
     private int currentHits;
     int cropCount = 0;
@@ -29,24 +29,19 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     }
 
     // 도끼로 쳤을 때 호출되는 메서드
-    public void Hit()
+    public void Hit(string toolTag)
     {
-        GameObject prefab = gameObject;
-        foreach (var pool in pools)
-        {
-            if (prefab.tag == "B1003" && pool.tag == gameObject.tag)
-            {
-                currentHits++;
-                // 자원 수집 처리
-                CharacterManager.Instance.Player.itemData = data;
-                CharacterManager.Instance.Player.addItem?.Invoke();
+        currentHits++;
+        Debug.Log("Resource hit: " + currentHits);
 
-                if (currentHits >= maxHits)
-                {
-                    poolManager.ReturnObjectToPool(prefab);
-                    currentHits = 0;
-                }
-            }
+        // 자원 수집 처리
+        CharacterManager.Instance.Player.itemData = data;
+        CharacterManager.Instance.Player.addItem?.Invoke();
+
+        if (currentHits >= maxHits)
+        {
+            poolManager.ReturnObjectToPool(gameObject);
+            currentHits = 0;
         }
     }
 
