@@ -19,7 +19,6 @@ public class DayAndNight : MonoBehaviour
     public AnimationCurve lightingIntensityMultiplier;
     public AnimationCurve reflectionIntensityMultiplier;
 
-    private RandomRain randomRain;
     private Temperature temperature;
     private float targetTemperature = 50;
     private int timeFlag = 0;
@@ -31,12 +30,6 @@ public class DayAndNight : MonoBehaviour
         {
             Debug.LogError("Temperature 없음");
         }
-
-        //randomRain = FindObjectOfType<RandomRain>();
-        //if (randomRain == null)
-        //{
-        //    Debug.LogError("비가없음");
-        //}
     }
 
     private void Update()
@@ -48,19 +41,6 @@ public class DayAndNight : MonoBehaviour
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
         
         UpdateTemperature();
-
-        //if (randomRain != null)
-        //{
-
-        //    if (!sun.gameObject.activeInHierarchy)
-        //    {
-        //        randomRain.EnableRain();
-        //    }
-        //    else
-        //    {
-        //        randomRain.DisableRain();
-        //    }
-        //}
     }
 
     public void UpdateLighting(Light lightSource, Gradient gradient, AnimationCurve curve)
@@ -115,6 +95,7 @@ public class DayAndNight : MonoBehaviour
                 targetTemperature = Random.Range(0, 25);
                 timeFlag++;
             }
+
             // 온도가 목표 온도에 점진적으로 도달하도록 변경 속도를 조절.
             //인게임 1시간동안 체온 변화가 이루어짐.
             float temperatureChangeRate = 0.5f; 

@@ -64,6 +64,7 @@ public class PausePanel : MonoBehaviour
 
     public void CallMainScene()
     {
+        Time.timeScale = 1.0f; //원래 게임매니저에서 해주어야 할거 같지만...
         SceneManager.LoadScene(0);
     }
 }
