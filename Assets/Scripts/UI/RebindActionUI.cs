@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 ////TODO: localization support
@@ -255,7 +256,8 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         private void PerformInteractiveRebind(InputAction action, int bindingIndex, bool allCompositeParts = false)
         {
             m_RebindOperation?.Cancel(); // Will null out m_RebindOperation.
-
+                                         // UI 요소의 포커스를 해제합니다.
+            EventSystem.current.SetSelectedGameObject(null);
             void CleanUp()
             {
                 m_RebindOperation?.Dispose();
@@ -267,10 +269,14 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
                 .WithControlsExcluding("<Mouse>/leftButton")
+                .WithControlsExcluding("<Pointer>")
                 .WithControlsExcluding("<Mouse>/rightButton")
                 .WithControlsExcluding("<Mouse>/press")
                 .WithControlsExcluding("<Pointer>/position")
                 .WithCancelingThrough("<Keyboard>/escape")
+                .OnPotentialMatch(ctx => {
+                    Debug.Log("Key pressed: " + ctx.selectedControl.path); // 로그 출력 추가
+                })
                 .OnCancel(
                     operation =>
                     {
