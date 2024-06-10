@@ -53,7 +53,11 @@ public class Interaction : MonoBehaviour
 
                         if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
                         {
-                            curInteractable.ClosePrompt();
+                            if (curInteractable != null)
+                            {
+                                curInteractable.ClosePrompt();
+                            }
+
                             curInteractable = interactable;
                             curInteractable.GetInteractPrompt();
                         }
