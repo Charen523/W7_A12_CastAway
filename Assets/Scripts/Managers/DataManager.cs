@@ -24,7 +24,6 @@ public class DataManager : Singleton<DataManager>
         {
             itemDataDictionary.Add(data.name, data);
         }
-
         foreach (var data in Resources.LoadAll<GameObject>("Item_Prefabs"))
         {
             itemPrefabDictionary.Add(data.name, data);
@@ -37,13 +36,19 @@ public class DataManager : Singleton<DataManager>
         {
             QuestDataDictionary.Add(data.name, data);
         }
+
+        Debug.Log("QuestDataDictionary 초기화 완료:");
+        foreach (var quest in QuestDataDictionary.Values)
+        {
+            Debug.Log($"Quest Name: {quest.QuestName}, BoolClear: {quest.BoolClear}");
+        }
     }
 
     public QuestData GetQuest()
     {
         foreach (var quest in QuestDataDictionary.Values)
         {
-            if (!quest.BoolClear)
+            if (quest.BoolClear == false)
             {
                 return quest;
             }

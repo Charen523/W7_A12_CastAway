@@ -115,13 +115,13 @@ public class UIInventory : MonoBehaviour
         RemoveSelectedItem();
     }
 
-    private void OnEquipBtn()
+    public void OnEquipBtn()
     {
         if (selectedSlot.item is EquipData equipData)
         {
             //def는 플레이어의 스탯이므로 관련 처리 필요.
             equipData.isEquipped = true;
-            //equipType에 따른 장비 슬롯에 장착하는 상호작용 필요.
+            CharacterManager.Instance.Player.equip.EquipNew(equipData);
             //Playe.equip에서 장착했다고 알려야 함.
             //장착된 아이템임을 알리는 별도의 UI 필요.
 
@@ -130,12 +130,13 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    private void OnUnequipBtn()
+    public void OnUnequipBtn()
     {
         if (selectedSlot.item is EquipData equipData)
         {
             //def 스탯 원복 등 위의 주석내용 반대의 작업 필요.
             equipData.isEquipped = false;
+            CharacterManager.Instance.Player.equip.UnEquip();
 
             invenBtns[(int)eBtnIndex.EQUIP_BTN].SetActive(true);
             invenBtns[(int)eBtnIndex.UNEQUIP_BTN].SetActive(false);
