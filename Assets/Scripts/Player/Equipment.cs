@@ -37,9 +37,9 @@ public class Equipment : MonoBehaviour
     public void EquipNew(EquipData data) //장착하기
     {
         UnEquip(); //현재 장착한 장비를 해제
-        //equipPosition = data.equipPrefab.transform.position; //기존 설정해 둔 position과 rotation값 저장
-        //equipRotation = data.equipPrefab.transform.rotation;
-        //curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<EquipRightHand>();// 장착을 할 장비를 curEquip에 넣어줌 
+        equipPosition = data.equipPrefab.transform.position; //기존 설정해 둔 position과 rotation값 저장
+        equipRotation = data.equipPrefab.transform.rotation;
+        curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<EquipRightHand>();// 장착을 할 장비를 curEquip에 넣어줌 
         curEquip.transform.localPosition = equipPosition; // 설정해두었던 값 적용
         curEquip.transform.localRotation = equipRotation;
     }
