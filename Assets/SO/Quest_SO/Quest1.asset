@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7228c167411ed7649ad2887b77cadf80, type: 3}
   m_Name: Quest1
   m_EditorClassIdentifier: 
-  QuestName: 
-  QuestDescription: 
-  CurrentCount: 
-  MaxCount: 
+  QuestID: 0
+  QuestName: 123
+  QuestDescription: 4565
+  CurrentCount: 0
+  MaxCount: 10
+  BoolClear: 0

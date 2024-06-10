@@ -5,7 +5,7 @@ public class RightHandWeapon : EquipRightHand
     protected override void PerformAttack()
     {
         base.PerformAttack();
-        OnHit();
+        Invoke("OnHit", 0.4f);
     }
 
     public void OnHit()
@@ -19,7 +19,7 @@ public class RightHandWeapon : EquipRightHand
 
         int layerMask = ~(1<< playerLayer); //Player를 제외한 레이어 마스크 생성
 
-        if (Physics.Raycast(ray, out hit, attackRange+cameraPlayerDistance, layerMask)) // 공격 범위 내의 객체 정보가 있다면
+        if (Physics.Raycast(ray, out hit, attackRange + cameraPlayerDistance, layerMask)) // 공격 범위 내의 객체 정보가 있다면
         {
             if (doesDealDamage && hit.collider.TryGetComponent(out IDamagable damagable)) // 장비가 공격용일때 + 콜라이더에 닿은 오브젝트가 데미지를 넣을 수 있는 오브젝트일때
             {
