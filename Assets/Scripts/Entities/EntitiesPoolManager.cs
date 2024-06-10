@@ -66,7 +66,6 @@ public class EntitiesPoolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         PlaceObjects();
     }
 
@@ -74,8 +73,16 @@ public class EntitiesPoolManager : MonoBehaviour
     void InitializePool()
     {
         PoolDictionary = new Dictionary<string, Queue<GameObject>>();
+        HashSet<string> tags = new HashSet<string>();
+
         foreach (var pool in Pools)
         {
+            if (!tags.Add(pool.tag))
+            {
+                Debug.LogError($"Duplicate tag found: {pool.tag}"); //중복된 태그 찾을시 로그
+                continue; // 중복된 태그는 건너뜀
+            }
+
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
@@ -113,8 +120,8 @@ public class EntitiesPoolManager : MonoBehaviour
                 Vector3 position = new Vector3(
                     Random.Range(pool.positionMin.x, pool.positionMax.x),
                     30f,
-                    Random.Range(pool.positionMin.z, pool.positionMax.z)
-                );
+                    Random.Range(pool.positionMin.z, pool.positionMax.z));
+                Debug.Log(position);
 
                 GameObject obj = SpawnFromPool(pool.tag);
                 if (obj != null)
