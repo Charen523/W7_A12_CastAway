@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -9,6 +10,8 @@ using static ResourcePoolManager;
 
 public class ResourceCapacity : MonoBehaviour, IInteractable
 {
+
+    public AudioSource pickupSound;
     // 자원 용량 설정
     public int maxHits = 3;
     public ItemData data;
@@ -39,7 +42,7 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
                 // 자원 수집 처리
                 CharacterManager.Instance.Player.itemData = data;
                 CharacterManager.Instance.Player.addItem?.Invoke();
-
+                PickupItem();
                 if (currentHits >= maxHits)
                 {
                     poolManager.ReturnObjectToPool(prefab);
@@ -51,6 +54,7 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
 
     public void GetInteractPrompt()
     {
+        
         GameObject prefab = gameObject;
         craftSystem.promptPanel.SetActive(true);
         foreach (var pool in pools)
@@ -61,12 +65,22 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
                 string str = $"채집 가능 횟수: {3 - cropCount}/3\n[E]를 눌러 {pool.itemName} 얻기";
                 craftSystem.promptText.text = str;
             }
-            else if(prefab.tag == "B1003" || prefab.tag == "B1004" || prefab.tag == "B1005" || prefab.tag == "B1006" || prefab.tag == "B10011")
+            else if((prefab.tag == "B1003" && pool.tag == gameObject.tag) 
+                || (prefab.tag == "B1004" && pool.tag == gameObject.tag) 
+                || (prefab.tag == "B1005" && pool.tag == gameObject.tag) 
+                || (prefab.tag == "B1006" && pool.tag == gameObject.tag) 
+                || (prefab.tag == "B10011" && pool.tag == gameObject.tag))
             {
                 string str = $"도구를 사용하여 {pool.itemName} 얻기";
                 craftSystem.promptText.text = str;
             }
-            else
+            else if((prefab.tag == "B1001" && pool.tag == gameObject.tag) 
+                || (prefab.tag == "B1007" && pool.tag == gameObject.tag)
+                || (prefab.tag == "B1008" && pool.tag == gameObject.tag)
+                || (prefab.tag == "B1009" && pool.tag == gameObject.tag)
+                || (prefab.tag == "B1010" && pool.tag == gameObject.tag) 
+                || (prefab.tag == "BI0001" && pool.tag == gameObject.tag) 
+                || (prefab.tag == "BI0002" && pool.tag == gameObject.tag))
             {
                 string str = $"[E]를 눌러 {pool.itemName} 얻기";
                 craftSystem.promptText.text = str;
@@ -92,13 +106,15 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         GameObject prefab = gameObject;
-
+        
         //inventory에 아이템 넣기.
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
 
+        PickupItem();
+
         //덤불이면 3회 수집 후 풀로 반환
-        if(prefab.tag == "B1002")
+        if (prefab.tag == "B1002")
         {
             cropCount++;
             if (cropCount >= 3)
@@ -107,9 +123,18 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
                 cropCount = 0;
             }
         }
-        else if(prefab.tag == "B1001" || prefab.tag == "B1007")
+        else if (prefab.tag == "B1001" || prefab.tag == "B1007" || prefab.tag == "B1008" || prefab.tag == "B1009" || prefab.tag == "B1010" || prefab.tag == "BI0001" || prefab.tag == "BI0002")
             poolManager.ReturnObjectToPool(prefab);
     }
 
     // 플레이어와 충돌한 자원이 동굴 앞 돌이면, currentHits >= maxHits 일 때, Destroy(gameObject)
+
+    private void PickupItem()
+    {
+        // 아이템 획득 사운드 재생
+        if (pickupSound != null)
+        {
+            pickupSound.Play();
+        }
+    }
 }

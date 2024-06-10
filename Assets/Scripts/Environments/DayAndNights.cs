@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DayAndNight : MonoBehaviour
 {
-    private float time => GameManager.Instance.time;
+    private float time;
     public Vector3 noon;
 
     [Header("Sun")]
@@ -19,24 +20,19 @@ public class DayAndNight : MonoBehaviour
     public AnimationCurve lightingIntensityMultiplier;
     public AnimationCurve reflectionIntensityMultiplier;
 
-    private RandomRain randomRain;
     private Temperature temperature;
     private float targetTemperature = 50;
     private int timeFlag = 0;
 
     private void Start()
     {
-        temperature = FindObjectOfType<Temperature>();
-        if (temperature == null)
-        {
-            Debug.LogError("Temperature 없음");
-        }
+        time = 0.25f;
 
-        //randomRain = FindObjectOfType<RandomRain>();
-        //if (randomRain == null)
-        //{
-        //    Debug.LogError("비가없음");
-        //}
+        if (SceneManager.GetActiveScene().Equals(1))
+        {
+            time = GameManager.Instance.time;
+            temperature = FindObjectOfType<Temperature>();
+        }
     }
 
     private void Update()
@@ -44,23 +40,19 @@ public class DayAndNight : MonoBehaviour
         UpdateLighting(sun, sunColor, sunIntensity);
         UpdateLighting(moon, moonColor, moonIntensity);
 
+        if (SceneManager.GetActiveScene().Equals(1))
+        {
+            time = GameManager.Instance.time;
+            UpdateTemperature(); //쓰읍... 위치 옮겨야 하는데.
+        }
+        else
+        {
+            time += Time.deltaTime * 0.005f;
+        }
+
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
-        
-        UpdateTemperature();
 
-        //if (randomRain != null)
-        //{
-
-        //    if (!sun.gameObject.activeInHierarchy)
-        //    {
-        //        randomRain.EnableRain();
-        //    }
-        //    else
-        //    {
-        //        randomRain.DisableRain();
-        //    }
-        //}
     }
 
     public void UpdateLighting(Light lightSource, Gradient gradient, AnimationCurve curve)
@@ -115,6 +107,7 @@ public class DayAndNight : MonoBehaviour
                 targetTemperature = Random.Range(0, 25);
                 timeFlag++;
             }
+
             // 온도가 목표 온도에 점진적으로 도달하도록 변경 속도를 조절.
             //인게임 1시간동안 체온 변화가 이루어짐.
             float temperatureChangeRate = 0.5f; 
