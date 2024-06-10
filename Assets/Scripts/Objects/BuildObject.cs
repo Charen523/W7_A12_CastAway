@@ -17,7 +17,7 @@ public class BuildObject : MonoBehaviour, IInteractable
         if (craftSystem != null)
         {
             crafts = craftSystem.crafts; // CraftSystem에서 crafts 리스트 가져오기
-            plantMat = craftSystem.plantMat;
+            plantMat = craftSystem.transparentMat;
             oldFence = craftSystem.oldFence;
         }
     }
