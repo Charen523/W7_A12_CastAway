@@ -19,7 +19,7 @@ MonoBehaviour:
   runSpeed: 10
   dropOnDeath: []
   aiState: 0
-  detectDistance: 100
+  detectDistance: 35
   safeDistance: 1000
   minWanderDistance: 5
   maxWanderDistance: 10

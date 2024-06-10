@@ -2743,6 +2743,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1889640656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &525318193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 525318194}
+  - component: {fileID: 525318195}
+  m_Layer: 3
+  m_Name: OceanGround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &525318194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525318193}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -240.37738, y: -15, z: -190.03452}
+  m_LocalScale: {x: 2000, y: 20, z: 2000}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1562974227}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &525318195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525318193}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &532616996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3750,10 +3803,10 @@ MonoBehaviour:
     positionMax: {x: 570, y: 50, z: 350}
   - tag: Shark_1
     prefab: {fileID: 5409734303945614224, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
-    size: 1
-    itemName: 
-    positionMin: {x: -60, y: 50, z: 30}
-    positionMax: {x: -40, y: 50, z: 75}
+    size: 10
+    itemName: "\uAC00\uC8FD"
+    positionMin: {x: -20, y: 50, z: 50}
+    positionMax: {x: -15, y: 50, z: 200}
   IsDead: 0
   respawnDelay: 60
 --- !u!4 &699140874
@@ -8263,6 +8316,7 @@ Transform:
   - {fileID: 6811718221949649308}
   - {fileID: 498176594}
   - {fileID: 1214976950}
+  - {fileID: 525318194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1568144947
@@ -9235,6 +9289,67 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.25291032, y: -0.004660055, z: -0.0012056231}
     m_Extent: {x: 0.13248903, y: 0.116088524, z: 0.54816175}
   m_DirtyAABB: 0
+--- !u!1001 &1667937671
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3208075233395828541, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: playerPosition
+      value: 
+      objectReference: {fileID: 1759015772}
+    - target: {fileID: 5409734303945614224, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_Name
+      value: Shark_v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7952862449294868819, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4857570915c1ee4aab2dccb3e3fe822, type: 3}
 --- !u!1 &1671536699
 GameObject:
   m_ObjectHideFlags: 0
@@ -34764,3 +34879,4 @@ SceneRoots:
   - {fileID: 46989191}
   - {fileID: 1634183447}
   - {fileID: 699140874}
+  - {fileID: 1667937671}
