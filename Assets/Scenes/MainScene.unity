@@ -8679,6 +8679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   condition: {fileID: 0}
+  equip: {fileID: 0}
   inventory: {fileID: 1621747258}
   itemData: {fileID: 0}
   dropPosition: {fileID: 378356124}
@@ -8975,7 +8976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEquip: {fileID: 0}
-  equipParent: {fileID: 0}
+  equipParent: {fileID: 1118168643}
 --- !u!1 &1760373034
 GameObject:
   m_ObjectHideFlags: 0
