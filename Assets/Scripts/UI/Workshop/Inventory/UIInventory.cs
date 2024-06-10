@@ -352,6 +352,7 @@ public class UIInventory : MonoBehaviour
                 }
 
                 UpdateUI();
+                break;
             }
         }
     }

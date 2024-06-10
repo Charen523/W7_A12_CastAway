@@ -119,6 +119,7 @@ public class CraftSystem : MonoBehaviour
 
         // 최종 위치에 오브젝트 설치
         PlaceFinalObject(data);
+        Destroy(currentPreview); // 프리뷰 오브젝트 삭제
         currentPreview = null; // 현재 프리뷰 오브젝트 초기화
     }
 
@@ -143,16 +144,12 @@ public class CraftSystem : MonoBehaviour
         Vector3 finalPosition = currentPreview.transform.position;
         Quaternion finalRotation = currentPreview.transform.rotation;
 
-        Destroy(currentPreview); // 프리뷰 오브젝트 삭제
-
         GameObject actualObject = Instantiate(DataManager.Instance.itemPrefabDictionary[data.name], finalPosition, finalRotation);
         Renderer[] finalRenderers = actualObject.GetComponentsInChildren<Renderer>();
         for (int i = 0; i < finalRenderers.Length; i++)
         {
             finalRenderers[i].material = originalMaterials[i];
         }
-        currentPreview = null;
-        actualObject = null;
 
         // Inventory에서 아이템 제거
         UIInventory inventory = CraftManager.Instance.UIInventory;
