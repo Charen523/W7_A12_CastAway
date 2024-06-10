@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 393166264}
-  m_IndirectSpecularColor: {r: 0.4482482, g: 0.49827528, b: 0.5755824, a: 1}
+  m_IndirectSpecularColor: {r: 0.44824904, g: 0.49827605, b: 0.5755831, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 0de01a23b348c3f49b10001ddccf0df5, type: 2}
 --- !u!1 &36231541
 GameObject:
   m_ObjectHideFlags: 0
@@ -7740,6 +7740,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1016596879810992676, guid: 9873eb919794c1e40adfc124066780ba, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016596879810992676, guid: 9873eb919794c1e40adfc124066780ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016596879810992676, guid: 9873eb919794c1e40adfc124066780ba, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1111558231595448654, guid: 9873eb919794c1e40adfc124066780ba, type: 3}
       propertyPath: m_Name
       value: Canvas_Popups
@@ -8818,6 +8830,23 @@ MonoBehaviour:
   equip: {fileID: 0}
   inventory: {fileID: 1621747258}
   itemData: {fileID: 0}
+  invenSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   dropPosition: {fileID: 378356124}
   collisionMask: 0
 --- !u!114 &1759015768
