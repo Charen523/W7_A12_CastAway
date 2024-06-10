@@ -123,7 +123,6 @@ public class AggressiveEntities : MonoBehaviour
                 StartCoroutine(ChargeAndReturn());
                 CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakeDamage(data.damage); //IDamagable의 물리 데미지 주는 함수를 호출
                 animator.speed = 1; //애니메이터의 속도를 1로 고정
-                animator.SetTrigger("Attack"); //트리거 Attack을 발동
             }
         }
     }
@@ -202,6 +201,7 @@ public class AggressiveEntities : MonoBehaviour
     }
     public void TakePhysicalDamage(int damageAmount) // 데미지를 받는 로직
     {
+        Debug.Log("맞았다!");
         data.CureentHealth -= damageAmount; //체력 - 데미지
         if (data.CureentHealth <= 0) //0보다 작거나 같아지면 죽음
             Die();
