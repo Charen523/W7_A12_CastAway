@@ -121,7 +121,12 @@ public class UICraft : MonoBehaviour
             else
             {
                 selectedRecipe[(int)eRecipeIndex.CURRENT_VALUE].text += findSlot.quantity + "\n";
-                materialIndexes.Add(findSlot.slotIndex, selectedSlot.itemData.recipe[i].value);
+
+                // 중복된 키 추가 방지
+                if (!materialIndexes.ContainsKey(findSlot.slotIndex))
+                {
+                    materialIndexes.Add(findSlot.slotIndex, selectedSlot.itemData.recipe[i].value);
+                }
 
                 if (findSlot.quantity >= selectedSlot.itemData.recipe[i].value)
                     currentSufficient++;
