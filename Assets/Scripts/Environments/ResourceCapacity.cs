@@ -10,10 +10,8 @@ using static ResourcePoolManager;
 
 public class ResourceCapacity : MonoBehaviour, IInteractable
 {
-
-    public AudioSource pickupSound;
     // 자원 용량 설정
-    public int maxHits = 3;
+    public int maxHits = 5;
     public ItemData data;
     private int currentHits;
     int cropCount = 0;
@@ -31,30 +29,63 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     }
 
     // 도끼로 쳤을 때 호출되는 메서드
-    public void Hit()
+    public void Hit(string toolTag)
     {
         GameObject prefab = gameObject;
+        craftSystem.promptPanel.SetActive(true);
         foreach (var pool in pools)
         {
-            if (prefab.tag == "B1003" && pool.tag == gameObject.tag)
+            if (toolTag == "E001" || toolTag == "E005") //도끼
             {
-                currentHits++;
-                // 자원 수집 처리
-                CharacterManager.Instance.Player.itemData = data;
-                CharacterManager.Instance.Player.addItem?.Invoke();
-                PickupItem();
-                if (currentHits >= maxHits)
+
+                if(prefab.tag == "B1003" && pool.tag == gameObject.tag)
                 {
-                    poolManager.ReturnObjectToPool(prefab);
-                    currentHits = 0;
+                    currentHits++;
+                    string str = $"{pool.itemName} 채집 가능 횟수: {maxHits - currentHits}/{maxHits}";
+                    craftSystem.promptText.text = str;
+
+                    // 자원 수집 처리
+                    CharacterManager.Instance.Player.itemData = data;
+                    CharacterManager.Instance.Player.addItem?.Invoke();
+
+                    if (currentHits >= maxHits)
+                    {
+                        poolManager.ReturnObjectToPool(gameObject);
+                        currentHits = 0;
+                    }
                 }
             }
+            else if(toolTag == "E002" || toolTag == "E006") //곡갱이
+            {
+                if ((prefab.tag == "B1004" && pool.tag == gameObject.tag) 
+                    || (prefab.tag == "B1005" && pool.tag == gameObject.tag)
+                    || (prefab.tag == "B1006" && pool.tag == gameObject.tag))
+                {
+                    currentHits++;
+                    string str = $"{pool.itemName} 채집 가능 횟수: {maxHits - currentHits}/{maxHits}";
+                    craftSystem.promptText.text = str;
+
+                    // 자원 수집 처리
+                    CharacterManager.Instance.Player.itemData = data;
+                    CharacterManager.Instance.Player.addItem?.Invoke();
+
+                    if (currentHits >= maxHits)
+                    {
+                        poolManager.ReturnObjectToPool(gameObject);
+                        currentHits = 0;
+                    }
+                }
+            }
+        }
+        if(gameObject.activeSelf)
+        {
+            // 4초 뒤에 ClosePrompt 실행
+            StartCoroutine(ClosePromptAfterDelay(4.0f));
         }
     }
 
     public void GetInteractPrompt()
     {
-        
         GameObject prefab = gameObject;
         craftSystem.promptPanel.SetActive(true);
         foreach (var pool in pools)
@@ -106,12 +137,10 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         GameObject prefab = gameObject;
-        
+
         //inventory에 아이템 넣기.
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
-
-        PickupItem();
 
         //덤불이면 3회 수집 후 풀로 반환
         if (prefab.tag == "B1002")
@@ -128,13 +157,4 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     }
 
     // 플레이어와 충돌한 자원이 동굴 앞 돌이면, currentHits >= maxHits 일 때, Destroy(gameObject)
-
-    private void PickupItem()
-    {
-        // 아이템 획득 사운드 재생
-        if (pickupSound != null)
-        {
-            pickupSound.Play();
-        }
-    }
 }

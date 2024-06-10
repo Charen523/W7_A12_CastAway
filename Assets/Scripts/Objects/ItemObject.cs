@@ -1,18 +1,41 @@
+using System.Collections;
 using UnityEngine;
+using static ResourcePoolManager;
 
 public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemData data;
     public AudioSource pickupSound;
+    private CraftSystem craftSystem;
+
+    private void Start()
+    {
+        craftSystem = FindObjectOfType<CraftSystem>();
+    }
 
     public void GetInteractPrompt()
     {
-        //추후 주울 수 있는 아이템 옆에 [data.displayName] 띄워주기.
+        if (data != null)
+        {
+            craftSystem.promptPanel.SetActive(true);
+            //추후 주울 수 있는 아이템 옆에 [data.displayName] 띄워주기.
+            string str = $"[{data.displayName}]\n{data.description}";
+            craftSystem.promptText.text = str;
+
+            StartCoroutine(ClosePromptAfterDelay(4.0f));
+        }
+    }
+
+    private IEnumerator ClosePromptAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ClosePrompt();
     }
 
     public void ClosePrompt()
     {
         //판넬 setactive false
+        craftSystem.promptPanel.SetActive(false);
     }
 
     public void OnInteract()

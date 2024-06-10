@@ -161,7 +161,6 @@ public class ResourcePoolManager : MonoBehaviour
     // 아이템 드랍 및 재생성 코루틴
     private IEnumerator RespawnObject(GameObject obj, float delay)
     {
-        Debug.Log("10초 후 생성");
         yield return new WaitForSeconds(delay);
         obj.SetActive(true);
     }
