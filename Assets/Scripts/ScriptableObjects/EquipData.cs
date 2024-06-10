@@ -18,7 +18,6 @@ public class EquipData : ItemData
 
     private void OnEnable()
     {
-        itemId = "I2";
         itemType = eItemType.EQUIP;
         canStack = false;
         maxStackAmount = 0;
