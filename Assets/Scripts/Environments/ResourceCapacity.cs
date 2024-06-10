@@ -10,13 +10,13 @@ using static ResourcePoolManager;
 public class ResourceCapacity : MonoBehaviour, IInteractable
 {
     // 자원 용량 설정
-    public int maxHits = 5;
+    public int maxHits = 3;
     public ItemData data;
     private int currentHits;
     int cropCount = 0;
 
     private ResourcePoolManager poolManager;
-    public List<Pool> pools;
+    private List<Pool> pools;
     private CraftSystem craftSystem;
 
     void Start()
@@ -28,13 +28,24 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     }
 
     // 도끼로 쳤을 때 호출되는 메서드
-    public void Hit(GameObject prefab)
+    public void Hit()
     {
-        currentHits++;
-        if (currentHits >= maxHits)
+        GameObject prefab = gameObject;
+        foreach (var pool in pools)
         {
-            poolManager.ReturnObjectToPool(prefab);
-            currentHits = 0;
+            if (prefab.tag == "B1003" && pool.tag == gameObject.tag)
+            {
+                currentHits++;
+                // 자원 수집 처리
+                CharacterManager.Instance.Player.itemData = data;
+                CharacterManager.Instance.Player.addItem?.Invoke();
+
+                if (currentHits >= maxHits)
+                {
+                    poolManager.ReturnObjectToPool(prefab);
+                    currentHits = 0;
+                }
+            }
         }
     }
 
@@ -50,7 +61,12 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
                 string str = $"채집 가능 횟수: {3 - cropCount}/3\n[E]를 눌러 {pool.itemName} 얻기";
                 craftSystem.promptText.text = str;
             }
-            else if(prefab.tag != "B1002" && pool.tag == gameObject.tag)
+            else if(prefab.tag == "B1003" || prefab.tag == "B1004" || prefab.tag == "B1005" || prefab.tag == "B1006" || prefab.tag == "B10011")
+            {
+                string str = $"도구를 사용하여 {pool.itemName} 얻기";
+                craftSystem.promptText.text = str;
+            }
+            else
             {
                 string str = $"[E]를 눌러 {pool.itemName} 얻기";
                 craftSystem.promptText.text = str;
@@ -91,7 +107,7 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
                 cropCount = 0;
             }
         }
-        else
+        else if(prefab.tag == "B1001" || prefab.tag == "B1007")
             poolManager.ReturnObjectToPool(prefab);
     }
 
