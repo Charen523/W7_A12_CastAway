@@ -8,6 +8,7 @@ public class Condition : MonoBehaviour
     [Header("Condition Values")]
     public eConditionType conditionType;
     public float startValue;
+    public float minValue = 0;
     public float maxValue;
     public float curValue;
     public float deltaRate;
@@ -31,7 +32,7 @@ public class Condition : MonoBehaviour
 
     public virtual void ChangeValue(float amount)
     {
-        curValue = Mathf.Clamp(curValue + amount, 0, maxValue);
+        curValue = Mathf.Clamp(curValue + amount, minValue, maxValue);
     }
 
     public float GetPertentage()

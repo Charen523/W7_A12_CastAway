@@ -48,8 +48,8 @@ public class UICraft : MonoBehaviour
         craftButton.GetComponent<Button>().onClick.AddListener(OnCraftBtn);
         CharacterManager.Instance.Player.NearWorkBench += EnableWorkBenchRecipe;
         CharacterManager.Instance.Player.FarWorkBench += DisableWorkBenchRecipe;
-        CharacterManager.Instance.Player.NearFurnace += EnableFurnaceRecipe;
-        CharacterManager.Instance.Player.FarFurnace += DisableFurnaceRecipe;
+        CharacterManager.Instance.Player.InHome += EnableFurnaceRecipe;
+        CharacterManager.Instance.Player.OutHome += DisableFurnaceRecipe;
 
         for (int i = 0; i <  slots.Count; i++)
         {

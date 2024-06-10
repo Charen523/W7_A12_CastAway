@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
   m_Name: I2001
   m_EditorClassIdentifier: 
-  itemId: I2
+  itemId: I2001
   itemType: 2
   displayName: "\uC870\uC7A1\uD55C \uB3C4\uB07C"
   description: "\uB3CC\uBA69\uC774\uC640 \uB098\uBB47\uAC00\uC9C0\uB97C \uC5BC\uAE30\uC124\uAE30
@@ -33,3 +33,4 @@ MonoBehaviour:
   - type: 0
     value: 25
   isEquipped: 0
+  equipPrefab: {fileID: 8824289032586821766, guid: afeed2600305e9645ae7451780ed2b52, type: 3}

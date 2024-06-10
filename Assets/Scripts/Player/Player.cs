@@ -9,13 +9,15 @@ public class Player : MonoBehaviour
     public Action addItem;
     public event Action NearWorkBench;
     public event Action FarWorkBench;
-    public event Action NearFurnace;
-    public event Action FarFurnace;
+    public event Action InHome;
+    public event Action OutHome;
+    public event Action NearBed;
+    public event Action FarBed; 
 
     public PlayerController controller; //플레이어 컨트롤러 호출
     public PlayerCondition condition;
+    public Equipment equip;
     public UIInventory inventory;
-
     public ItemData itemData; //아이템 데이터 생성시 추가
     public ItemSlot[] invenSlots = new ItemSlot[16];
 
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
         CharacterManager.Instance.Player = this; // 캐릭터 매니저에 존재하는 Player에 자신을 넣어줌
         controller = GetComponent<PlayerController>(); //GetComponent로 PlayerController 넣어줌
         condition = GetComponent<PlayerCondition>();
+        equip = GetComponent<Equipment>();
     }
 
     private void Start()
@@ -48,10 +51,9 @@ public class Player : MonoBehaviour
             NearWorkBench?.Invoke();
         }
 
-        //Trigger로 바뀔 수도 있음.
-        if (collision.gameObject.CompareTag("Furnace"))
+        if (collision.gameObject.CompareTag("B0004"))
         {
-            NearFurnace?.Invoke();
+            NearBed?.Invoke();
         }
     }
 
@@ -62,10 +64,35 @@ public class Player : MonoBehaviour
             FarWorkBench?.Invoke();
         }
 
-        //Trigger로 바뀔 수도 있음.
-        if (collision.gameObject.CompareTag("Furnace"))
+        if (collision.gameObject.CompareTag("B0004"))
         {
-            FarFurnace?.Invoke();
+            FarBed?.Invoke();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("B0001") || other.gameObject.CompareTag("B0003"))
+        {
+            condition.WarmToggle(true);
+        }
+
+        if (other.gameObject.CompareTag("B0006"))
+        {
+            InHome?.Invoke();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("B0001") || other.gameObject.CompareTag("B0003"))
+        {
+            condition.WarmToggle(false);
+        }
+
+        if (other.gameObject.CompareTag("B0006"))
+        {
+            OutHome?.Invoke();
         }
     }
 }

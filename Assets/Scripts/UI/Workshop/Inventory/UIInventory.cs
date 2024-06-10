@@ -32,7 +32,7 @@ public class UIInventory : MonoBehaviour
     public List<GameObject> invenBtns = new List<GameObject>();
     public ItemSlot[] slots { get; private set; }
     private ItemSlot selectedSlot;
-    
+
     /*플레이어*/
     private PlayerCondition condition;
     private Transform dropPosition;
@@ -63,7 +63,7 @@ public class UIInventory : MonoBehaviour
 
         /*slot 초기화.*/
         slots = new ItemSlot[holdings.childCount];
-        
+
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i] = holdings.GetChild(i).GetComponent<ItemSlot>();
@@ -98,7 +98,7 @@ public class UIInventory : MonoBehaviour
                         condition.Heal(consumeData.consumables[i].value);
                         break;
                     case eConditionType.STAMINA:
-                        condition.GiveEnergy(consumeData.consumables[i].value); 
+                        condition.GiveEnergy(consumeData.consumables[i].value);
                         break;
                     case eConditionType.TEMPERATURE:
                         //고추 아이템 추가 시 더워지게 등등? 아이디어만 있음.
@@ -124,7 +124,7 @@ public class UIInventory : MonoBehaviour
             //equipType에 따른 장비 슬롯에 장착하는 상호작용 필요.
             //Playe.equip에서 장착했다고 알려야 함.
             //장착된 아이템임을 알리는 별도의 UI 필요.
-            
+
             invenBtns[(int)eBtnIndex.EQUIP_BTN].SetActive(false);
             invenBtns[(int)eBtnIndex.UNEQUIP_BTN].SetActive(true);
         }
@@ -135,7 +135,7 @@ public class UIInventory : MonoBehaviour
         if (selectedSlot.item is EquipData equipData)
         {
             //def 스탯 원복 등 위의 주석내용 반대의 작업 필요.
-            equipData.isEquipped= false;
+            equipData.isEquipped = false;
 
             invenBtns[(int)eBtnIndex.EQUIP_BTN].SetActive(true);
             invenBtns[(int)eBtnIndex.UNEQUIP_BTN].SetActive(false);
@@ -218,7 +218,7 @@ public class UIInventory : MonoBehaviour
     {
         if (slots[index].item == null) return;
         if (selectedSlot != null) { selectedSlot.SelectedDisable(); }
-        
+
         selectedSlot = slots[index];
 
         selectedDescriptions[(int)eDescriptionIndex.ITEM_NAME].text = selectedSlot.item.displayName;
@@ -230,7 +230,7 @@ public class UIInventory : MonoBehaviour
         {
             for (int i = 0; i < consumableItem.consumables.Length; i++)
             {
-                selectedDescriptions[(int)eDescriptionIndex.STAT_NAME].text 
+                selectedDescriptions[(int)eDescriptionIndex.STAT_NAME].text
                     += consumableItem.consumables[i].type.ToString() + " :\n";
                 selectedDescriptions[(int)eDescriptionIndex.STAT_VALUE].text
                     += consumableItem.consumables[i].value.ToString() + "\n";
@@ -252,9 +252,9 @@ public class UIInventory : MonoBehaviour
             {
                 for (int i = 0; i < equipItem.equipStats.Length; i++)
                 {
-                    selectedDescriptions[(int)eDescriptionIndex.STAT_NAME].text 
+                    selectedDescriptions[(int)eDescriptionIndex.STAT_NAME].text
                         += equipItem.equipStats[i].type.ToString() + ":\n";
-                    selectedDescriptions[(int)eDescriptionIndex.STAT_VALUE].text 
+                    selectedDescriptions[(int)eDescriptionIndex.STAT_VALUE].text
                         += equipItem.equipStats[i].value.ToString() + "\n";
                 }
 
@@ -346,7 +346,7 @@ public class UIInventory : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item != null && slots[i].item.itemId ==itemID)
+            if (slots[i].item != null && slots[i].item.itemId == itemID)
             {
                 slots[i].quantity--;
 
