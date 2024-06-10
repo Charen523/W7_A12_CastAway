@@ -64,6 +64,11 @@ public class Interaction : MonoBehaviour
 
             if (!interactableFound)
             {
+                if (curInteractable != null)
+                {
+                    curInteractable.ClosePrompt();
+                }
+                
                 curInteractGameObject = null; // 부딪히지 않았다면 초기화
                 curInteractable = null;
             }

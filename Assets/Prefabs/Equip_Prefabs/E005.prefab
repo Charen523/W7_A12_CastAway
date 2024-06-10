@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8065984471626541306}
   - component: {fileID: 9099317661536030102}
   - component: {fileID: 2073046681947636131}
+  - component: {fileID: 192821179849147463}
   m_Layer: 0
   m_Name: E005
   m_TagString: Untagged
@@ -106,3 +107,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2487380500608498712, guid: 6675c6557a13efc4aacb9db75446046f, type: 3}
+--- !u!114 &192821179849147463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907071409199488718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e7397e96dd4bd409a8751104465eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 5
+  attackDelay: 1
+  doesDealDamage: 0
+  damage: 0
+  doesGatherResources: 1
+  gatherAmount: 2
+  gatherRate: 2
