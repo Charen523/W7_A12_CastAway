@@ -217,7 +217,7 @@ public class AggressiveEntities : MonoBehaviour, IDamagable
     {
         for (int x = 0; x < data.dropOnDeath.Length; x++) //dropOnDeath 에 있는 드롭 프리펩을 떨어트림(아이템 드랍)
         {
-            Instantiate(data.dropOnDeath[x], transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
+            //Instantiate(data.dropOnDeath[x].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
         }
 
         Destroy(gameObject); //몬스터 삭제

@@ -699,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 899e00f70083b8b4f9799cab7f7d371e, type: 2}
   lastAttackTime: 0
-  fieldOfView: 360
+  fieldOfView: 120
 --- !u!195 &4850303588088906197
 NavMeshAgent:
   m_ObjectHideFlags: 0
