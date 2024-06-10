@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHits: 5
+  data: {fileID: 11400000, guid: 5e94ba5512501b242a0d666a8e86ce15, type: 2}
