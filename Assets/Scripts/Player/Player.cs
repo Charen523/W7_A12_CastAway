@@ -68,4 +68,20 @@ public class Player : MonoBehaviour
             FarFurnace?.Invoke();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("B0001") || other.gameObject.CompareTag("B0003"))
+        {
+            condition.WarmToggle(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("B0001") || other.gameObject.CompareTag("B0003"))
+        {
+            condition.WarmToggle(false);
+        }
+    }
 }

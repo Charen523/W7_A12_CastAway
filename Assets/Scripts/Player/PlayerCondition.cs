@@ -113,13 +113,27 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         stamina.ChangeValue(amount);
     }
 
-    public void Warm()
+    public void WarmToggle(bool isWarm)
     {
-        temperature.ChangeValue(Mathf.Max(temperature.curValue, 20));
+        if (isWarm)
+        {
+            temperature.minValue = 30;
+        }
+        else
+        {
+            temperature.minValue = 0;
+        }
     }
 
-    public void Cool()
+    public void CoolToggle(bool isCool)
     {
-        temperature.ChangeValue(Mathf.Min(temperature.curValue, 80));
+        if (isCool)
+        {
+            temperature.maxValue = 70;
+        }
+        else
+        {
+            temperature.maxValue = 100;
+        }
     }
 }
