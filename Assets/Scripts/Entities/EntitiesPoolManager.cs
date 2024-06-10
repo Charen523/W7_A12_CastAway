@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class EntitiesPoolManager : MonoBehaviour
@@ -24,6 +25,7 @@ public class EntitiesPoolManager : MonoBehaviour
     public List<Pool> Pools;
     public Dictionary<string, Queue<GameObject>> PoolDictionary;
     public bool IsDead = false;
+
 
     private Transform parentFolder;
 
@@ -116,7 +118,7 @@ public class EntitiesPoolManager : MonoBehaviour
         {
             for (int i = 0; i < pool.size; i++)
             {
-                Vector3 offset = new Vector3(i * 0.01f, 0, i * 0.001f);
+                //Vector3 offset = new Vector3(i * 0.01f, 0, i * 0.001f);
                 Vector3 position = new Vector3(
                     Random.Range(pool.positionMin.x, pool.positionMax.x),
                     30f,
@@ -138,7 +140,11 @@ public class EntitiesPoolManager : MonoBehaviour
                         position.y = pool.positionMin.y;
                     }
 
-                    obj.transform.position = position + offset; // 객체 위치 설정(오프셋 더함)
+                    obj.transform.localPosition = position; //+ offset; // 객체 위치 설정(오프셋 더함)
+
+                    obj.GetComponent<NavMeshAgent>().enabled = true;
+
+                    Debug.Log(obj.transform.position);
 
                     originalPositions[obj] = position; // 원래 위치 저장
                 }
