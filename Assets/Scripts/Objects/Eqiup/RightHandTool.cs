@@ -28,12 +28,7 @@ public class RightHandTool : EquipRightHand
             if (resourceCapacity != null)
             {
                 resourceCapacity.Hit(tag);
-                Debug.Log("Resource hit!");
             }
-        }
-        else
-        {
-            Debug.Log("No resource hit.");
         }
     }
 }

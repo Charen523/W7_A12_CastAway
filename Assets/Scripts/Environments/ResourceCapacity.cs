@@ -31,17 +31,56 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     // 도끼로 쳤을 때 호출되는 메서드
     public void Hit(string toolTag)
     {
-        currentHits++;
-        Debug.Log("Resource hit: " + currentHits);
-
-        // 자원 수집 처리
-        CharacterManager.Instance.Player.itemData = data;
-        CharacterManager.Instance.Player.addItem?.Invoke();
-
-        if (currentHits >= maxHits)
+        GameObject prefab = gameObject;
+        craftSystem.promptPanel.SetActive(true);
+        foreach (var pool in pools)
         {
-            poolManager.ReturnObjectToPool(gameObject);
-            currentHits = 0;
+            if (toolTag == "E001" || toolTag == "E005") //도끼
+            {
+
+                if(prefab.tag == "B1003" && pool.tag == gameObject.tag)
+                {
+                    currentHits++;
+                    string str = $"{pool.itemName} 채집 가능 횟수: {maxHits - currentHits}/{maxHits}";
+                    craftSystem.promptText.text = str;
+
+                    // 자원 수집 처리
+                    CharacterManager.Instance.Player.itemData = data;
+                    CharacterManager.Instance.Player.addItem?.Invoke();
+
+                    if (currentHits >= maxHits)
+                    {
+                        poolManager.ReturnObjectToPool(gameObject);
+                        currentHits = 0;
+                    }
+                }
+            }
+            else if(toolTag == "E002" || toolTag == "E006") //곡갱이
+            {
+                if ((prefab.tag == "B1004" && pool.tag == gameObject.tag) 
+                    || (prefab.tag == "B1005" && pool.tag == gameObject.tag)
+                    || (prefab.tag == "B1006" && pool.tag == gameObject.tag))
+                {
+                    currentHits++;
+                    string str = $"{pool.itemName} 채집 가능 횟수: {maxHits - currentHits}/{maxHits}";
+                    craftSystem.promptText.text = str;
+
+                    // 자원 수집 처리
+                    CharacterManager.Instance.Player.itemData = data;
+                    CharacterManager.Instance.Player.addItem?.Invoke();
+
+                    if (currentHits >= maxHits)
+                    {
+                        poolManager.ReturnObjectToPool(gameObject);
+                        currentHits = 0;
+                    }
+                }
+            }
+        }
+        if(gameObject.activeSelf)
+        {
+            // 4초 뒤에 ClosePrompt 실행
+            StartCoroutine(ClosePromptAfterDelay(4.0f));
         }
     }
 
