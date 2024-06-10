@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 1985978241791071201}
   - component: {fileID: 1377852071545063270}
   - component: {fileID: 5365938236877251921}
+  - component: {fileID: 8429968095564757988}
   m_Layer: 0
   m_Name: KeySettings
   m_TagString: Untagged
@@ -706,9 +707,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneManagers, Assembly-CSharp
-        m_MethodName: StartBtn
+      - m_Target: {fileID: 8429968095564757988}
+        m_TargetAssemblyTypeName: KeySettingPanel, Assembly-CSharp
+        m_MethodName: KeyBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -718,6 +719,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8429968095564757988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555695065888128373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d0820dde21fa744b4474374f2ebaac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeySettingPanelUI: {fileID: 2939247094585248841}
 --- !u!1 &564922724896621756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1159,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: E
 --- !u!1 &625975711751571640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,7 +2932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Jump
 --- !u!1 &1380332189280354602
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,7 +3544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4748,7 +4762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7643347883836454296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6534,6 +6548,7 @@ GameObject:
   - component: {fileID: 8526915900845055899}
   - component: {fileID: 1300224439399432031}
   - component: {fileID: 5019252196865829743}
+  - component: {fileID: 7022060026887460338}
   m_Layer: 0
   m_Name: RunRebind
   m_TagString: Untagged
@@ -6556,10 +6571,10 @@ RectTransform:
   - {fileID: 9026932287076767170}
   m_Father: {fileID: 924280279546301948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550, y: -310}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8526915900845055899
 CanvasRenderer:
@@ -6641,6 +6656,47 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1300224439399432031}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7022060026887460338}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI,
+          Unity.InputSystem.RebindingUI
+        m_MethodName: StartInteractiveRebind
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7022060026887460338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4501188415856770602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc11d99b1a6682f4cbc4aba1fcd9ac5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Action: {fileID: 2281456314038480505, guid: ff915eda037ec0e4daa6782ee93f3829, type: 3}
+  m_BindingId: f702505f-dd21-472f-9ba1-0237b250d447
+  m_DisplayStringOptions: 0
+  m_ActionLabel: {fileID: 2209701148029765784}
+  m_BindingText: {fileID: 2364876617553977884}
+  m_RebindOverlay: {fileID: 4621426734694866642}
+  m_RebindText: {fileID: 55812853782752290}
+  m_UpdateBindingUIEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_RebindStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_RebindStopEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4507656930706795385
@@ -7175,6 +7231,7 @@ GameObject:
   - component: {fileID: 4034668312692345941}
   - component: {fileID: 6999655009193467927}
   - component: {fileID: 7084395785533113237}
+  - component: {fileID: 9063671969379679496}
   m_Layer: 0
   m_Name: JumpRebind
   m_TagString: Untagged
@@ -7197,10 +7254,10 @@ RectTransform:
   - {fileID: 1146512491684475914}
   m_Father: {fileID: 924280279546301948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550, y: -180}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4034668312692345941
 CanvasRenderer:
@@ -7282,6 +7339,47 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6999655009193467927}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9063671969379679496}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI,
+          Unity.InputSystem.RebindingUI
+        m_MethodName: StartInteractiveRebind
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9063671969379679496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923965903497326585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc11d99b1a6682f4cbc4aba1fcd9ac5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Action: {fileID: 927006613722807128, guid: ff915eda037ec0e4daa6782ee93f3829, type: 3}
+  m_BindingId: b0d0f6f4-8bbc-4495-b152-63a359029c13
+  m_DisplayStringOptions: 0
+  m_ActionLabel: {fileID: 2502272535774719664}
+  m_BindingText: {fileID: 92941231790490441}
+  m_RebindOverlay: {fileID: 4621426734694866642}
+  m_RebindText: {fileID: 55812853782752290}
+  m_UpdateBindingUIEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_RebindStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_RebindStopEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4958134919590195524
@@ -8096,7 +8194,6 @@ GameObject:
   - component: {fileID: 7819285934001596599}
   - component: {fileID: 5379248045530955875}
   - component: {fileID: 2386080964143419770}
-  - component: {fileID: 5485631655434986578}
   m_Layer: 0
   m_Name: Run
   m_TagString: Untagged
@@ -8119,10 +8216,10 @@ RectTransform:
   - {fileID: 2667625652490275363}
   m_Father: {fileID: 924280279546301948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -310}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7819285934001596599
 CanvasRenderer:
@@ -8205,32 +8302,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5379248045530955875}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5485631655434986578}
-        m_TargetAssemblyTypeName: MapPanel, Assembly-CSharp
-        m_MethodName: MapBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5485631655434986578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5425922026087372624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80e24a9a0f7fdd4a8a5765afdd7eac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MapPanelUI: {fileID: 0}
+      m_Calls: []
 --- !u!1 &5445203613146546239
 GameObject:
   m_ObjectHideFlags: 0
@@ -8381,7 +8453,6 @@ GameObject:
   - component: {fileID: 254861734662930240}
   - component: {fileID: 3228052048604090028}
   - component: {fileID: 8205137007267178406}
-  - component: {fileID: 7300835619414971640}
   m_Layer: 0
   m_Name: Interaction
   m_TagString: Untagged
@@ -8404,10 +8475,10 @@ RectTransform:
   - {fileID: 3239780734305061467}
   m_Father: {fileID: 924280279546301948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -440}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &254861734662930240
 CanvasRenderer:
@@ -8490,32 +8561,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3228052048604090028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7300835619414971640}
-        m_TargetAssemblyTypeName: MapPanel, Assembly-CSharp
-        m_MethodName: MapBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7300835619414971640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5455063562819431175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80e24a9a0f7fdd4a8a5765afdd7eac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MapPanelUI: {fileID: 0}
+      m_Calls: []
 --- !u!1 &5479416992278975016
 GameObject:
   m_ObjectHideFlags: 0
@@ -9001,7 +9047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -12.5, y: -0.000015258789}
+  m_AnchoredPosition: {x: -12.5, y: -0.000030517578}
   m_SizeDelta: {x: 379, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &9171556998224444024
@@ -9940,7 +9986,6 @@ GameObject:
   - component: {fileID: 1375743025709411397}
   - component: {fileID: 4485063886505351025}
   - component: {fileID: 3015732948809784089}
-  - component: {fileID: 4638716089807974102}
   m_Layer: 0
   m_Name: Jump
   m_TagString: Untagged
@@ -9963,10 +10008,10 @@ RectTransform:
   - {fileID: 2307938214240516443}
   m_Father: {fileID: 924280279546301948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -180}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1375743025709411397
 CanvasRenderer:
@@ -10049,32 +10094,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4485063886505351025}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4638716089807974102}
-        m_TargetAssemblyTypeName: MapPanel, Assembly-CSharp
-        m_MethodName: MapBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &4638716089807974102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6443335256107474993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80e24a9a0f7fdd4a8a5765afdd7eac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MapPanelUI: {fileID: 0}
+      m_Calls: []
 --- !u!1 &6495541599897933683
 GameObject:
   m_ObjectHideFlags: 0
@@ -10493,7 +10513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: G
 --- !u!1 &6592542554668883702
 GameObject:
   m_ObjectHideFlags: 0
@@ -11476,7 +11496,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Y
 --- !u!1 &6973702950714244290
 GameObject:
   m_ObjectHideFlags: 0
@@ -11591,10 +11611,10 @@ RectTransform:
   - {fileID: 1041528749374211113}
   m_Father: {fileID: 924280279546301948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550, y: -50}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6590948389502125393
 CanvasRenderer:
@@ -12178,7 +12198,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Run
 --- !u!1 &7546580666964846182
 GameObject:
   m_ObjectHideFlags: 0
@@ -12361,6 +12381,7 @@ GameObject:
   - component: {fileID: 5302165286267653878}
   - component: {fileID: 3601982097791177249}
   - component: {fileID: 2541478982686772363}
+  - component: {fileID: 7990998871808145867}
   m_Layer: 0
   m_Name: InteractionRebind
   m_TagString: Untagged
@@ -12383,10 +12404,10 @@ RectTransform:
   - {fileID: 478419128196408610}
   m_Father: {fileID: 924280279546301948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550, y: -440}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5302165286267653878
 CanvasRenderer:
@@ -12468,6 +12489,47 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3601982097791177249}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7990998871808145867}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI,
+          Unity.InputSystem.RebindingUI
+        m_MethodName: StartInteractiveRebind
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7990998871808145867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569929782027133080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc11d99b1a6682f4cbc4aba1fcd9ac5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Action: {fileID: 6849304754399553794, guid: ff915eda037ec0e4daa6782ee93f3829, type: 3}
+  m_BindingId: 80bb6352-b5d3-44aa-b641-dd47faff0754
+  m_DisplayStringOptions: 0
+  m_ActionLabel: {fileID: 3544851194837166478}
+  m_BindingText: {fileID: 8747932030363566318}
+  m_RebindOverlay: {fileID: 4621426734694866642}
+  m_RebindText: {fileID: 55812853782752290}
+  m_UpdateBindingUIEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_RebindStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_RebindStopEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7623677868219703904
@@ -13600,7 +13662,6 @@ GameObject:
   - component: {fileID: 6537487154841445558}
   - component: {fileID: 5011390341677184614}
   - component: {fileID: 5647367040233181775}
-  - component: {fileID: 5203764966146735372}
   m_Layer: 0
   m_Name: Move
   m_TagString: Untagged
@@ -13623,10 +13684,10 @@ RectTransform:
   - {fileID: 2214345532061566273}
   m_Father: {fileID: 924280279546301948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -50}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6537487154841445558
 CanvasRenderer:
@@ -13709,32 +13770,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5011390341677184614}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5203764966146735372}
-        m_TargetAssemblyTypeName: MapPanel, Assembly-CSharp
-        m_MethodName: MapBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5203764966146735372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8631434621634763110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80e24a9a0f7fdd4a8a5765afdd7eac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MapPanelUI: {fileID: 0}
+      m_Calls: []
 --- !u!1 &8678633542447222048
 GameObject:
   m_ObjectHideFlags: 0
@@ -14766,7 +14802,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Interaction
 --- !u!1001 &809624866156025559
 PrefabInstance:
   m_ObjectHideFlags: 0
