@@ -18,11 +18,18 @@ public class DataManager : Singleton<DataManager>
         foreach (var data in Resources.LoadAll<ItemData>("Item_SOs"))
         {
             itemDataDictionary.Add(data.name, data);
+
+            if (data is EquipData equip)
+            {
+                equip.isEquipped = false; //SO 초기화.
+            }
         }
+
         foreach (var data in Resources.LoadAll<GameObject>("Item_Prefabs"))
         {
             itemPrefabDictionary.Add(data.name, data);
         }
+
         foreach (var data in Resources.LoadAll<GameObject>("Equip_Prefabs"))
         {
             EquipPrefabDictionary.Add(data.name, data);

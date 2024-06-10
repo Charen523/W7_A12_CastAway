@@ -3,33 +3,15 @@ using UnityEngine;
 
 public class DeathUIController : MonoBehaviour
 {
-    public CanvasGroup deathUICanvasGroup;
     public GameObject DeathUI;
-    public float fadeDuration = 1.0f;
 
-
-    void Start()
+    private void OnEnable()
     {
-        deathUICanvasGroup.alpha = 0f;
+        DeathUI.SetActive(false);
     }
 
     public void ShowDeathUI()
     {
         DeathUI.SetActive(true);
-        StartCoroutine(FadeIn());
-    }
-
-    private IEnumerator FadeIn()
-    {
-        
-        float elapsedTime = 0f;
-        
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            deathUICanvasGroup.alpha = Mathf.Clamp01(elapsedTime / fadeDuration);
-            yield return null;
-        }
-        deathUICanvasGroup.alpha = 1.0f;
     }
 }
