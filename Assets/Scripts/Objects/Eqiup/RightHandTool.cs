@@ -4,7 +4,7 @@ public class RightHandTool : EquipRightHand
 {
     [Header("Resource Gathering")]
     public bool doesGatherResources; //tag, 레이어 등으로 바꾸어 나무는 캐지고 돌은 안캐지는 식의 작업 필요.
-    public string tag;
+    public string tag; //E001, E005 나무 / E002, E006 광물 
 
     protected override void PerformAttack()
     {
@@ -27,7 +27,7 @@ public class RightHandTool : EquipRightHand
             ResourceCapacity resourceCapacity = hit.collider.GetComponent<ResourceCapacity>();
             if (resourceCapacity != null)
             {
-                resourceCapacity.Hit();
+                resourceCapacity.Hit(tag);
                 Debug.Log("Resource hit!");
             }
         }

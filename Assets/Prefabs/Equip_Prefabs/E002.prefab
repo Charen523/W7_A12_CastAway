@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5122147871362809008}
   - component: {fileID: 8029740194131824299}
   - component: {fileID: 3326822019953113481}
-  - component: {fileID: 115336365101039859}
   - component: {fileID: 7879387273932064387}
+  - component: {fileID: -8148716431275890089}
   m_Layer: 6
   m_Name: E002
   m_TagString: Item
@@ -85,28 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &115336365101039859
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10431124523761488}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 232842b7647a26b488dacde76364e942, type: 3}
 --- !u!114 &7879387273932064387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,5 +102,25 @@ MonoBehaviour:
   doesDealDamage: 0
   damage: 0
   doesGatherResources: 1
-  gatherAmount: 1
-  gatherRate: 1
+  tag: E002
+--- !u!65 &-8148716431275890089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10431124523761488}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.594538, y: 0.672171, z: 0.048097}
+  m_Center: {x: 0, y: 0.16899751, z: -0.000013500452}
