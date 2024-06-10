@@ -9,6 +9,7 @@ public class BuildObject : MonoBehaviour, IInteractable
     private CraftSystem craftSystem;
     private Material plantMat;
     private GameObject oldFence;
+    private GameObject oldShip;
     private UIInventory inventory;
 
     private void Start()
@@ -19,6 +20,7 @@ public class BuildObject : MonoBehaviour, IInteractable
             crafts = craftSystem.crafts; // CraftSystem에서 crafts 리스트 가져오기
             plantMat = craftSystem.transparentMat;
             oldFence = craftSystem.oldFence;
+            oldShip = craftSystem.oldShip;
         }
 
         var player = CharacterManager.Instance.Player;
@@ -43,7 +45,7 @@ public class BuildObject : MonoBehaviour, IInteractable
                 }
 
                 craftSystem.promptPanel.SetActive(true); 
-                string str = $"[E]를 눌러 {craft.name} 건설하기\n재료: {craft.matInfo}";
+                string str = $"[E]를 눌러 {craft.name} 건설하기\n재료:{craft.matInfo}";
                 craftSystem.promptText.text = str; // 오브젝트 설명 표시
 
                 // 10초 뒤에 ClosePrompt 실행
@@ -131,6 +133,11 @@ public class BuildObject : MonoBehaviour, IInteractable
         if (craft.tag == "B0006")
         {
             Destroy(oldFence);
+        }
+        // 배 건설 시 낡은 배 삭제
+        else if (craft.tag == "B0008")
+        {
+            Destroy(oldShip);
         }
         ClosePrompt(); // 상호작용 후 프롬프트 닫기
         RemoveUsedMaterials(craft);

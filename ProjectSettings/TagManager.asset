@@ -29,6 +29,7 @@ TagManager:
   - BI0001
   - BI0002
   - Ground
+  - B0008
   layers:
   - Default
   - TransparentFX
