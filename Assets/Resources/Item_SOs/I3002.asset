@@ -18,7 +18,7 @@ MonoBehaviour:
   description: "\uAC01\uC885 \uBB3C\uAC74\uC744 \uB9CC\uB4E4 \uC218 \uC788\uB294
     \uACF5\uAC04\uC774\uB2E4. \uC774\uAC8C \uC5C6\uC73C\uBA74 \uC544\uBB34\uAC83\uB3C4
     \uD560 \uC218 \uC5C6\uC744 \uC815\uB3C4\uB85C \uB9CE\uC740 \uAC83\uC774 \uAC00\uB2A5\uD574\uC9C4\uB2E4."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 63b60ea534837fb408cf05551ffaeeea, type: 3}
   canStack: 0
   maxStackAmount: 0
   craftType: 1

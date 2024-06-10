@@ -11,7 +11,7 @@ public class EntityData : ScriptableObject
     public int CureentHealth; //체력
     public float walkSpeed; //걷기, 달리기 속도
     public float runSpeed;
-    public ItemData[] dropOnDeath; //아이템 드롭
+    public GameObject[] dropOnDeath; //아이템 드롭
 
     [Header("AI")]
     public eAIState aiState; // Ai 상태 저장

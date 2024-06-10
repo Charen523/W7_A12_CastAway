@@ -205,7 +205,6 @@ public class AggressiveEntities : MonoBehaviour, IDamagable
     }
     public void TakeDamage(int damageAmount) // 데미지를 받는 로직
     {
-        Debug.Log("맞았다!");
         CurrentHealth -= damageAmount; //체력 - 데미지
         if (CurrentHealth <= 0) //0보다 작거나 같아지면 죽음
             Die();
@@ -217,7 +216,7 @@ public class AggressiveEntities : MonoBehaviour, IDamagable
     {
         for (int x = 0; x < data.dropOnDeath.Length; x++) //dropOnDeath 에 있는 드롭 프리펩을 떨어트림(아이템 드랍)
         {
-            //Instantiate(data.dropOnDeath[x].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
+            Instantiate(data.dropOnDeath[x], transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
         }
 
         Destroy(gameObject); //몬스터 삭제

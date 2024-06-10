@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: I0003
   m_EditorClassIdentifier: 
   itemId: I0003
-  type: 0
+  itemType: 0
   displayName: "\uC774\uD30C\uB9AC"
   description: "\uAE38\uAC00\uC758 \uD480\uC744 \uBF51\uC544\uB0B4 \uC0B4\uC9DD \uB2E4\uB4EC\uC5C8\uB2E4."
-  icon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
+  icon: {fileID: 21300000, guid: 7c796281c93f14646b010e20ba3d7983, type: 3}
   canStack: 1
   maxStackAmount: 99
+  craftType: 0
+  recipe: []
+  resultQuantity: 0

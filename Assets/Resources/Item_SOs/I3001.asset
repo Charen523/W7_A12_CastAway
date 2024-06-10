@@ -17,7 +17,7 @@ MonoBehaviour:
   displayName: "\uCEA0\uD504 \uD30C\uC774\uC5B4"
   description: "\uC544\uC8FC \uC791\uC740 \uBD88. \uC660\uC9C0 \uACE7 \uC0AC\uB77C\uC9C8
     \uAC83\uB9CC \uAC19\uC740 \uAE30\uBD84\uC774 \uB4E0\uB2E4."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: cafdce8f600393543bb21539adf5205c, type: 3}
   canStack: 0
   maxStackAmount: 0
   craftType: 1
