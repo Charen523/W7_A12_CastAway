@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     public Action addItem;
     public event Action NearWorkBench;
     public event Action FarWorkBench;
-    public event Action NearFurnace;
-    public event Action FarFurnace;
+    public event Action InHome;
+    public event Action OutHome;
 
     public PlayerController controller; //플레이어 컨트롤러 호출
     public PlayerCondition condition;
@@ -49,10 +49,6 @@ public class Player : MonoBehaviour
         }
 
         //Trigger로 바뀔 수도 있음.
-        if (collision.gameObject.CompareTag("Furnace"))
-        {
-            NearFurnace?.Invoke();
-        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -60,12 +56,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("B0002"))
         {
             FarWorkBench?.Invoke();
-        }
-
-        //Trigger로 바뀔 수도 있음.
-        if (collision.gameObject.CompareTag("Furnace"))
-        {
-            FarFurnace?.Invoke();
         }
     }
 
@@ -75,6 +65,11 @@ public class Player : MonoBehaviour
         {
             condition.WarmToggle(true);
         }
+
+        if (other.gameObject.CompareTag("B0006"))
+        {
+            InHome?.Invoke();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -82,6 +77,11 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("B0001") || other.gameObject.CompareTag("B0003"))
         {
             condition.WarmToggle(false);
+        }
+
+        if (other.gameObject.CompareTag("B0006"))
+        {
+            OutHome?.Invoke();
         }
     }
 }
