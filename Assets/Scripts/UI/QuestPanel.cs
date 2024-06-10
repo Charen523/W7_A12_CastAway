@@ -9,8 +9,6 @@ public class QuestPanel : MonoBehaviour
     public TextMeshProUGUI questname;
     public TextMeshProUGUI questdescription;
     public TextMeshProUGUI count;
-    DataManager dataManager;
-    QuestData data;
     // Start is called before the first frame update
     void Start()
     {

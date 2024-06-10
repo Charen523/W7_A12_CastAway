@@ -675,7 +675,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -694,6 +694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 7bc72d848360b8b43bffe6ae1c6fc044, type: 2}
+  lastAttackTime: 0
   fieldOfView: 120
 --- !u!195 &5960285494192309964
 NavMeshAgent:
