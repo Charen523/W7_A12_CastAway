@@ -37,10 +37,15 @@ public class PlayerController : MonoBehaviour
     /*Components*/
     private Rigidbody rb;
     [HideInInspector] public Animator animator;
+    public AudioSource footstepaudio;
+    public AudioSource runningstep;
+    public float footstepInterval = 0.5f; // 발자국 소리가 재생되는 간격
+    private float lastFootstepTime;
 
     /*player Controllable Status*/
     public bool canLook = true;
     [HideInInspector] public bool canRun = true;
+    
 
     private void Awake()
     {
@@ -58,12 +63,12 @@ public class PlayerController : MonoBehaviour
     {
         if (animator.GetBool("IsWalk"))
         {
+            
             transform.eulerAngles = new Vector3(0, camCurYRot, 0);
             AnimatorAim();
         }
-
         if (IsGrounded())
-        {
+        {          
             Move();
         }
     }
@@ -81,13 +86,14 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             moveInput = context.ReadValue<Vector2>();
+            footstepaudio.Play();
             animator.SetBool("IsWalk", true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             moveInput = Vector2.zero;
             animator.SetBool("IsWalk", false);
-
+            footstepaudio.Stop();
             if (animator.GetBool("IsRun") == true)
             {
                 animator.SetBool("IsRun", false);
@@ -115,12 +121,16 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             animator.SetBool("IsRun", true);
+            runningstep.Play();
+            footstepaudio.Stop();
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
             animator.SetBool("IsRun", false);
             canRun = true;
+            footstepaudio.Play();
+            runningstep.Stop();
         }
     }
 
