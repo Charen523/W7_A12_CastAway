@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -21,23 +22,33 @@ public class GameManager : Singleton<GameManager>
     [Header("Game Status")]
     public bool isPause;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     private void Start()
     {
-        OnPause += Pause;
-        OnResume += Resume;
-        BecomeMorning += TimeToMorning;
-        
+        if (SceneManager.GetActiveScene().Equals(0))
+        {
+            Debug.LogError("StartScene으로 게임을 시작할 때는 아직 게임매니저가 존재하면 안되는데!");
+        }
+        else
+        {
+            OnPause += Pause;
+            OnResume += Resume;
+            BecomeMorning += TimeToMorning;
+
+            playerCondition = CharacterManager.Instance.Player.condition;
+            playerCondition.OnDeath += PlayerDeath;
+        }
+    }
+    void OnEnable()
+    {
+        // 씬 로드 이벤트에 대한 리스너 추가
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         timeRate = 1 / fullDayLength;
         time = startTime;
         Time.timeScale = 1f;
-
-        playerCondition = CharacterManager.Instance.Player.condition;
-        playerCondition.OnDeath += PlayerDeath;
     }
 
     private void Update()
@@ -84,4 +95,4 @@ public class GameManager : Singleton<GameManager>
         time = 0.2499f;
         day++;
     }
- }
+}
