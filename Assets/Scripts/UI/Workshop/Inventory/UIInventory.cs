@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -23,11 +24,13 @@ public class UIInventory : MonoBehaviour
         INSTALL_BTN
     }
 
+    public event Action InventoryRefresh;
+
     [Header("Inventory")]
     private Transform holdings;
     public List<TextMeshProUGUI> selectedDescriptions;
     public List<GameObject> invenBtns = new List<GameObject>();
-    private ItemSlot[] slots;
+    public ItemSlot[] slots { get; private set; }
     private ItemSlot selectedSlot;
     
     /*플레이어*/
@@ -167,6 +170,8 @@ public class UIInventory : MonoBehaviour
                 slots[i].Clear();
             }
         }
+
+        InventoryRefresh?.Invoke();
     }
 
     public void AddItem()
@@ -206,7 +211,7 @@ public class UIInventory : MonoBehaviour
 
     public void ThrowItem(ItemData data)
     {
-        Instantiate(DataManager.Instance.itemPrefabDictionary[data.name], dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
+        Instantiate(DataManager.Instance.itemPrefabDictionary[data.name], dropPosition.position, Quaternion.Euler(Vector3.one * UnityEngine.Random.value * 360));
     }
 
     public void SelectItem(int index)

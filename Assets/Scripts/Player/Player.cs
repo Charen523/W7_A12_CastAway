@@ -10,12 +10,14 @@ public class Player : MonoBehaviour
     public event Action NearWorkBench;
     public event Action FarWorkBench;
     public event Action NearFurnace;
-    public event Action FarFurnace; 
+    public event Action FarFurnace;
 
     public PlayerController controller; //플레이어 컨트롤러 호출
     public PlayerCondition condition;
+    public UIInventory inventory;
 
     public ItemData itemData; //아이템 데이터 생성시 추가
+    public ItemSlot[] invenSlots = new ItemSlot[16];
 
     public Transform dropPosition; //아이템을 드롭할 위치
 
@@ -26,6 +28,17 @@ public class Player : MonoBehaviour
         CharacterManager.Instance.Player = this; // 캐릭터 매니저에 존재하는 Player에 자신을 넣어줌
         controller = GetComponent<PlayerController>(); //GetComponent로 PlayerController 넣어줌
         condition = GetComponent<PlayerCondition>();
+    }
+
+    private void Start()
+    {
+        inventory.InventoryRefresh += OnInvenRefresh;
+        invenSlots = inventory.slots;
+    }
+
+    private void OnInvenRefresh()
+    {
+        invenSlots = inventory.slots;
     }
 
     private void OnCollisionEnter(Collision collision)
