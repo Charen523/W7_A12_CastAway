@@ -35,6 +35,7 @@ public class CraftSystem : MonoBehaviour
     public TextMeshProUGUI promptText; // 프롬프트 텍스트
     public GameObject promptPanel; // 프롬프트 패널
     public GameObject oldFence;
+    public GameObject oldShip;
     public Material fontMat;
     public Material transparentMat;
     public Material redMat; // 충돌 시 붉은 재질
@@ -70,6 +71,13 @@ public class CraftSystem : MonoBehaviour
                 foreach (Renderer renderer in renderers)
                 {
                     renderer.material = fontMat; // material을 null로 설정하여 보이지 않게 만듦
+                }
+                if (renderers.Length > 0)
+                {
+                    for (int i = 0; i < renderers.Length; i++)
+                    {
+                        renderers[i].material = fontMat;
+                    }
                 }
             }
         }
