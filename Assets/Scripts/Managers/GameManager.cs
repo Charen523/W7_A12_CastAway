@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
     /*events*/
     public event Action OnPause;
     public event Action OnResume;
+    public event Action BecomeMorning;
 
     [Header("Time")]
     [Range(0f, 1f)] public float time;
@@ -29,6 +30,7 @@ public class GameManager : Singleton<GameManager>
     {
         OnPause += Pause;
         OnResume += Resume;
+        BecomeMorning += TimeToMorning;
         
         timeRate = 1 / fullDayLength;
         time = startTime;
@@ -71,4 +73,15 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 0f;
     }
-}
+
+    public void OnSleep()
+    {
+        BecomeMorning?.Invoke();
+    }
+
+    private void TimeToMorning()
+    {
+        time = 0.2499f;
+        day++;
+    }
+ }

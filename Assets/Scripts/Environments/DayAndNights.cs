@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 
 public class DayAndNight : MonoBehaviour
 {
     private float time => GameManager.Instance.time;
-    private float fullDayLength;
     public Vector3 noon;
 
     [Header("Sun")]
@@ -30,8 +26,6 @@ public class DayAndNight : MonoBehaviour
 
     private void Start()
     {
-        fullDayLength = GameManager.Instance.fullDayLength;
-
         temperature = FindObjectOfType<Temperature>();
         if (temperature == null)
         {
