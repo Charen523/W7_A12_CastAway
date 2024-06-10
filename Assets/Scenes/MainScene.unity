@@ -6003,6 +6003,10 @@ PrefabInstance:
       propertyPath: promptPanel
       value: 
       objectReference: {fileID: 9066546665412229756}
+    - target: {fileID: 6382263747465730504, guid: 897fc2a39ab9d594485f3cd0fb2ce7b3, type: 3}
+      propertyPath: transparentMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d570b2d921239f40bc5a2043d2d36eb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

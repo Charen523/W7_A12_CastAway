@@ -36,7 +36,7 @@ public class CraftSystem : MonoBehaviour
     public GameObject promptPanel; // 프롬프트 패널
     public GameObject oldFence;
     public Material fontMat;
-    public Material plantMat;
+    public Material transparentMat;
     public Material redMat; // 충돌 시 붉은 재질
     public LayerMask groundLayerMask;
     public GameObject InventoryUI;
@@ -95,7 +95,7 @@ public class CraftSystem : MonoBehaviour
 
         foreach (Renderer renderer in renderers)
         {
-            renderer.material = plantMat; // 프리뷰 오브젝트의 재질을 plantMat으로 변경
+            renderer.material = transparentMat; // 프리뷰 오브젝트의 재질을 transparentMat으로 변경
         }
 
         StartCoroutine(FollowAndPlace(data)); // 프리뷰 오브젝트를 따라다니게 하고 배치할 코루틴 시작
@@ -111,7 +111,7 @@ public class CraftSystem : MonoBehaviour
             Renderer[] renderers = currentPreview.GetComponentsInChildren<Renderer>();
             foreach (Renderer renderer in renderers)
             {
-                renderer.material = plantMat; // 충돌하지 않으면 plantMat으로 표시
+                renderer.material = transparentMat; // transparentMat으로 표시
             }
 
             yield return null;
