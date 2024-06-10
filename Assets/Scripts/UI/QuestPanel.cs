@@ -10,30 +10,30 @@ public class QuestPanel : MonoBehaviour
     public TextMeshProUGUI questdescription;
     public TextMeshProUGUI count;
     // Start is called before the first frame update
-    void Start()
-    {
-        LoadQuest();
-    }
+    //void Start()
+    //{
+    //    LoadQuest();
+    //}
 
-    void LoadQuest()
-    {
-        DataManager dataManager = DataManager.Instance;
-        QuestData unclearedQuest = dataManager.GetQuest();
+    //void LoadQuest()
+    //{
+    //    DataManager dataManager = DataManager.Instance;
+    //    QuestData unclearedQuest = dataManager.GetQuest();
 
-        if (unclearedQuest != null)
-        {
-            questname.text = unclearedQuest.QuestName;
-            questdescription.text = unclearedQuest.QuestDescription;
-            count.text = $"({unclearedQuest.CurrentCount} / {unclearedQuest.MaxCount})";
+    //    if (unclearedQuest != null)
+    //    {
+    //        questname.text = unclearedQuest.QuestName;
+    //        questdescription.text = unclearedQuest.QuestDescription;
+    //        count.text = $"({unclearedQuest.CurrentCount} / {unclearedQuest.MaxCount})";
 
-        }
-        else
-        {
-            questname.text = null;
-            questdescription.text = "남은 퀘스트가 없습니다";
-            count.text = null;
-        }
-    }
+    //    }
+    //    else
+    //    {
+    //        questname.text = null;
+    //        questdescription.text = "남은 퀘스트가 없습니다";
+    //        count.text = null;
+    //    }
+    //}
 
     // Update is called once per frame
     void Update()
