@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Animator animator;
     public AudioSource footstepaudio;
     public AudioSource runningstep;
+    public AudioSource Jumpaudio;
     public float footstepInterval = 0.5f; // 발자국 소리가 재생되는 간격
     private float lastFootstepTime;
 
@@ -108,6 +109,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("IsJump");
+            Jumpaudio.Play();
+        }
+        if(animator.GetBool("IsJump") == false)
+        {
+            Jumpaudio.Stop();
         }
     }
 
