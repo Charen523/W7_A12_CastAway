@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DayAndNight : MonoBehaviour
 {
-    private float time => GameManager.Instance.time;
+    private float time;
     public Vector3 noon;
 
     [Header("Sun")]
@@ -25,10 +26,12 @@ public class DayAndNight : MonoBehaviour
 
     private void Start()
     {
-        temperature = FindObjectOfType<Temperature>();
-        if (temperature == null)
+        time = 0.25f;
+
+        if (SceneManager.GetActiveScene().Equals(1))
         {
-            Debug.LogError("Temperature 없음");
+            time = GameManager.Instance.time;
+            temperature = FindObjectOfType<Temperature>();
         }
     }
 
@@ -37,10 +40,21 @@ public class DayAndNight : MonoBehaviour
         UpdateLighting(sun, sunColor, sunIntensity);
         UpdateLighting(moon, moonColor, moonIntensity);
 
+        if (SceneManager.GetActiveScene().Equals(1))
+        {
+            time = GameManager.Instance.time;
+            UpdateTemperature(); //쓰읍... 위치 옮겨야 하는데.
+        }
+        else
+        {
+            time += Time.deltaTime * 0.005f;
+        }
+
+        Debug.Log(time);
+
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
-        
-        UpdateTemperature();
+
     }
 
     public void UpdateLighting(Light lightSource, Gradient gradient, AnimationCurve curve)
