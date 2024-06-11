@@ -14,13 +14,14 @@ public class NeutralEntities : MonoBehaviour, IDamagable
 
     private float playerDistance; //플레이어와의 거리
 
-    private ResourcePoolManager poolManager;
+    private EntitiesPoolManager poolManager;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        poolManager = EntitiesPoolManager.Instance;
     }
 
     private void Start()
@@ -156,7 +157,7 @@ public class NeutralEntities : MonoBehaviour, IDamagable
         CurrentHealth -= damageAmount; //체력 - 데미지
         if (CurrentHealth <= 0) //0보다 작거나 같아지면 죽음
             Die();
-
+        else
         StartCoroutine(DamageFlash()); //아니라면 데미지를 받음 (코루틴)
     }
 
@@ -164,8 +165,10 @@ public class NeutralEntities : MonoBehaviour, IDamagable
     {
         for (int x = 0; x < data.dropOnDeath.Length; x++) //dropOnDeath 에 있는 드롭 프리펩을 떨어트림(아이템 드랍)
         {
-            //Instantiate(data.dropOnDeath[x].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
+            Instantiate(data.dropOnDeath[x], transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
         }
+        Debug.Log(this);
+        Debug.Log(this.gameObject);
 
         poolManager.ReturnObjectToPool(this.gameObject);
         CurrentHealth = data.MaxHealth;

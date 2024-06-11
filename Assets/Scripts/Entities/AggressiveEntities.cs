@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +16,8 @@ public class AggressiveEntities : MonoBehaviour, IDamagable
 
     private float playerDistance; //플레이어와의 거리
 
+    private EntitiesPoolManager poolManager;
+
 
     public float lastAttackTime = 0; //최근 공격한 시간
     public float fieldOfView = 120f; //시야각 (120도)
@@ -24,6 +27,7 @@ public class AggressiveEntities : MonoBehaviour, IDamagable
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        poolManager = EntitiesPoolManager.Instance;
     }
 
     private void Start()
@@ -208,7 +212,7 @@ public class AggressiveEntities : MonoBehaviour, IDamagable
         CurrentHealth -= damageAmount; //체력 - 데미지
         if (CurrentHealth <= 0) //0보다 작거나 같아지면 죽음
             Die();
-
+        else
         StartCoroutine(DamageFlash()); //아니라면 데미지를 받음 (코루틴)
     }
 
@@ -219,7 +223,8 @@ public class AggressiveEntities : MonoBehaviour, IDamagable
             Instantiate(data.dropOnDeath[x], transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
         }
 
-        Destroy(gameObject); //몬스터 삭제
+        poolManager.ReturnObjectToPool(this.gameObject);
+        CurrentHealth = data.MaxHealth;
     }
 
     IEnumerator DamageFlash()
