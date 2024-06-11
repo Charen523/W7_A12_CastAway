@@ -28,7 +28,7 @@ MonoBehaviour:
   resultQuantity: 1
   consumables:
   - type: 0
-    value: 15
+    value: 45
   - type: 1
     value: -5
   - type: 2

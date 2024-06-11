@@ -24,4 +24,4 @@ MonoBehaviour:
   resultQuantity: 0
   consumables:
   - type: 0
-    value: 10
+    value: 30
