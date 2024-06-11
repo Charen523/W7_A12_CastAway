@@ -43,6 +43,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (hunger.curValue == 0 || thirst.curValue == 0)
         {
             health.ChangeValue(-healthDecay * Time.deltaTime);
+            onTakeDamage?.Invoke();
         }
 
         if (health.curValue == 0 && !isDead)
@@ -70,6 +71,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (temperature.curValue > 80 || temperature.curValue < 20)
         {
             health.ChangeValue(-healthDecay * Time.deltaTime);
+            onTakeDamage?.Invoke();
         }
     }
 
