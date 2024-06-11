@@ -1,20 +1,44 @@
-using UnityEditor.EditorTools;
+using System.Collections;
 using UnityEngine;
+using static ResourcePoolManager;
 
-//IInteractable 인터페이스 필요.
-//인벤토리 스크립트와 연결되게 수정 필요.
 public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemData data;
+    public AudioSource pickupSound;
+    private CraftSystem craftSystem;
+
+    private void Start()
+    {
+        craftSystem = FindObjectOfType<CraftSystem>();
+    }
 
     public void GetInteractPrompt()
     {
-        //추후 주울 수 있는 아이템 옆에 [data.displayName] 띄워주기.
+        if (data != null)
+        {
+            craftSystem.promptPanel.SetActive(true);
+            //추후 주울 수 있는 아이템 옆에 [data.displayName] 띄워주기.
+            string str = $"[{data.displayName}]\n{data.description}";
+            craftSystem.promptText.text = str;
+
+            StartCoroutine(ClosePromptAfterDelay(3.0f));
+        }
+    }
+
+    private IEnumerator ClosePromptAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ClosePrompt();
     }
 
     public void ClosePrompt()
     {
-        //판넬 setactive false
+        if (craftSystem.promptPanel.activeSelf)
+        {
+            //판넬 setactive false
+            craftSystem.promptPanel.SetActive(false);
+        }
     }
 
     public void OnInteract()
@@ -22,13 +46,16 @@ public class ItemObject : MonoBehaviour, IInteractable
         //inventory에 아이템 넣기.
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
+        PickupItem();
+        Destroy(gameObject);
+    }
 
-        //아이템 오브젝트 파괴(당근, 버섯이면 풀로 반환)
-        if (ResourcePoolManager.Instance.isCrop)
+    private void PickupItem()
+    {
+        // 아이템 획득 사운드 재생
+        if (pickupSound != null)
         {
-            ResourcePoolManager.Instance.ReturnObjectToPool(gameObject);
+            pickupSound.Play();
         }
-        else
-            Destroy(gameObject);
     }
 }

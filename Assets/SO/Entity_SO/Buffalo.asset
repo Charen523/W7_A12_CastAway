@@ -17,7 +17,8 @@ MonoBehaviour:
   CureentHealth: 50
   walkSpeed: 2
   runSpeed: 4
-  dropOnDeath: []
+  dropOnDeath:
+  - {fileID: 2391690219754324708, guid: c08ca76ac2c47dc4884f12beb3bd5f9c, type: 3}
   aiState: 0
   detectDistance: 3
   safeDistance: 3

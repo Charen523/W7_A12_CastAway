@@ -17,10 +17,10 @@ MonoBehaviour:
   displayName: "\uCE58\uB8CC\uC81C"
   description: "\uC0C1\uCC98\uAC00 \uC788\uC73C\uC2DC\uB2E4\uAD6C\uC694? \uAC71\uC815\uB9C8\uC138\uC694!
     \uC774 \uCE58\uB8CC\uC81C \uD55C\uBC29\uC774\uBA74 \uC2F9 \uB098\uC744\uAC81\uB2C8\uB2E4."
-  icon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
+  icon: {fileID: 21300000, guid: 60e1c15be0bd8c246ab4a8348a2829b7, type: 3}
   canStack: 1
   maxStackAmount: 99
-  craftTool: 2
+  craftType: 2
   recipe:
   - itemId: I1002
     value: 2
@@ -29,4 +29,4 @@ MonoBehaviour:
   resultQuantity: 3
   consumables:
   - type: 2
-    value: 30
+    value: 70

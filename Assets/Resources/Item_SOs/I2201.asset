@@ -9,24 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3680d68f094fc74dae9077a79791dee, type: 3}
+  m_Script: {fileID: 11500000, guid: 731b36f4bbea6cb4f865f96e515f58aa, type: 3}
   m_Name: I2201
   m_EditorClassIdentifier: 
-  itemId: I2
-  itemType: 2
+  itemId: I2201
+  itemType: 1
   displayName: "\uBB3C\uD1B5"
   description: "\uD734\uB300\uC6A9 \uBB3C\uD1B5. \uCCA0\uC870\uAC01\uC744 \uD2C0\uC5D0
     \uBD80\uC5B4 \uB9CC\uB4E4\uC5C8\uB2E4. \uC774\uC81C \uB354 \uC624\uB798 \uD0D0\uD5D8\uD560
     \uC218 \uC788\uB2E4."
-  icon: {fileID: 21300000, guid: f26fa8880b3aeef4b8516c82dc12f2a5, type: 3}
-  canStack: 0
-  maxStackAmount: 0
-  craftTool: 2
-  recipe:
-  - itemId: I0011
-    value: 12
-  resultQuantity: 1
-  EquipId: E201
-  equipType: 0
-  equipStats: []
-  isEquipped: 0
+  icon: {fileID: 21300000, guid: 0551165f0e9be6143a14847360a24f60, type: 3}
+  canStack: 1
+  maxStackAmount: 99
+  craftType: 0
+  recipe: []
+  resultQuantity: 0
+  consumables:
+  - type: 1
+    value: 300

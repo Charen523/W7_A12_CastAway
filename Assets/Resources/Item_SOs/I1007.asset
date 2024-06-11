@@ -17,17 +17,17 @@ MonoBehaviour:
   displayName: "\uAD6C\uC6B4 \uACFC\uC77C"
   description: "\uACFC\uC77C\uC744 \uAD6C\uC5C8\uB2E4! \uC870\uAE08 \uB354 \uB9DB\uC788\uC5B4\uC9C4
     \uAE30\uBD84\uC774\uB2E4. \uD30C\uC778\uC560\uD50C\uC774\uBA74 \uB354 \uB9DB\uC788\uC5C8\uC744\uD150\uB370..."
-  icon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
+  icon: {fileID: 21300000, guid: 18ef64aa31fed9e478a538ab0d4d154e, type: 3}
   canStack: 1
   maxStackAmount: 99
-  craftTool: 3
+  craftType: 3
   recipe:
   - itemId: I1006
     value: 1
   resultQuantity: 1
   consumables:
   - type: 0
-    value: 15
+    value: 45
   - type: 1
     value: -5
   - type: 2

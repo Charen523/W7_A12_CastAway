@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8655777216227746430}
   - component: {fileID: -50158636970149458}
   - component: {fileID: 3040064682169317890}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: B1004
   m_TagString: B1004
   m_Icon: {fileID: 0}
@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHits: 5
+  data: {fileID: 11400000, guid: d50802892de42c44581e71399c7fb610, type: 2}

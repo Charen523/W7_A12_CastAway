@@ -4,9 +4,7 @@ using UnityEngine.InputSystem;
 public interface IInteractable
 {
     public void GetInteractPrompt(); //화면에 띄울 프롬프트 
-
     public void ClosePrompt();
-
     public void OnInteract(); // Interact 되었을 시 발동되는 효과 정하기
 }
 
@@ -53,6 +51,11 @@ public class Interaction : MonoBehaviour
 
                         if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
                         {
+                            if (curInteractable != null)
+                            {
+                                curInteractable.ClosePrompt();
+                            }
+
                             curInteractable = interactable;
                             curInteractable.GetInteractPrompt();
                         }
@@ -64,6 +67,11 @@ public class Interaction : MonoBehaviour
 
             if (!interactableFound)
             {
+                if (curInteractable != null)
+                {
+                    curInteractable.ClosePrompt();
+                }
+                
                 curInteractGameObject = null; // 부딪히지 않았다면 초기화
                 curInteractable = null;
             }

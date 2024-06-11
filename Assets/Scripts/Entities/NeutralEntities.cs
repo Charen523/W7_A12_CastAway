@@ -10,13 +10,18 @@ public class NeutralEntities : MonoBehaviour, IDamagable
     private SkinnedMeshRenderer[] meshRenderers; //SkinnedMeshRenderer 불러오기 (오브젝트가 갖고있는 MeshRenderer)
     private eAIState aiState;
 
+    private int CurrentHealth;
+
     private float playerDistance; //플레이어와의 거리
+
+    private EntitiesPoolManager poolManager;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        poolManager = EntitiesPoolManager.Instance;
     }
 
     private void Start()
@@ -31,7 +36,7 @@ public class NeutralEntities : MonoBehaviour, IDamagable
 
         animator.SetBool("Moving", aiState != eAIState.IDLE); // ai의 상태가 기본 상태가 아니라면 Moving을 true로
 
-        if(data.CureentHealth < data.MaxHealth ) //체력이 소진되면 도망치게 만듬(테스트 필요)
+        if (CurrentHealth < data.MaxHealth / 10) //체력이 소진되면 도망치게 만듬(테스트 필요)
         {
             SetState(eAIState.FLEEING);
         }
@@ -149,10 +154,10 @@ public class NeutralEntities : MonoBehaviour, IDamagable
     }
     public void TakeDamage(int damageAmount) // 데미지를 받는 로직
     {
-        data.CureentHealth -= damageAmount; //체력 - 데미지
-        if (data.CureentHealth <= 0) //0보다 작거나 같아지면 죽음
+        CurrentHealth -= damageAmount; //체력 - 데미지
+        if (CurrentHealth <= 0) //0보다 작거나 같아지면 죽음
             Die();
-
+        else
         StartCoroutine(DamageFlash()); //아니라면 데미지를 받음 (코루틴)
     }
 
@@ -160,10 +165,13 @@ public class NeutralEntities : MonoBehaviour, IDamagable
     {
         for (int x = 0; x < data.dropOnDeath.Length; x++) //dropOnDeath 에 있는 드롭 프리펩을 떨어트림(아이템 드랍)
         {
-            //Instantiate(data.dropOnDeath[x].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
+            Instantiate(data.dropOnDeath[x], transform.position + Vector3.up * 2, Quaternion.identity); //드롭 위치 지정
         }
+        Debug.Log(this);
+        Debug.Log(this.gameObject);
 
-        Destroy(gameObject); //몬스터 삭제
+        poolManager.ReturnObjectToPool(this.gameObject);
+        CurrentHealth = data.MaxHealth;
     }
 
     IEnumerator DamageFlash()

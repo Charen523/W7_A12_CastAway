@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,6 +13,9 @@ public class ResourcePoolManager : MonoBehaviour
         public string tag;
         public GameObject prefab;
         public int size;
+
+        [Header("DropInfo")]
+        public string itemName;
 
         [Header("Position")]
         public Vector3 positionMin;
@@ -58,10 +62,17 @@ public class ResourcePoolManager : MonoBehaviour
             if (_instance == this)
             {   // 중복 인스턴스 제거
                 Destroy(gameObject);
+                return;
             }
         }
 
         parentFolder = GetComponent<Transform>();
+
+        if (parentFolder == null)
+        {
+            Debug.LogError("parentFolder is null. Assigning to this.transform.");
+            parentFolder = this.transform;
+        }
         // 오브젝트 풀 초기화
         InitializePool();
     }
@@ -75,9 +86,16 @@ public class ResourcePoolManager : MonoBehaviour
     // 오브젝트 풀 초기화 메서드
     void InitializePool()
     {
+
         PoolDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach (var pool in Pools)
         {
+            if (pool.prefab == null)
+            {
+                Debug.LogError($"Prefab for pool with tag {pool.tag} is null.");
+                continue;
+            }
+
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
@@ -111,9 +129,10 @@ public class ResourcePoolManager : MonoBehaviour
         {
             for (int i = 0; i < pool.size; i++)
             {
+                Vector3 offset = new Vector3(i * 0.01f, 0, i * 0.001f);
                 Vector3 position = new Vector3(
                     Random.Range(pool.positionMin.x, pool.positionMax.x),
-                    30f, // 레이캐스트 초기 y 위치
+                    30f,
                     Random.Range(pool.positionMin.z, pool.positionMax.z)
                 );
 
@@ -132,7 +151,8 @@ public class ResourcePoolManager : MonoBehaviour
                         position.y = pool.positionMin.y;
                     }
 
-                    obj.transform.position = position; // 객체 위치 설정
+                    obj.transform.position = position + offset; // 객체 위치 설정(오프셋 더함)
+
                     obj.transform.localScale = new Vector3(
                         Random.Range(pool.scaleMin.x, pool.scaleMax.x),
                         Random.Range(pool.scaleMin.y, pool.scaleMax.y),
@@ -155,8 +175,13 @@ public class ResourcePoolManager : MonoBehaviour
     // 아이템 드랍 및 재생성 코루틴
     private IEnumerator RespawnObject(GameObject obj, float delay)
     {
-        Debug.Log("10초 후 생성");
         yield return new WaitForSeconds(delay);
         obj.SetActive(true);
+    }
+
+    // 오브젝트 풀로 반환, 재생성 코루틴 호출하는 메서드
+    public void Remove(GameObject obj)
+    {
+        Destroy(obj);
     }
 }

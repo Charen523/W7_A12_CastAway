@@ -18,9 +18,11 @@ public class EquipData : ItemData
 
     private void OnEnable()
     {
-        itemId = "I2";
         itemType = eItemType.EQUIP;
         canStack = false;
         maxStackAmount = 0;
     }
+
+    [Header("Equip")]
+    public GameObject equipPrefab; // 장착한 장비 프리펩
 }

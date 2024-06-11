@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: I1001
   m_EditorClassIdentifier: 
   itemId: I1001
-  type: 1
+  itemType: 1
   displayName: "\uBC84\uC12FA"
   description: "\uB9DB\uC788\uB294 \uC0C9\uC758 \uBC84\uC12F\uC774\uB2E4! "
-  icon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
+  icon: {fileID: 21300000, guid: 9a7b3cef1dc177642b82386713dea99a, type: 3}
   canStack: 1
   maxStackAmount: 99
+  craftType: 0
+  recipe: []
+  resultQuantity: 0
   consumables:
   - type: 0
-    value: 10
+    value: 30

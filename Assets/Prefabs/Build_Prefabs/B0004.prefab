@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 2073797464564745751}
   - component: {fileID: 1602631957011423892}
   - component: {fileID: 4027082670263645903}
-  m_Layer: 0
+  - component: {fileID: 3204133013195846953}
+  - component: {fileID: -6397232477602037552}
+  m_Layer: 6
   m_Name: B0004
-  m_TagString: Untagged
+  m_TagString: B0004
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035959111163218515}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 635.37, y: 3.525, z: 263.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &2073797464564745751
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -105,3 +107,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9982758, y: 0.6772537, z: 1.0000002}
   m_Center: {x: 0.0008468628, y: 0.33862686, z: 0.00000011920929}
+--- !u!65 &3204133013195846953
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035959111163218515}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 1, z: 2}
+  m_Center: {x: -0.000015258793, y: 0.5, z: 0.00000011920932}
+--- !u!114 &-6397232477602037552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035959111163218515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30941b2797a1d94fa1af19468ed97a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sleepPrompt: {fileID: 0}
+  Blackout: {fileID: 0}

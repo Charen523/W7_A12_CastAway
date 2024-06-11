@@ -16,10 +16,10 @@ MonoBehaviour:
   itemType: 0
   displayName: "\uB098\uBB34 \uD310\uC790"
   description: "\uD1B5\uB098\uBB34\uB85C \uB9CC\uB4E4 \uC218 \uC788\uB294 \uD310\uC790. "
-  icon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
+  icon: {fileID: 21300000, guid: 2fec67f7778d1ff49a9ef3dc15b14f7e, type: 3}
   canStack: 1
   maxStackAmount: 99
-  craftTool: 2
+  craftType: 2
   recipe:
   - itemId: I0005
     value: 2

@@ -19,8 +19,8 @@ MonoBehaviour:
   runSpeed: 10
   dropOnDeath: []
   aiState: 0
-  detectDistance: 10
-  safeDistance: 10
+  detectDistance: 35
+  safeDistance: 1000
   minWanderDistance: 5
   maxWanderDistance: 10
   minWanderWaitTime: 1
@@ -28,3 +28,6 @@ MonoBehaviour:
   damage: 500
   attackRate: 1.5
   attackDistance: 2
+  chargeDuration: 0.5
+  returnDuration: 0.5
+  isCharging: 0

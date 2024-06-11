@@ -18,10 +18,10 @@ MonoBehaviour:
   description: "\uCCA0\uBD99\uC774\uB85C \uB9CC\uB4E0 \uD2BC\uD2BC\uD55C \uACE1\uAD2D\uC774.
     \uB3CC\uACFC \uAD11\uBB3C\uC744 \uC870\uAE08 \uB354 \uBE60\uB974\uAC8C \uCE98
     \uC218 \uC788\uB2E4."
-  icon: {fileID: 21300000, guid: f26fa8880b3aeef4b8516c82dc12f2a5, type: 3}
+  icon: {fileID: 21300000, guid: 6ca739f01e9a2a74592a9be058599940, type: 3}
   canStack: 0
   maxStackAmount: 0
-  craftTool: 2
+  craftType: 2
   recipe:
   - itemId: I0005
     value: 2
@@ -34,3 +34,4 @@ MonoBehaviour:
   - type: 0
     value: 50
   isEquipped: 0
+  equipPrefab: {fileID: 2134353102872928704, guid: 991fd4ca36300754fb66810c58d42272, type: 3}

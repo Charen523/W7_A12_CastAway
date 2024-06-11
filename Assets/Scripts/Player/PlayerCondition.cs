@@ -25,7 +25,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     
     /*Components*/
     private PlayerController controller;
-
+    public DeathUIController deathUIController;
     /*player Condition Status*/
     private bool isDead;
 
@@ -43,11 +43,13 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (hunger.curValue == 0 || thirst.curValue == 0)
         {
             health.ChangeValue(-healthDecay * Time.deltaTime);
+            onTakeDamage?.Invoke();
         }
 
         if (health.curValue == 0 && !isDead)
         {
             Die();
+            
         }
 
         if (controller.animator.GetBool("IsRun"))
@@ -69,6 +71,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (temperature.curValue > 80 || temperature.curValue < 20)
         {
             health.ChangeValue(-healthDecay * Time.deltaTime);
+            onTakeDamage?.Invoke();
         }
     }
 
@@ -79,7 +82,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Drink(float amount)
     {
-        hunger.ChangeValue(amount);
+        thirst.ChangeValue(amount);
     }
 
     public float GetThirstMaxValue()
@@ -101,6 +104,9 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void Die()
     {
         isDead = true;
+        controller.baseSpeed = 0;
+        deathUIController.ShowDeathUI();
+        controller.ToggleCursor();
         OnDeath?.Invoke();
     }
 
@@ -109,13 +115,27 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         stamina.ChangeValue(amount);
     }
 
-    public void Warm()
+    public void WarmToggle(bool isWarm)
     {
-        temperature.ChangeValue(Mathf.Max(temperature.curValue, 20));
+        if (isWarm)
+        {
+            temperature.minValue = 30;
+        }
+        else
+        {
+            temperature.minValue = 0;
+        }
     }
 
-    public void Cool()
+    public void CoolToggle(bool isCool)
     {
-        temperature.ChangeValue(Mathf.Min(temperature.curValue, 80));
+        if (isCool)
+        {
+            temperature.maxValue = 70;
+        }
+        else
+        {
+            temperature.maxValue = 100;
+        }
     }
 }

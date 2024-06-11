@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     /*Events*/
     public event Action WorkshopInput;
     public event Action SettingInput;
+    public event Action AltInfoOn;
+    public event Action AltInfoOff;
 
     [Header("Movement")]
     public float baseSpeed = 5;
@@ -35,10 +37,16 @@ public class PlayerController : MonoBehaviour
     /*Components*/
     private Rigidbody rb;
     [HideInInspector] public Animator animator;
+    public AudioSource footstepaudio;
+    public AudioSource runningstep;
+    public AudioSource Jumpaudio;
+    public float footstepInterval = 0.5f; // 발자국 소리가 재생되는 간격
+    private float lastFootstepTime;
 
     /*player Controllable Status*/
     public bool canLook = true;
     [HideInInspector] public bool canRun = true;
+    
 
     private void Awake()
     {
@@ -56,12 +64,12 @@ public class PlayerController : MonoBehaviour
     {
         if (animator.GetBool("IsWalk"))
         {
+            
             transform.eulerAngles = new Vector3(0, camCurYRot, 0);
             AnimatorAim();
         }
-
         if (IsGrounded())
-        {
+        {          
             Move();
         }
     }
@@ -79,13 +87,14 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             moveInput = context.ReadValue<Vector2>();
+            footstepaudio.Play();
             animator.SetBool("IsWalk", true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             moveInput = Vector2.zero;
             animator.SetBool("IsWalk", false);
-
+            footstepaudio.Stop();
             if (animator.GetBool("IsRun") == true)
             {
                 animator.SetBool("IsRun", false);
@@ -100,6 +109,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("IsJump");
+            Jumpaudio.Play();
+        }
+        if(animator.GetBool("IsJump") == false)
+        {
+            Jumpaudio.Stop();
         }
     }
 
@@ -113,12 +127,16 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             animator.SetBool("IsRun", true);
+            runningstep.Play();
+            footstepaudio.Stop();
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
             animator.SetBool("IsRun", false);
             canRun = true;
+            footstepaudio.Play();
+            runningstep.Stop();
         }
     }
 
@@ -136,7 +154,6 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             SettingInput?.Invoke();
-            ToggleCursor();
         }
     }
 
@@ -145,11 +162,13 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             ToggleCursor();
+            AltInfoOn?.Invoke();
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
             ToggleCursor();
+            AltInfoOff?.Invoke();
         }
     }
 
@@ -231,7 +250,7 @@ public class PlayerController : MonoBehaviour
         cameraContainer.transform.LookAt(CamToPlayer);
     }
 
-    private void ToggleCursor()
+    public void ToggleCursor()
     {
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
