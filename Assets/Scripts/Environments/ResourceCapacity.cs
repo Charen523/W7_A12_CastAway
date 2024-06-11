@@ -22,6 +22,7 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     int countDownMax = 15;
     int countUp = 0;
 
+    public AudioSource pickupSound;
     void Start()
     {
         currentHits = 0;
@@ -158,6 +159,7 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
         //inventory에 아이템 넣기.
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
+        PickupItem();
 
         //덤불이면 3회 수집 후 풀로 반환
         if (prefab.tag == "B1002")
@@ -171,5 +173,14 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
         }
         else if (prefab.tag == "B1001" || prefab.tag == "B1007" || prefab.tag == "B1008" || prefab.tag == "B1009" || prefab.tag == "B1010" || prefab.tag == "BI0001" || prefab.tag == "BI0002")
             poolManager.ReturnObjectToPool(prefab);
+    }
+
+    private void PickupItem()
+    {
+        // 아이템 획득 사운드 재생
+        if (pickupSound != null)
+        {
+            pickupSound.Play();
+        }
     }
 }
