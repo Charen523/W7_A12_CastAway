@@ -14,7 +14,6 @@ public class BuildObject : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        craftSystem.promptPanel.SetActive(false);
         craftSystem = FindObjectOfType<CraftSystem>();
         if (craftSystem != null)
         {
