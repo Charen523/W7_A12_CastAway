@@ -45,15 +45,40 @@ public class CraftSystem : MonoBehaviour
     private GameObject currentPreview; // 현재 프리뷰 오브젝트
     private Material[] originalMaterials; // 원래 재질들
     private Transform playerTransform;
+    public static CraftSystem instance;
 
-    void Start()
+    void Awake()
     {
+
+        // 필요한 초기화 작업 수행
         playerTransform = CharacterManager.Instance.Player.transform;
+    }
+
+    void OnEnable()
+    {
+        if(instance != null)
+        {
+            Destroy(instance);
+        }
+
+        instance = this;
+
+        // 플레이어의 트랜스폼 초기화
+        playerTransform = CharacterManager.Instance.Player.transform;
+
+        // 프롬프트 패널 비활성화
         promptPanel.SetActive(false);
+
+        // 각 craft 초기화
         Initialize();
+
+        // 각 craft의 actualPrefab 비활성화 및 isBuilt 초기화
         foreach (var craft in crafts)
         {
-            craft.actualPrefab.SetActive(false);
+            if (craft.actualPrefab != null)
+            {
+                craft.actualPrefab.SetActive(false);
+            }
             craft.isBuilt = false;
         }
     }

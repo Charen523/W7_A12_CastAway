@@ -34,8 +34,11 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void ClosePrompt()
     {
-        //판넬 setactive false
-        craftSystem.promptPanel.SetActive(false);
+        if (craftSystem.promptPanel.activeSelf)
+        {
+            //판넬 setactive false
+            craftSystem.promptPanel.SetActive(false);
+        }
     }
 
     public void OnInteract()

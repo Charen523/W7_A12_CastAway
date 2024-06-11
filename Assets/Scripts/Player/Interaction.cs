@@ -4,9 +4,7 @@ using UnityEngine.InputSystem;
 public interface IInteractable
 {
     public void GetInteractPrompt(); //화면에 띄울 프롬프트 
-
     public void ClosePrompt();
-
     public void OnInteract(); // Interact 되었을 시 발동되는 효과 정하기
 }
 
