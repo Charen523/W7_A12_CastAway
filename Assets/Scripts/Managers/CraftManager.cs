@@ -11,7 +11,7 @@ public class CraftManager : Singleton<CraftManager>
         set { _craftSystem = value; }
     }
 
-    public UIInventory UIInventory //CraftSystem 스크립트 호출
+    public UIInventory UIInventory //UIInventory 스크립트 호출
     {
         get { return _inventory; }
         set { _inventory = value; }

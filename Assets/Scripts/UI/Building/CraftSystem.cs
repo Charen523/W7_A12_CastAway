@@ -49,7 +49,6 @@ public class CraftSystem : MonoBehaviour
 
     void Awake()
     {
-
         // 필요한 초기화 작업 수행
         playerTransform = CharacterManager.Instance.Player.transform;
     }
