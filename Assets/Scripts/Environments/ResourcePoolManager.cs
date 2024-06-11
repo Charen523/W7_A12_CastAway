@@ -62,10 +62,17 @@ public class ResourcePoolManager : MonoBehaviour
             if (_instance == this)
             {   // 중복 인스턴스 제거
                 Destroy(gameObject);
+                return;
             }
         }
 
         parentFolder = GetComponent<Transform>();
+
+        if (parentFolder == null)
+        {
+            Debug.LogError("parentFolder is null. Assigning to this.transform.");
+            parentFolder = this.transform;
+        }
         // 오브젝트 풀 초기화
         InitializePool();
     }
@@ -79,9 +86,16 @@ public class ResourcePoolManager : MonoBehaviour
     // 오브젝트 풀 초기화 메서드
     void InitializePool()
     {
+
         PoolDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach (var pool in Pools)
         {
+            if (pool.prefab == null)
+            {
+                Debug.LogError($"Prefab for pool with tag {pool.tag} is null.");
+                continue;
+            }
+
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
