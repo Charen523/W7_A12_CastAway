@@ -19,7 +19,7 @@ GameObject:
   m_TagString: B0002
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6012484573045719754
 Transform:
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 01993726d9e28c644b2adb4172958876, type: 2}
+  pickupSound: {fileID: 0}
 --- !u!54 &8688925688552451649
 Rigidbody:
   m_ObjectHideFlags: 0

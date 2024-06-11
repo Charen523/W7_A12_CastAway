@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: I0012
   itemType: 0
   displayName: "\uAC00\uC8FD"
-  description: "\uBC84\uD314\uB85C\uC758 \uAC00\uC8FD. \uB9E4\uC6B0 \uC9C8\uAE30\uB2E4."
+  description: "\uB291\uC758 \uAC00\uC8FD. \uB9E4\uC6B0 \uC9C8\uAE30\uB2E4."
   icon: {fileID: 21300000, guid: dfdc1cdb776d3144797e77e0507e8450, type: 3}
   canStack: 1
   maxStackAmount: 99

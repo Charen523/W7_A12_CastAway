@@ -6,6 +6,10 @@
 ##### <p align="center"> <b> 내일 배움 캠프 7주차 팀프로젝트 : Team.유록과 12조 제자들 </b>
 
 <br/>
+
+![startScene](https://github.com/Charen523/W7_A12_CastAway/assets/108499207/44192b3e-4af3-4c98-9a89-62482a7faeae)
+
+<br/>
 <br/>
 
 <br/>

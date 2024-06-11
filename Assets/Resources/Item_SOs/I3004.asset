@@ -22,8 +22,8 @@ MonoBehaviour:
   maxStackAmount: 0
   craftType: 2
   recipe:
-  - itemId: WoodBoard
+  - itemId: I0007
     value: 4
-  - itemId: fa
-    value: 8
+  - itemId: I0008
+    value: 4
   resultQuantity: 0

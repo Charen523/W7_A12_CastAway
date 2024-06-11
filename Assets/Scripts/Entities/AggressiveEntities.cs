@@ -205,7 +205,6 @@ public class AggressiveEntities : MonoBehaviour, IDamagable
     }
     public void TakeDamage(int damageAmount) // 데미지를 받는 로직
     {
-        Debug.Log("맞았다!");
         CurrentHealth -= damageAmount; //체력 - 데미지
         if (CurrentHealth <= 0) //0보다 작거나 같아지면 죽음
             Die();

@@ -19,7 +19,10 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
     private ResourcePoolManager poolManager;
     private List<Pool> pools;
     private CraftSystem craftSystem;
+    int countDownMax = 15;
+    int countUp = 0;
 
+    public AudioSource pickupSound;
     void Start()
     {
         currentHits = 0;
@@ -75,9 +78,25 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
                         currentHits = 0;
                     }
                 }
+                else if(prefab.tag == "B1011" && pool.tag == gameObject.tag)
+                {
+                    countUp++;
+                    string str = $"[새로운 세상으로 나가는 곳]\n카운트 다운: {countDownMax - countUp}!!";
+                    craftSystem.promptText.text = str;
+
+                    // 자원 수집 처리
+                    CharacterManager.Instance.Player.itemData = data;
+                    CharacterManager.Instance.Player.addItem?.Invoke();
+
+                    if (countDownMax <= countUp)
+                    {
+                        poolManager.Remove(prefab);
+                        countUp = 0;
+                    }
+                }
             }
         }
-        if(gameObject.activeSelf)
+        if(gameObject.activeSelf || gameObject != null)
         {
             // 4초 뒤에 ClosePrompt 실행
             StartCoroutine(ClosePromptAfterDelay(4.0f));
@@ -116,7 +135,6 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
                 string str = $"[E]를 눌러 {pool.itemName} 얻기";
                 craftSystem.promptText.text = str;
             }
-
         }
             
         // 3초 뒤에 ClosePrompt 실행
@@ -141,6 +159,7 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
         //inventory에 아이템 넣기.
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
+        PickupItem();
 
         //덤불이면 3회 수집 후 풀로 반환
         if (prefab.tag == "B1002")
@@ -156,5 +175,12 @@ public class ResourceCapacity : MonoBehaviour, IInteractable
             poolManager.ReturnObjectToPool(prefab);
     }
 
-    // 플레이어와 충돌한 자원이 동굴 앞 돌이면, currentHits >= maxHits 일 때, Destroy(gameObject)
+    private void PickupItem()
+    {
+        // 아이템 획득 사운드 재생
+        if (pickupSound != null)
+        {
+            pickupSound.Play();
+        }
+    }
 }
