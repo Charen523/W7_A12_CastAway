@@ -158,9 +158,10 @@
 ---
 
 ### ✨결과 보고서
+https://docs.google.com/presentation/d/1KoHMllFFpJBS0LuG0fHu2kpQcUFG5j3rJW_91qi9nGo/edit?usp=sharing
 
 ---
 
 ### ✨시연 영상 링크
-
+https://drive.google.com/file/d/1sQ-5Ori_vavGZHUeTlsgPMrmAqCRWWYz/view?usp=sharing
 ---
